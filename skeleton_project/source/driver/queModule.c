@@ -9,3 +9,11 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que) {
         ctrl_updateElevatorState(anElevator, MOVING_DOWN);
     }
 }
+
+void que_addOrder(struct Orders **hode, int order) {
+    struct Orders* new_Order = ()
+};
+
+void que_removeCompletedOrder(struct Orders);
+void que_clearOrders(struct Orders);
+

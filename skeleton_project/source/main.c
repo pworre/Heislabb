@@ -3,14 +3,18 @@
 #include <signal.h>
 #include <time.h>
 #include "driver/elevio.h"
-
+#include "elevatorControl.h"
 
 
 int main(){
     elevio_init();
 
-    // Start function
-    
+    struct Elevator elev;
+    //struct Orders que;
+
+    ctrl_startup(&elev);
+    //que_checkQue(&elev, &que);
+
     printf("=== Example Program ===\n");
     printf("Press the stop button on the elevator panel to exit\n");
 

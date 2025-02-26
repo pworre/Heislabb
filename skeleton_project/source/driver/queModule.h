@@ -10,9 +10,8 @@ struct Orders {
     struct Orders *next;
 };
 
-void que_addOrder(struct Orders **hode, int order_floor);
+void que_addOrder(struct Orders **hode, int requestedFloor);
 void que_checkQue(struct Elevator* anElevator, struct Orders* que);
-void que_addOrder(struct Orders **hode, int order);
 void que_removeCompletedOrder(struct Orders);
 void que_clearOrders(struct Orders);
 

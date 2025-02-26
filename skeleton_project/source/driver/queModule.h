@@ -4,7 +4,7 @@
 
 // Linked list for que-system
 struct Orders {
-    int order_floor;
+    int orderFloor;
 
     // Self-referential structure pointing to next the order and info about the next order
     struct Orders *next;

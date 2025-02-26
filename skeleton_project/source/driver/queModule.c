@@ -1,12 +1,26 @@
 #include "queModule.h"
 #include "stdlib.h"
 
-void que_addOrder(struct Orders **hode, int orderToAdd) {
-    struct Orders *head = NULL;
+void que_addOrder(struct Orders **head, int requestedFloor) {
+    struct Orders *newOrder = NULL;
     // Saves the adress for Order-type in head and allocate memory
-    head = (struct Orders *)malloc(sizeof(struct Orders));
-    head->order_floor = orderToAdd;
+    newOrder = (struct Orders *)malloc(sizeof(struct Orders));
 
+    // Checks if there is already an order in the list. If not, adding it as first element
+    newOrder->orderFloor = requestedFloor;
+    newOrder->next = NULL;
+    
+    if (*head == NULL) {
+        *head = newOrder
+    } else {
+        struct Orders* temp = *head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        // Adds the request to the next node after the last existing
+        temp->next = newOrder;
+    }
+}
 
 void que_checkQue(struct Elevator* anElevator, struct Orders* que) {
     if ((que->order < anElevator->lastFloor) && (anElevator->state != MOVING_UP)) {
@@ -19,8 +33,7 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que) {
 }
 
 void que_addOrder(struct Orders **hode, int order) {
->>>>>>> 10809fa6732b46b8fc74a6b08cc1c455a74d2afa
-    struct Orders* new_Order = ()
+    //struct Orders* new_Order = ();
 };
 
 void que_removeCompletedOrder(struct Orders);

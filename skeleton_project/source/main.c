@@ -9,8 +9,12 @@
 int main(){
     elevio_init();
 
+
     struct Elevator elev;
+
     //struct Orders que;
+    struct Orders *order_head = NULL;
+
 
     ctrl_startup(&elev);
     //que_checkQue(&elev, &que);

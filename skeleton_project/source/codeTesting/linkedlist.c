@@ -1,8 +1,7 @@
-#include "queModule.h"
-#include "stdio.h"
+#include "linkedlist.h"
 
 
-void que_addOrder(struct Orders **head, int requestedFloor) {
+void add_linkedlist(struct Orders **head, int requestedFloor) {
     struct Orders *newOrder = NULL;
     // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
     newOrder = (struct Orders *)malloc(sizeof(struct Orders));
@@ -29,20 +28,12 @@ void que_addOrder(struct Orders **head, int requestedFloor) {
 }
 
 
-void que_checkQue(struct Elevator* anElevator, struct Orders* que) {
-    if ((que->orderFloor < anElevator->lastFloor) && (anElevator->state != MOVING_UP)) {
-        elevio_motorDirection(DIRN_DOWN);
-        ctrl_updateElevatorState(anElevator, MOVING_DOWN);
-    } else if ((que->orderFloor > anElevator->lastFloor) && (anElevator->state != MOVING_DOWN)) {
-        elevio_motorDirection(DIRN_UP);
-        ctrl_updateElevatorState(anElevator, MOVING_DOWN);
+void print_linkedlist(struct Orders *head) {
+    struct Orders *temp = head;
+    
+    printf("Orders in the queue:\n");
+    while (temp != NULL) {
+        printf("Floor: %d\n", temp->orderFloor);
+        temp = temp->next;
     }
 }
-
-void que_addOrder(struct Orders **hode, int order) {
-    //struct Orders* new_Order = ();
-};
-
-void que_removeCompletedOrder(struct Orders);
-void que_clearOrders(struct Orders);
-

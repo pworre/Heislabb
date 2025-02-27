@@ -17,6 +17,12 @@ struct Orders {
     struct Orders *next;
 };
 
+struct CabOrders {
+    int cabOrderFloor;
+
+    struct CabOrders *next;
+};
+
 
 
 /**
@@ -41,9 +47,10 @@ void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requested
 *
 * @return nothing. Sets the @p MotorDirection and updates the elevator state. 
 */
-void que_checkQue(struct Elevator* anElevator, struct Orders* que);
+void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder);
 
 
 void que_removeCompletedOrder(struct Orders);
 void que_clearOrders(struct Orders);
 
+void que_addCabOrder(struct CabOrders **head, int requestedFloor);

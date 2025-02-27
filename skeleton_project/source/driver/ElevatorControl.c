@@ -22,17 +22,27 @@ void ctrl_startup(struct Elevator* anElevator) {
 }
 
 void ctrl_run(struct Elevator* anElevator, struct Orders* order) {
+    // Creates new and empty lists ready for orders
     struct Orders *orderHead = NULL;
+    struct CabOrders *cabOrderHead = NULL;
+
 
     while (anElevator->run) {
+        // Scans continuosly for button inputs
         for(int f = 0; f < N_FLOORS; f++){
             for(int b = 0; b < N_BUTTONS; b++){
                 int btnPressed = elevio_callButton(f, b);
-                if (btnPressed == 1) {
+
+                // if button is from OUTSIDE of the cab
+                if ((btnPressed == 1) && (b != BUTTON_CAB)) {
                     que_addOrder(orderHead, f, b);
+                // if the button is from INSIDE of the cab
+                } else if (btnPressed == 1) {
+                    que_addCabOrder(cabOrderHead, f);
                 }
                 elevio_buttonLamp(f, b, btnPressed);
             }
         }
+        // bruker viabas her for å sjekke om stoppe på veien
     }
 }

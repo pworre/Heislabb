@@ -2,7 +2,7 @@
 #include "stdio.h"
 
 
-void que_addOrder(struct Orders **head, int requestedFloor) {
+void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requestedDirection) {
     struct Orders *newOrder = NULL;
     // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
     newOrder = (struct Orders *)malloc(sizeof(struct Orders));
@@ -14,6 +14,7 @@ void que_addOrder(struct Orders **head, int requestedFloor) {
 
     // Checks if there is already an order in the list. If not, adding it as first element
     newOrder->orderFloor = requestedFloor;
+    newOrder->orderDirection = requestedDirection;
     newOrder->next = NULL;
     
     if (*head == NULL) {

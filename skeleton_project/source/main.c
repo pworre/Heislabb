@@ -11,18 +11,23 @@ int main(){
 
 
     struct Elevator elev;
-
-    //struct Orders que;
-    struct Orders *order_head = NULL;
-
+    //struct Orders *order_head = NULL;     <----i elevatorControl
+    
+    int run = 1;
 
     ctrl_startup(&elev);
+    while(run) {
+        
+    }
+
     //que_checkQue(&elev, &que);
 
+    /*
     printf("=== Example Program ===\n");
     printf("Press the stop button on the elevator panel to exit\n");
 
     elevio_motorDirection(DIRN_UP);
+
 
     while(1){
         int floor = elevio_floorSensor();
@@ -56,6 +61,7 @@ int main(){
         
         nanosleep(&(struct timespec){0, 20*1000*1000}, NULL);
     }
+    */
 
     return 0;
 }

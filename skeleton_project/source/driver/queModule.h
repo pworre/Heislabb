@@ -1,5 +1,6 @@
 #pragma once
 #include "elevatorControl.h"
+#include "elevio.h"
 /**
 * @file
 * @brief A simple library for que-control of the elevator. 
@@ -10,6 +11,7 @@
 // Linked list for que-system
 struct Orders {
     int orderFloor;
+    ButtonType orderDirection;
 
     // Self-referential structure pointing to next the order and info about the next order
     struct Orders *next;
@@ -22,11 +24,12 @@ struct Orders {
 *
 * @param[in] head doublepointer to the ehad of the linked list. Necessary in order to change the list.
 * @param[in] requestedFloor The requested floor from customer using the elevator.
+* @param[in] requestedDirection The requested floor from customer using the elevator.
 *
 * @return nothing. The @p head modifies the list by adding a new node. 
 * Last element in the list contains @c NULL pointer in @p next.
 */
-void que_addOrder(struct Orders **head, int requestedFloor);
+void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requestedDirection);
 
 
 /**

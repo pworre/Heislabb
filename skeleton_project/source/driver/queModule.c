@@ -29,7 +29,17 @@ void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requested
     }
 }
 
+void que_checkViabas(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder) {
+        // Setting parameter if outside cab order is between elevator and cabOrder and goes in same direction
+    if ((cabOrder->cabOrderFloor < que->next) && ((anElevator->state == MOVING_DOWN) && que->orderDirection == BUTTON_HALL_DOWN) || 
+        (cabOrder->cabOrderFloor > que->next) && ((anElevator->state == MOVING_UP) && que->orderDirection == BUTTON_HALL_UP))  {
+        anElevator->viabas = 1;
+    } else {
+        anElevator->viabas = 0;
+    }
+}
 
+/* KOMMENTERT UT FOR Å PRØVE Å TILPASSE checkQue TIL CABORDER-rekkefølge
 void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder) {
     if ((que->orderFloor < anElevator->lastFloor) && (anElevator->state != MOVING_UP)) {
         elevio_motorDirection(DIRN_DOWN);
@@ -38,13 +48,16 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrd
         elevio_motorDirection(DIRN_UP);
         ctrl_updateElevatorState(anElevator, MOVING_DOWN);
     }
+}
+*/
 
-    // Setting parameter if outside cab order is between elevator and cabOrder and goes in same direction
-    if ((cabOrder->cabOrderFloor < que->next) && ((anElevator->state == MOVING_DOWN) && que->orderDirection == BUTTON_HALL_DOWN) || 
-        (cabOrder->cabOrderFloor > que->next) && ((anElevator->state == MOVING_UP) && que->orderDirection == BUTTON_HALL_UP))  {
-        anElevator->viabas = 1;
-    } else {
-        anElevator->viabas = 0;
+void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder) {
+    if ((que->orderFloor < anElevator->lastFloor) && (anElevator->state != MOVING_UP)) {
+        elevio_motorDirection(DIRN_DOWN);
+        ctrl_updateElevatorState(anElevator, MOVING_DOWN);
+    } else if ((que->orderFloor > anElevator->lastFloor) && (anElevator->state != MOVING_DOWN)) {
+        elevio_motorDirection(DIRN_UP);
+        ctrl_updateElevatorState(anElevator, MOVING_DOWN);
     }
 }
 

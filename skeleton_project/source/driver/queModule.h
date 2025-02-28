@@ -44,10 +44,22 @@ void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requested
 *
 * @param[in] anElevator Pointer to the Elevator-struct to have access to elevator's last position and setting motor direction.
 * @param[in] que Pointer to the que of the elevator's orders. 
+* @param[in] cabOrder Pointer to the que of the elevator's orders from inside of cab. 
 *
 * @return nothing. Sets the @p MotorDirection and updates the elevator state. 
 */
 void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder);
+
+/**
+* @brief Check if the elevator will stop halfway for bringing mor passangers
+*
+* @param[in] anElevator Pointer to the Elevator-struct to have access to elevator's last position and setting motor direction.
+* @param[in] que Pointer to the que of the elevator's orders. 
+* @param[in] cabOrder Pointer to the que of the elevator's orders from inside of cab. 
+*
+* @return nothing. Sets the @p viabas as part of the struct.
+*/
+void que_checkViabas(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder);
 
 
 void que_removeCompletedOrder(struct Orders);

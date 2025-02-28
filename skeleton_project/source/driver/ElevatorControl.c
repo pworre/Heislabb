@@ -21,7 +21,7 @@ void ctrl_startup(struct Elevator* anElevator) {
     }
 }
 
-void ctrl_run(struct Elevator* anElevator, struct Orders* order) {
+void ctrl_run(struct Elevator* anElevator, struct Orders* order, struct CabOrders* cabOrder) {
     // Creates new and empty lists ready for orders
     struct Orders *orderHead = NULL;
     struct CabOrders *cabOrderHead = NULL;
@@ -44,5 +44,14 @@ void ctrl_run(struct Elevator* anElevator, struct Orders* order) {
             }
         }
         // bruker viabas her for å sjekke om stoppe på veien
+        que_checkViabas(anElevator, order,cabOrder);
+    }
+}
+
+void nextDestination(struct Elevator* anElevator, struct Orders* order, struct CabOrders* cabOrder){
+    if (anElevator->viabas == 1){
+        anElevator->nextFloor = order->orderFloor;
+    } else {
+        anElevator->nextFloor = cabOrder->cabOrderFloor;
     }
 }

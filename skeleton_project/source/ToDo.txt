@@ -1,0 +1,2 @@
+1. Bestemme om order-listene skal initialiseres i main.c eller i ctrl_run()
+2. Dobbeltsjekke referering av pekere

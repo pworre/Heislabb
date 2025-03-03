@@ -16,9 +16,7 @@ int main(){
     int run = 1;
 
     ctrl_startup(&elev);
-    while(run) {
-        
-    }
+    ctrl_run(&elev,);
 
     //que_checkQue(&elev, &que);
 

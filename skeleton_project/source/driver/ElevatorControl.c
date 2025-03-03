@@ -21,7 +21,7 @@ void ctrl_startup(struct Elevator* anElevator) {
     }
 }
 
-void ctrl_run(struct Elevator* anElevator, struct Orders* order, struct CabOrders* cabOrder) {
+void ctrl_run(struct Elevator* anElevator) {
     // Creates new and empty lists ready for orders
     struct Orders *orderHead = NULL;
     struct CabOrders *cabOrderHead = NULL;
@@ -35,17 +35,17 @@ void ctrl_run(struct Elevator* anElevator, struct Orders* order, struct CabOrder
 
                 // if button is from OUTSIDE of the cab
                 if ((btnPressed == 1) && (b != BUTTON_CAB)) {
-                    que_addOrder(orderHead, f, b);
+                    que_addOrder(&orderHead, f, b);
                 // if the button is from INSIDE of the cab
                 } else if (btnPressed == 1) {
-                    que_addCabOrder(cabOrderHead, f);
+                    que_addCabOrder(&cabOrderHead, f);
                 }
                 elevio_buttonLamp(f, b, btnPressed);
             }
         }
         // bruker viabas her for å sjekke om stoppe på veien
-        que_checkViabas(anElevator, order,cabOrder);
-        que_checkQue(anElevator, order, cabOrder);
+        que_checkViabas(anElevator, &orderHead, &cabOrderHead);
+        que_checkQue(anElevator, &orderHead, &cabOrderHead);
     }
 }
 

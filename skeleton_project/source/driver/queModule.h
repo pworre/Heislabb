@@ -61,8 +61,17 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrd
 */
 void que_checkViabas(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder);
 
+/**
+* @brief A function for removing completed orders and 
+*
+* @param[in] anElevator Pointer to the Elevator-struct to have access to elevator's last position and setting motor direction.
+* @param[in] que Pointer to the que of the elevator's orders. 
+* @param[in] cabOrder Pointer to the que of the elevator's orders from inside of cab. 
+*
+* @return nothing. Sets the @p viabas as part of the struct.
+*/
+void que_removeCompletedOrder(struct Orders** orderHead);
 
-void que_removeCompletedOrder(struct Orders);
 void que_clearOrders(struct Orders);
 
 void que_addCabOrder(struct CabOrders **head, int requestedFloor);

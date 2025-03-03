@@ -23,8 +23,23 @@ ElevatorState ctrl_getElevatorState(struct Elevator* anElevator);
 void ctrl_updateElevatorState(struct Elevator* anElevator, ElevatorState aState);
 void ctrl_setFloor(struct Elevator* anElevator, int floor);
 
+/**
+* @brief Function for startup procecure for the elevator
+*
+* @param[in] anElevator Pointer to the Elevator-struct to have access to information about the last floors for elevators. 
+*
+* @return nothing. Runs the elevator to a floor before running normal program. 
+*/
 void ctrl_startup(struct Elevator* anElevator);
-void ctrl_run(struct Elevator* anElevator, struct Orders* order, struct CabOrders* cabOrder);
+
+/**
+* @brief Function for running the normal operating program for the elevator
+*
+* @param[in] anElevator Pointer to the Elevator-struct to have access to information of the elevator states. 
+*
+* @return nothing. Runs the operating program for the elevator. 
+*/
+void ctrl_run(struct Elevator* anElevator);
 
 /**
 * @brief Function for 

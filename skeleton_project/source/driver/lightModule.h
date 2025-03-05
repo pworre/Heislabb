@@ -25,4 +25,4 @@ typedef enum {
 
 
 
-void setLight(Lights *lights);
+void setLight(Lights *lights, LightType light, int state);

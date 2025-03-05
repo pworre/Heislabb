@@ -1,18 +1,18 @@
 #include "elevatorControl.h"
 #include "elevio.h"
 
-ElevatorState ctrl_getElevatorState(struct Elevator* anElevator) {
+ElevatorState ctrl_getElevatorState(Elevator* anElevator) {
     return anElevator->state;
 }
-void ctrl_updateElevatorState(struct Elevator* anElevator, ElevatorState aState){
+void ctrl_updateElevatorState(Elevator* anElevator, ElevatorState aState){
     anElevator->state = aState;
 }
 
-void ctrl_setFloor(struct Elevator* anElevator, int floor) {
+void ctrl_setFloor(Elevator* anElevator, int floor) {
     anElevator->lastFloor = floor;
 }
 
-void ctrl_startup(struct Elevator* anElevator) {
+void ctrl_startup(Elevator* anElevator) {
     elevio_motorDirection(DIRN_DOWN);
     if (elevio_floorSensor >= 0) {
         elevio_motorDirection(DIRN_STOP);
@@ -21,7 +21,7 @@ void ctrl_startup(struct Elevator* anElevator) {
     }
 }
 
-void ctrl_run(struct Elevator* anElevator) {
+void ctrl_run(Elevator* anElevator) {
     // Creates new and empty lists ready for orders
     struct Orders *orderHead = NULL;
     struct CabOrders *cabOrderHead = NULL;
@@ -48,7 +48,7 @@ void ctrl_run(struct Elevator* anElevator) {
     }
 }
 
-void nextDestination(struct Elevator* anElevator, struct Orders* order, struct CabOrders* cabOrder){
+void nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder){
     if (anElevator->viabas == 1){
         anElevator->nextFloor = order->orderFloor;
     } else {

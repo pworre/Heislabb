@@ -11,17 +11,17 @@
 * and control function for the elevator. 
 */
 
-struct Elevator {
+typedef struct {
     ElevatorState state;
     int lastFloor;
     int run;
     int viabas;             // variable which is 1 if the elevator will stop on either way for bringing more PAX
     int nextFloor;
-};
+} Elevator;
 
-ElevatorState ctrl_getElevatorState(struct Elevator* anElevator);
-void ctrl_updateElevatorState(struct Elevator* anElevator, ElevatorState aState);
-void ctrl_setFloor(struct Elevator* anElevator, int floor);
+ElevatorState ctrl_getElevatorState(Elevator* anElevator);
+void ctrl_updateElevatorState(Elevator* anElevator, ElevatorState aState);
+void ctrl_setFloor(Elevator* anElevator, int floor);
 
 /**
 * @brief Function for startup procecure for the elevator
@@ -30,7 +30,7 @@ void ctrl_setFloor(struct Elevator* anElevator, int floor);
 *
 * @return nothing. Runs the elevator to a floor before running normal program. 
 */
-void ctrl_startup(struct Elevator* anElevator);
+void ctrl_startup(Elevator* anElevator);
 
 /**
 * @brief Function for running the normal operating program for the elevator
@@ -39,7 +39,7 @@ void ctrl_startup(struct Elevator* anElevator);
 *
 * @return nothing. Runs the operating program for the elevator. 
 */
-void ctrl_run(struct Elevator* anElevator);
+void ctrl_run(Elevator* anElevator);
 
 /**
 * @brief Function for 
@@ -51,4 +51,4 @@ void ctrl_run(struct Elevator* anElevator);
 *
 * @return nothing. Sets the @p MotorDirection and updates the elevator state. 
 */
-void nextDestination(struct Elevator* anElevator, struct Orders* order, struct CabOrders* cabOrder);
+void nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder);

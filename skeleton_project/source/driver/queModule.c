@@ -2,10 +2,10 @@
 #include "stdio.h"
 
 
-void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requestedDirection) {
-    struct Orders *newOrder = NULL;
+void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirection) {
+    Orders *newOrder = NULL;
     // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
-    newOrder = (struct Orders *)malloc(sizeof(struct Orders));
+    newOrder = (Orders *)malloc(sizeof(Orders));
 
     // Checks if memory is allocated for the Orders-struct
     if (newOrder == NULL) {
@@ -20,7 +20,7 @@ void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requested
     if (*head == NULL) {
         *head = newOrder;
     } else {
-        struct Orders* temp = *head;
+        Orders* temp = *head;
         while (temp->next != NULL) {
             temp = temp->next;
         }
@@ -43,7 +43,7 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrd
 }
 */
 
-void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder) {
+void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder) {
     // Setting parameter if outside cab order is between elevator and cabOrder and goes in same direction
     if ((cabOrder->cabOrderFloor < que->next) && ((anElevator->state == MOVING_DOWN) && que->orderDirection == BUTTON_HALL_DOWN) || 
         (cabOrder->cabOrderFloor > que->next) && ((anElevator->state == MOVING_UP) && que->orderDirection == BUTTON_HALL_UP))  {
@@ -62,11 +62,11 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrd
     }
 }
 
-void que_addOrder(struct Orders **hode, int order) {
+void que_addOrder(Orders **hode, int order) {
     //struct Orders* new_Order = ();
 };
 
-void que_removeCompletedOrder(struct Orders **orderHead){
+void que_removeCompletedOrder(Orders **orderHead){
     // Checks if there is nothing to remove
     if (*orderHead == NULL){
         return;
@@ -80,12 +80,12 @@ void que_removeCompletedOrder(struct Orders **orderHead){
 }
 
 
-void que_clearOrders(struct Orders);
+void que_clearOrders(Orders);
 
-void que_addCabOrder(struct CabOrders **head, int requestedFloor){
-    struct Orders *newOrder = NULL;
+void que_addCabOrder(CabOrders **head, int requestedFloor){
+    Orders *newOrder = NULL;
     // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
-    newOrder = (struct Orders *)malloc(sizeof(struct Orders));
+    newOrder = (Orders *)malloc(sizeof(Orders));
 
     // Checks if memory is allocated for the Orders-struct
     if (newOrder == NULL) {
@@ -99,7 +99,7 @@ void que_addCabOrder(struct CabOrders **head, int requestedFloor){
     if (*head == NULL) {
         *head = newOrder;
     } else {
-        struct Orders* temp = *head;
+        Orders* temp = *head;
         while (temp->next != NULL) {
             temp = temp->next;
         }
@@ -108,7 +108,7 @@ void que_addCabOrder(struct CabOrders **head, int requestedFloor){
     }
 }
 
-void que_removeCompleteCabdOrder(struct CabOrders **orderHead){
+void que_removeCompleteCabdOrder(CabOrders **orderHead){
     // Checks if there is nothing to remove
     if (*orderHead == NULL){
         return;

@@ -9,21 +9,21 @@
 */
 
 // Linked list for que-system
-struct Orders {
+typedef struct {
     int orderFloor;
     ButtonType orderDirection;
 
     // Self-referential structure pointing to next the order and info about the next order
     struct Orders *next;
-};
+} Orders;
 
 
 
-struct CabOrders {
+typedef struct {
     int cabOrderFloor;
 
     struct CabOrders *next;
-};
+} CabOrders;
 
 
 
@@ -37,7 +37,7 @@ struct CabOrders {
 * @return nothing. The @p head modifies the list by adding a new node. 
 * Last element in the list contains @c NULL pointer in @p next.
 */
-void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requestedDirection);
+void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirection);
 
 
 
@@ -51,7 +51,7 @@ void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requested
 *
 * @return nothing. Sets the @p MotorDirection and updates the elevator state. 
 */
-void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder);
+void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder);
 
 
 
@@ -62,15 +62,15 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrd
 *
 * @return nothing. Sets @p orderHead pointing to next element and deallocating
 */
-void que_removeCompletedOrder(struct Orders** orderHead);
+void que_removeCompletedOrder(Orders** orderHead);
 
 
 
-void que_clearOrders(struct Orders);
+void que_clearOrders(Orders);
 
 
 
-void que_addCabOrder(struct CabOrders **head, int requestedFloor);
+void que_addCabOrder(CabOrders **head, int requestedFloor);
 
 
 
@@ -81,4 +81,4 @@ void que_addCabOrder(struct CabOrders **head, int requestedFloor);
 *
 * @return nothing. Sets @p orderHead pointing to next element and deallocating
 */
-void que_removeCompleteCabdOrder(struct CabOrders **orderHead);
+void que_removeCompleteCabdOrder(CabOrders **orderHead);

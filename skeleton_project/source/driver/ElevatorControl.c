@@ -44,7 +44,6 @@ void ctrl_run(struct Elevator* anElevator) {
             }
         }
         // bruker viabas her for å sjekke om stoppe på veien
-        que_checkViabas(anElevator, &orderHead, &cabOrderHead);
         que_checkQue(anElevator, &orderHead, &cabOrderHead);
     }
 }

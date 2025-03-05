@@ -1,0 +1,41 @@
+\doxysection{light\+Module.\+c}
+\hypertarget{light_module_8c_source}{}\label{light_module_8c_source}\index{skeleton\_project/source/driver/lightModule.c@{skeleton\_project/source/driver/lightModule.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}lightModule.h"{}}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00003}00003\ \textcolor{keywordtype}{void}\ lgt\_setLight(LightType\ lightType,\ \textcolor{keywordtype}{int}\ state)\{}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00004}00004\ \ \ \ \ \textcolor{keywordflow}{switch}\ (lightType)\ \{}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00005}00005\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ LIGHT\_FLOOR4\_DOWN:\ elevio\_doorOpenLamp(state);\ }
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00006}00006\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ printf(\textcolor{stringliteral}{"{}Ugyldig\ lys\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00008}00008\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00009}00009\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00013}00013\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00014}00014\ \textcolor{comment}{//\ Kode\ før\ fjernet\ ordrelys.\ Er\ implementert\ i\ ctrl\_scanButtonInputs()}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00015}00015\ \textcolor{comment}{void\ lgt\_setLight(LightType\ lightType,\ int\ state)\{}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00016}00016\ \textcolor{comment}{\ \ \ \ switch\ (lightType)\ \{}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00017}00017\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ LIGHT\_FLOOR4\_DOWN:\ elevio\_doorOpenLamp(state);\ }}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00018}00018\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00019}00019\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ LIGHT\_FLOOR3\_UP:\ elevio\_buttonLamp();}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00020}00020\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00021}00021\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ LIGHT\_FLOOR3\_DOWN:\ lights-\/>light\_orderFloor3\_DOWN\ =\ state;\ }}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00022}00022\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00023}00023\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ LIGHT\_FLOOR2\_UP:\ lights-\/>light\_orderFloor2\_UP\ =\ state;\ }}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00024}00024\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00025}00025\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ LIGHT\_FLOOR2\_DOWN:\ lights-\/>light\_orderFloor2\_DOWN\ =\ state;\ }}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00026}00026\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00027}00027\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ LIGHT\_FLOOR1\_UP:\ lights-\/>light\_orderFloor1\_UP\ =\ state;\ }}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00028}00028\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00029}00029\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ LIGHT\_DOOR\_OPEN:\ lights-\/>light\_door\_OPEN\ =\ state;\ }}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00030}00030\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00031}00031\ \textcolor{comment}{\ \ \ \ \ \ \ \ default:\ printf("{}Ugyldig\ lys\(\backslash\)n"{});}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00032}00032\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00033}00033\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00034}00034\ \textcolor{comment}{\}}}
+\DoxyCodeLine{\Hypertarget{light_module_8c_source_l00035}00035\ \textcolor{comment}{*/}}
+
+\end{DoxyCode}

@@ -1,0 +1,132 @@
+\doxysection{skeleton\+\_\+project/source/driver/elevator\+Control.h File Reference}
+\hypertarget{elevator_control_8h}{}\label{elevator_control_8h}\index{skeleton\_project/source/driver/elevatorControl.h@{skeleton\_project/source/driver/elevatorControl.h}}
+
+
+A simple library for struct \doxylink{struct_elevator}{Elevator} and and control function for the elevator.  
+
+
+{\ttfamily \#include "{}elevator\+State\+Machine.\+h"{}}\newline
+{\ttfamily \#include "{}elevio.\+h"{}}\newline
+{\ttfamily \#include "{}que\+Module.\+h"{}}\newline
+{\ttfamily \#include "{}stdlib.\+h"{}}\newline
+{\ttfamily \#include "{}light\+Module.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_elevator}{Elevator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Elevator\+State \mbox{\hyperlink{elevator_control_8h_a9afd6e2c254a13a144250fda68c962a7}{ctrl\+\_\+get\+Elevator\+State}} (\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}an\+Elevator)
+\item 
+void \mbox{\hyperlink{elevator_control_8h_a268b6d5ac0549f55e1019a30bc29f92f}{ctrl\+\_\+update\+Elevator\+State}} (\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}an\+Elevator, Elevator\+State a\+State)
+\item 
+void \mbox{\hyperlink{elevator_control_8h_af6335dcafd1e00a979ad8a6389e55581}{ctrl\+\_\+startup}} (\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}an\+Elevator)
+\begin{DoxyCompactList}\small\item\em Function for startup procecure for the elevator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_control_8h_ae3b7d5467f3154df7001a13040603477}{ctrl\+\_\+run}} (\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}an\+Elevator)
+\begin{DoxyCompactList}\small\item\em Function for running the normal operating program for the elevator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{elevator_control_8h_ae7251598f2c6357b88cfc99ffc644ca3}{ctrl\+\_\+scan\+Button\+Inputs}} (\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}an\+Elevator, \mbox{\hyperlink{struct_orders}{Orders}} \texorpdfstring{$\ast$}{*}order\+Head, \mbox{\hyperlink{struct_cab_orders}{Cab\+Orders}} \texorpdfstring{$\ast$}{*}cab\+Order\+Head)
+\begin{DoxyCompactList}\small\item\em Function for scanning button inputs and adding orders to the linkedlist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple library for struct \doxylink{struct_elevator}{Elevator} and and control function for the elevator. 
+
+
+
+Definition in file \mbox{\hyperlink{elevator_control_8h_source}{elevator\+Control.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{elevator_control_8h_a9afd6e2c254a13a144250fda68c962a7}\index{elevatorControl.h@{elevatorControl.h}!ctrl\_getElevatorState@{ctrl\_getElevatorState}}
+\index{ctrl\_getElevatorState@{ctrl\_getElevatorState}!elevatorControl.h@{elevatorControl.h}}
+\doxysubsubsection{\texorpdfstring{ctrl\_getElevatorState()}{ctrl\_getElevatorState()}}
+{\footnotesize\ttfamily \label{elevator_control_8h_a9afd6e2c254a13a144250fda68c962a7} 
+Elevator\+State ctrl\+\_\+get\+Elevator\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}}]{an\+Elevator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{elevator_control_8c_source_l00005}{5}} of file \mbox{\hyperlink{elevator_control_8c_source}{elevator\+Control.\+c}}.
+
+\Hypertarget{elevator_control_8h_ae3b7d5467f3154df7001a13040603477}\index{elevatorControl.h@{elevatorControl.h}!ctrl\_run@{ctrl\_run}}
+\index{ctrl\_run@{ctrl\_run}!elevatorControl.h@{elevatorControl.h}}
+\doxysubsubsection{\texorpdfstring{ctrl\_run()}{ctrl\_run()}}
+{\footnotesize\ttfamily \label{elevator_control_8h_ae3b7d5467f3154df7001a13040603477} 
+void ctrl\+\_\+run (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}}]{an\+Elevator}{}\end{DoxyParamCaption})}
+
+
+
+Function for running the normal operating program for the elevator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Elevator} & Pointer to the Elevator-\/struct to have access to information of the elevator states.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing. Runs the operating program for the elevator. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{elevator_control_8c_source_l00025}{25}} of file \mbox{\hyperlink{elevator_control_8c_source}{elevator\+Control.\+c}}.
+
+\Hypertarget{elevator_control_8h_ae7251598f2c6357b88cfc99ffc644ca3}\index{elevatorControl.h@{elevatorControl.h}!ctrl\_scanButtonInputs@{ctrl\_scanButtonInputs}}
+\index{ctrl\_scanButtonInputs@{ctrl\_scanButtonInputs}!elevatorControl.h@{elevatorControl.h}}
+\doxysubsubsection{\texorpdfstring{ctrl\_scanButtonInputs()}{ctrl\_scanButtonInputs()}}
+{\footnotesize\ttfamily \label{elevator_control_8h_ae7251598f2c6357b88cfc99ffc644ca3} 
+void ctrl\+\_\+scan\+Button\+Inputs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}}]{an\+Elevator}{, }\item[{\mbox{\hyperlink{struct_orders}{Orders}} \texorpdfstring{$\ast$}{*}}]{order\+Head}{, }\item[{\mbox{\hyperlink{struct_cab_orders}{Cab\+Orders}} \texorpdfstring{$\ast$}{*}}]{cab\+Order\+Head}{}\end{DoxyParamCaption})}
+
+
+
+Function for scanning button inputs and adding orders to the linkedlist. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Elevator} & Pointer to the Elevator-\/struct to have access to information if stop viabas and bring more PAX \\
+\hline
+\mbox{\texttt{ in}}  & {\em order} & Pointer to the que of the elevator from outside at floors \\
+\hline
+\mbox{\texttt{ in}}  & {\em cab\+Order} & Pointer to the que of the elevator\textquotesingle{}s orders from inside the cab\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing. The orders are added to the linkedlists 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{elevator_control_8c_source_l00073}{73}} of file \mbox{\hyperlink{elevator_control_8c_source}{elevator\+Control.\+c}}.
+
+\Hypertarget{elevator_control_8h_af6335dcafd1e00a979ad8a6389e55581}\index{elevatorControl.h@{elevatorControl.h}!ctrl\_startup@{ctrl\_startup}}
+\index{ctrl\_startup@{ctrl\_startup}!elevatorControl.h@{elevatorControl.h}}
+\doxysubsubsection{\texorpdfstring{ctrl\_startup()}{ctrl\_startup()}}
+{\footnotesize\ttfamily \label{elevator_control_8h_af6335dcafd1e00a979ad8a6389e55581} 
+void ctrl\+\_\+startup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}}]{an\+Elevator}{}\end{DoxyParamCaption})}
+
+
+
+Function for startup procecure for the elevator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Elevator} & Pointer to the Elevator-\/struct to have access to information about the last floors for elevators.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing. Runs the elevator to a floor before running normal program. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{elevator_control_8c_source_l00016}{16}} of file \mbox{\hyperlink{elevator_control_8c_source}{elevator\+Control.\+c}}.
+
+\Hypertarget{elevator_control_8h_a268b6d5ac0549f55e1019a30bc29f92f}\index{elevatorControl.h@{elevatorControl.h}!ctrl\_updateElevatorState@{ctrl\_updateElevatorState}}
+\index{ctrl\_updateElevatorState@{ctrl\_updateElevatorState}!elevatorControl.h@{elevatorControl.h}}
+\doxysubsubsection{\texorpdfstring{ctrl\_updateElevatorState()}{ctrl\_updateElevatorState()}}
+{\footnotesize\ttfamily \label{elevator_control_8h_a268b6d5ac0549f55e1019a30bc29f92f} 
+void ctrl\+\_\+update\+Elevator\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}}]{an\+Elevator}{, }\item[{Elevator\+State}]{a\+State}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{elevator_control_8c_source_l00008}{8}} of file \mbox{\hyperlink{elevator_control_8c_source}{elevator\+Control.\+c}}.
+

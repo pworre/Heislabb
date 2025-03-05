@@ -1,0 +1,50 @@
+\doxysection{que\+Module.\+h}
+\hypertarget{que_module_8h_source}{}\label{que_module_8h_source}\index{skeleton\_project/source/driver/queModule.h@{skeleton\_project/source/driver/queModule.h}}
+\mbox{\hyperlink{que_module_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{elevator_control_8h}{elevatorControl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}elevio.h"{}}}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00011}00011\ \textcolor{comment}{//\ Linked\ list\ for\ que-\/system}}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00012}\mbox{\hyperlink{struct_orders}{00012}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00013}00013\ \ \ \ \ \textcolor{keywordtype}{int}\ orderFloor;}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00014}00014\ \ \ \ \ ButtonType\ orderDirection;}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Self-\/referential\ structure\ pointing\ to\ next\ the\ order\ and\ info\ about\ the\ next\ order}}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_orders}{Orders}}\ *next;}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00018}00018\ \}\ \mbox{\hyperlink{struct_orders}{Orders}};}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00022}\mbox{\hyperlink{struct_cab_orders}{00022}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{int}\ cabOrderFloor;}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_cab_orders}{CabOrders}}\ *next;}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00026}00026\ \}\ \mbox{\hyperlink{struct_cab_orders}{CabOrders}};}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00040}00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{que_module_8h_a240387c99846a1bc53599f4438280361}{que\_addOrder}}(\mbox{\hyperlink{struct_orders}{Orders}}\ **head,\ \textcolor{keywordtype}{int}\ requestedFloor,\ ButtonType\ requestedDirection);}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00054}00054\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{que_module_8h_a78ee7157f8b1eff2a9bd802e36e9729c}{que\_checkQue}}(\mbox{\hyperlink{struct_elevator}{Elevator}}*\ anElevator,\ \mbox{\hyperlink{struct_orders}{Orders}}*\ que,\ \mbox{\hyperlink{struct_cab_orders}{CabOrders}}*\ cabOrder);}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00065}00065\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{que_module_8h_ac99d20c17a285b2e0c5f482761d59841}{que\_removeCompletedOrder}}(\mbox{\hyperlink{struct_orders}{Orders}}**\ orderHead);}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00069}00069\ \textcolor{keywordtype}{void}\ que\_clearOrders(\mbox{\hyperlink{struct_orders}{Orders}});}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00073}00073\ \textcolor{keywordtype}{void}\ que\_addCabOrder(\mbox{\hyperlink{struct_cab_orders}{CabOrders}}\ **head,\ \textcolor{keywordtype}{int}\ requestedFloor);}
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{que_module_8h_source_l00084}00084\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{que_module_8h_ae4dd2900dbad43b856b52ead86b248b9}{que\_removeCompleteCabdOrder}}(\mbox{\hyperlink{struct_cab_orders}{CabOrders}}\ **orderHead);}
+
+\end{DoxyCode}

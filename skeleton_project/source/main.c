@@ -10,10 +10,14 @@ int main(){
     elevio_init();
 
 
-    Elevator elev;
+    //Elevator elev;
     //struct Orders *order_head = NULL;     <----i elevatorControl
     
-    int run = 1;
+    // Allokere minne til Heis-structen
+    Elevator *elev = malloc(sizeof(Elevator));
+    if (elev == NULL) {
+        printf("FEIL: Kunne ikke allokere minne riktig! \n");
+    }
 
     ctrl_startup(&elev);
     ctrl_run(&elev);
@@ -60,6 +64,8 @@ int main(){
         nanosleep(&(struct timespec){0, 20*1000*1000}, NULL);
     }
     */
+
+   free(elev);
 
     return 0;
 }

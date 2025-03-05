@@ -1,0 +1,104 @@
+\doxysection{elevator\+Control.\+c}
+\hypertarget{elevator_control_8c_source}{}\label{elevator_control_8c_source}\index{skeleton\_project/source/driver/elevatorControl.c@{skeleton\_project/source/driver/elevatorControl.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{elevator_control_8h}{elevatorControl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}elevio.h"{}}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}time.h"{}}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00005}00005\ ElevatorState\ ctrl\_getElevatorState(\mbox{\hyperlink{struct_elevator}{Elevator}}*\ anElevator)\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00006}00006\ \ \ \ \ \textcolor{keywordflow}{return}\ anElevator-\/>state;}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00007}00007\ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00008}00008\ \textcolor{keywordtype}{void}\ ctrl\_updateElevatorState(\mbox{\hyperlink{struct_elevator}{Elevator}}*\ anElevator,\ ElevatorState\ aState)\{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00009}00009\ \ \ \ \ anElevator-\/>state\ =\ aState;}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00012}00012\ \textcolor{keywordtype}{void}\ ctrl\_setFloor(\mbox{\hyperlink{struct_elevator}{Elevator}}*\ anElevator,\ \textcolor{keywordtype}{int}\ floor)\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00013}00013\ \ \ \ \ anElevator-\/>lastFloor\ =\ floor;}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00016}\mbox{\hyperlink{elevator_control_8h_af6335dcafd1e00a979ad8a6389e55581}{00016}}\ \textcolor{keywordtype}{void}\ ctrl\_startup(\mbox{\hyperlink{struct_elevator}{Elevator}}*\ anElevator)\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00017}00017\ \ \ \ \ elevio\_motorDirection(DIRN\_DOWN);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (elevio\_floorSensor\ >=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00019}00019\ \ \ \ \ \ \ \ \ elevio\_motorDirection(DIRN\_STOP);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00020}00020\ \ \ \ \ \ \ \ \ ctrl\_updateElevatorState(anElevator,\ STATIONARY);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00021}00021\ \ \ \ \ \ \ \ \ anElevator-\/>lastFloor\ =\ elevio\_floorSensor();}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00025}\mbox{\hyperlink{elevator_control_8h_ae3b7d5467f3154df7001a13040603477}{00025}}\ \textcolor{keywordtype}{void}\ ctrl\_run(\mbox{\hyperlink{struct_elevator}{Elevator}}*\ anElevator)\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ Creates\ new\ and\ empty\ lists\ ready\ for\ orders}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{struct_orders}{Orders}}\ *orderHead\ =\ malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_orders}{Orders}}));}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{struct_cab_orders}{CabOrders}}\ *cabOrderHead\ =\ malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_cab_orders}{CabOrders}}));}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{if}\ ((orderHead\ ==\ NULL)\ ||\ (cabOrderHead\ ==\ NULL))\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00030}00030\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}FEIL:\ Kunne\ ikke\ allokere\ minne\ til\ CabOrder\ eller\ Order!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00032}00032\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Set\ state\ for\ running}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00035}00035\ \ \ \ \ anElevator-\/>run\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{while}\ (anElevator-\/>run)\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ SM\_updateElevatorState(\&anElevator,\ \&orderHead,\ \&cabOrderHead);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ BUTTONS:\ Scans\ continuosly\ for\ button\ inputs}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ ctrl\_scanButtonInputs(\&anElevator,\ \&orderHead,\ \&cabOrderHead);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ DOOR\_OPEN\ functionality}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((anElevator-\/>state\ !=\ STATIONARY)\ \&\&\ (anElevator-\/>lastFloor\ ==\ anElevator-\/>nextFloor))\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ anElevator-\/>state\ ==\ STATIONARY;}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ lgt\_setLight(LIGHT\_DOOR\_OPEN,\ 1);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3\ sekunder\ ventetid}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ clock\_t\ start\_time\ =\ clock();}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ seconds\_passed\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(seconds\_passed\ <\ 3.0)\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seconds\_passed\ =\ (double)(clock()\ -\/\ start\_time)\ /\ CLOCKS\_PER\_SEC;}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sjekke\ for\ bestillinger\ under\ ventetid}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ctrl\_scanButtonInputs(\&anElevator,\ \&orderHead,\ \&cabOrderHead);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obstruksjonsfunksjonalitet}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ lgt\_setLight(LIGHT\_DOOR\_OPEN,\ 0);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ que\_checkQue(anElevator,\ \&orderHead,\ \&cabOrderHead);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ Deallokerer\ minnet}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00069}00069\ \ \ \ \ free(orderHead);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00070}00070\ \ \ \ \ free(cabOrderHead);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00073}\mbox{\hyperlink{elevator_control_8h_ae7251598f2c6357b88cfc99ffc644ca3}{00073}}\ \textcolor{keywordtype}{void}\ ctrl\_scanButtonInputs(\mbox{\hyperlink{struct_elevator}{Elevator}}\ *anElevator,\ \mbox{\hyperlink{struct_orders}{Orders}}\ *orderHead,\ \mbox{\hyperlink{struct_cab_orders}{CabOrders}}\ *cabOrderHead)\{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ f\ =\ 0;\ f\ <\ N\_FLOORS;\ f++)\{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ b\ =\ 0;\ b\ <\ N\_BUTTONS;\ b++)\{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ btnPressed\ =\ elevio\_callButton(f,\ b);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ button\ is\ from\ OUTSIDE\ of\ the\ cab}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((btnPressed\ ==\ 1)\ \&\&\ (b\ !=\ BUTTON\_CAB))\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ que\_addOrder(\&orderHead,\ f,\ b);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ button\ is\ from\ INSIDE\ of\ the\ cab}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (btnPressed\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ que\_addCabOrder(\&cabOrderHead,\ f);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ elevio\_buttonLamp(f,\ b,\ btnPressed);}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00090}00090\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00091}00091\ \textcolor{comment}{void\ nextDestination(Elevator*\ anElevator,\ Orders*\ order,\ CabOrders*\ cabOrder)\{}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00092}00092\ \textcolor{comment}{\ \ \ \ if\ (anElevator-\/>viabas\ ==\ 1)\{}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00093}00093\ \textcolor{comment}{\ \ \ \ \ \ \ \ anElevator-\/>nextFloor\ =\ order-\/>orderFloor;}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00094}00094\ \textcolor{comment}{\ \ \ \ \}\ else\ \{}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00095}00095\ \textcolor{comment}{\ \ \ \ \ \ \ \ anElevator-\/>nextFloor\ =\ cabOrder-\/>cabOrderFloor;}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00096}00096\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00097}00097\ \textcolor{comment}{\}}}
+\DoxyCodeLine{\Hypertarget{elevator_control_8c_source_l00098}00098\ \textcolor{comment}{*/}}
+
+\end{DoxyCode}

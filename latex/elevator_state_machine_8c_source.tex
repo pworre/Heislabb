@@ -1,0 +1,20 @@
+\doxysection{elevator\+State\+Machine.\+c}
+\hypertarget{elevator_state_machine_8c_source}{}\label{elevator_state_machine_8c_source}\index{skeleton\_project/source/driver/elevatorStateMachine.c@{skeleton\_project/source/driver/elevatorStateMachine.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{elevator_state_machine_8h}{elevatorStateMachine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00003}\mbox{\hyperlink{elevator_state_machine_8h_a9426f17134b59fc0ba82f05611604460}{00003}}\ \textcolor{keywordtype}{void}\ SM\_updateElevatorState(\mbox{\hyperlink{struct_elevator}{Elevator}}\ *anElevator,\ \mbox{\hyperlink{struct_orders}{Orders}}\ *order,\ \mbox{\hyperlink{struct_cab_orders}{CabOrders}}\ *cabOrder)\{}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00004}00004\ \ \ \ \ anElevator-\/>lastFloor\ =\ elevio\_floorSensor();}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00005}00005\ \ \ \ \ anElevator-\/>nextFloor\ =\ nextDestination(\&anElevator,\ \&order,\ \&cabOrder);}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00006}00006\ \}}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00008}\mbox{\hyperlink{elevator_state_machine_8h_a1bd767b5e629ba8aad52961d8bdaa89e}{00008}}\ \textcolor{keywordtype}{int}\ SM\_nextDestination(\mbox{\hyperlink{struct_elevator}{Elevator}}*\ anElevator,\ \mbox{\hyperlink{struct_orders}{Orders}}*\ order,\ \mbox{\hyperlink{struct_cab_orders}{CabOrders}}*\ cabOrder)\{}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{if}\ (anElevator-\/>viabas\ ==\ 1)\{}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ order-\/>orderFloor;}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00011}00011\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cabOrder-\/>cabOrderFloor;}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00013}00013\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8c_source_l00014}00014\ \}}
+
+\end{DoxyCode}

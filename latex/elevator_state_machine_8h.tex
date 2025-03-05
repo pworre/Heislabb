@@ -1,0 +1,98 @@
+\doxysection{skeleton\+\_\+project/source/driver/elevator\+State\+Machine.h File Reference}
+\hypertarget{elevator_state_machine_8h}{}\label{elevator_state_machine_8h}\index{skeleton\_project/source/driver/elevatorStateMachine.h@{skeleton\_project/source/driver/elevatorStateMachine.h}}
+
+
+A simple library for state\+Machine containing functions and variabler for describing the current state of the elevator.  
+
+
+{\ttfamily \#include "{}elevator\+Control.\+h"{}}\newline
+{\ttfamily \#include "{}elevio.\+h"{}}\newline
+{\ttfamily \#include "{}que\+Module.\+h"{}}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Elevator\+State} \{ {\bfseries MOVING\+\_\+\+DOWN} = 0
+, {\bfseries STATIONARY} = 1
+, {\bfseries MOVING\+\_\+\+UP} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{elevator_state_machine_8h_a9426f17134b59fc0ba82f05611604460}{SM\+\_\+update\+Elevator\+State}} (\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}an\+Elevator, \mbox{\hyperlink{struct_orders}{Orders}} \texorpdfstring{$\ast$}{*}order, \mbox{\hyperlink{struct_cab_orders}{Cab\+Orders}} \texorpdfstring{$\ast$}{*}cab\+Order)
+\begin{DoxyCompactList}\small\item\em Function for updating the state-\/values for the elevator. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{elevator_state_machine_8h_a1bd767b5e629ba8aad52961d8bdaa89e}{SM\+\_\+next\+Destination}} (\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}an\+Elevator, \mbox{\hyperlink{struct_orders}{Orders}} \texorpdfstring{$\ast$}{*}order, \mbox{\hyperlink{struct_cab_orders}{Cab\+Orders}} \texorpdfstring{$\ast$}{*}cab\+Order)
+\begin{DoxyCompactList}\small\item\em Function for startup procecure for the elevator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple library for state\+Machine containing functions and variabler for describing the current state of the elevator. 
+
+
+
+Definition in file \mbox{\hyperlink{elevator_state_machine_8h_source}{elevator\+State\+Machine.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{elevator_state_machine_8h_ada8a6679b36fc4f29442334494afb588}\index{elevatorStateMachine.h@{elevatorStateMachine.h}!ElevatorState@{ElevatorState}}
+\index{ElevatorState@{ElevatorState}!elevatorStateMachine.h@{elevatorStateMachine.h}}
+\doxysubsubsection{\texorpdfstring{ElevatorState}{ElevatorState}}
+{\footnotesize\ttfamily \label{elevator_state_machine_8h_ada8a6679b36fc4f29442334494afb588} 
+enum Elevator\+State}
+
+
+
+Definition at line \mbox{\hyperlink{elevator_state_machine_8h_source_l00013}{13}} of file \mbox{\hyperlink{elevator_state_machine_8h_source}{elevator\+State\+Machine.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{elevator_state_machine_8h_a1bd767b5e629ba8aad52961d8bdaa89e}\index{elevatorStateMachine.h@{elevatorStateMachine.h}!SM\_nextDestination@{SM\_nextDestination}}
+\index{SM\_nextDestination@{SM\_nextDestination}!elevatorStateMachine.h@{elevatorStateMachine.h}}
+\doxysubsubsection{\texorpdfstring{SM\_nextDestination()}{SM\_nextDestination()}}
+{\footnotesize\ttfamily \label{elevator_state_machine_8h_a1bd767b5e629ba8aad52961d8bdaa89e} 
+int SM\+\_\+next\+Destination (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}}]{an\+Elevator}{, }\item[{\mbox{\hyperlink{struct_orders}{Orders}} \texorpdfstring{$\ast$}{*}}]{order}{, }\item[{\mbox{\hyperlink{struct_cab_orders}{Cab\+Orders}} \texorpdfstring{$\ast$}{*}}]{cab\+Order}{}\end{DoxyParamCaption})}
+
+
+
+Function for startup procecure for the elevator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Elevator} & Pointer to the Elevator-\/struct to have access to information about the last floors for elevators.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily next\+Floor}. Int type for next floor using to set state\+Parameter. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{elevator_state_machine_8c_source_l00008}{8}} of file \mbox{\hyperlink{elevator_state_machine_8c_source}{elevator\+State\+Machine.\+c}}.
+
+\Hypertarget{elevator_state_machine_8h_a9426f17134b59fc0ba82f05611604460}\index{elevatorStateMachine.h@{elevatorStateMachine.h}!SM\_updateElevatorState@{SM\_updateElevatorState}}
+\index{SM\_updateElevatorState@{SM\_updateElevatorState}!elevatorStateMachine.h@{elevatorStateMachine.h}}
+\doxysubsubsection{\texorpdfstring{SM\_updateElevatorState()}{SM\_updateElevatorState()}}
+{\footnotesize\ttfamily \label{elevator_state_machine_8h_a9426f17134b59fc0ba82f05611604460} 
+void SM\+\_\+update\+Elevator\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_elevator}{Elevator}} \texorpdfstring{$\ast$}{*}}]{an\+Elevator}{, }\item[{\mbox{\hyperlink{struct_orders}{Orders}} \texorpdfstring{$\ast$}{*}}]{order}{, }\item[{\mbox{\hyperlink{struct_cab_orders}{Cab\+Orders}} \texorpdfstring{$\ast$}{*}}]{cab\+Order}{}\end{DoxyParamCaption})}
+
+
+
+Function for updating the state-\/values for the elevator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em an\+Elevator} & Pointer to the Elevator-\/struct to have access to information about the last floors for elevators. \\
+\hline
+\mbox{\texttt{ in}}  & {\em order} & Pointer to the que of the elevator from outside at floors \\
+\hline
+\mbox{\texttt{ in}}  & {\em cab\+Order} & Pointer to the que of the elevator\textquotesingle{}s orders from inside the cab\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing. Sets the current and next floor for the elevator 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{elevator_state_machine_8c_source_l00003}{3}} of file \mbox{\hyperlink{elevator_state_machine_8c_source}{elevator\+State\+Machine.\+c}}.
+

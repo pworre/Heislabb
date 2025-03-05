@@ -18,15 +18,17 @@ void ctrl_startup(Elevator* anElevator) {
     if (elevio_floorSensor >= 0) {
         elevio_motorDirection(DIRN_STOP);
         ctrl_updateElevatorState(anElevator, STATIONARY);
-        ctrl_setFloor(anElevator, elevio_floorsensor());
+        anElevator->lastFloor = elevio_floorSensor();
     }
 }
 
 void ctrl_run(Elevator* anElevator) {
     // Creates new and empty lists ready for orders
-    Orders *orderHead = NULL;
-    CabOrders *cabOrderHead = NULL;
-    //Lights *lightsHead = NULL;    <----- Trengs kun om vil lagre verdier til lampene i registrer i form av struct
+    Orders *orderHead = malloc(sizeof(Orders));
+    CabOrders *cabOrderHead = malloc(sizeof(CabOrders));
+    if ((orderHead == NULL) || (cabOrderHead == NULL)) {
+        printf("FEIL: Kunne ikke allokere minne til CabOrder eller Order!\n");
+    }
     
 
     // Set state for running
@@ -62,6 +64,10 @@ void ctrl_run(Elevator* anElevator) {
 
         que_checkQue(anElevator, &orderHead, &cabOrderHead);
     }
+
+    // Deallokerer minnet
+    free(orderHead);
+    free(cabOrderHead);
 }
 
 void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead){

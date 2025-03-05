@@ -1,0 +1,22 @@
+\doxysection{elevator\+State\+Machine.\+h}
+\hypertarget{elevator_state_machine_8h_source}{}\label{elevator_state_machine_8h_source}\index{skeleton\_project/source/driver/elevatorStateMachine.h@{skeleton\_project/source/driver/elevatorStateMachine.h}}
+\mbox{\hyperlink{elevator_state_machine_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{elevator_control_8h}{elevatorControl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}elevio.h"{}}}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{que_module_8h}{queModule.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00013}00013\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ }
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00014}00014\ \ \ \ \ MOVING\_DOWN\ \ \ =\ 0,}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00015}00015\ \ \ \ \ STATIONARY\ \ \ =\ 1,}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00016}00016\ \ \ \ \ MOVING\_UP\ \ \ \ \ =\ 2}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00017}00017\ \}\ ElevatorState;}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00028}00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{elevator_state_machine_8h_a9426f17134b59fc0ba82f05611604460}{SM\_updateElevatorState}}(\mbox{\hyperlink{struct_elevator}{Elevator}}\ *anElevator,\ \mbox{\hyperlink{struct_orders}{Orders}}\ *order,\ \mbox{\hyperlink{struct_cab_orders}{CabOrders}}\ *cabOrder);}
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{elevator_state_machine_8h_source_l00038}00038\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{elevator_state_machine_8h_a1bd767b5e629ba8aad52961d8bdaa89e}{SM\_nextDestination}}(\mbox{\hyperlink{struct_elevator}{Elevator}}*\ anElevator,\ \mbox{\hyperlink{struct_orders}{Orders}}*\ order,\ \mbox{\hyperlink{struct_cab_orders}{CabOrders}}*\ cabOrder);}
+
+\end{DoxyCode}

@@ -21,8 +21,10 @@ typedef struct {
 } Elevator;
 
 ElevatorState ctrl_getElevatorState(Elevator* anElevator);
+
+
+
 void ctrl_updateElevatorState(Elevator* anElevator, ElevatorState aState);
-void ctrl_setFloor(Elevator* anElevator, int floor);
 
 /**
 * @brief Function for startup procecure for the elevator
@@ -42,15 +44,15 @@ void ctrl_startup(Elevator* anElevator);
 */
 void ctrl_run(Elevator* anElevator);
 
+
+
 /**
-* @brief Function for 
+* @brief Function for scanning button inputs and adding orders to the linkedlist
 *
 * @param[in] anElevator Pointer to the Elevator-struct to have access to information if stop viabas and bring more PAX
 * @param[in] order Pointer to the que of the elevator from outside at floors
 * @param[in] cabOrder Pointer to the que of the elevator's orders from inside the cab
-* @param[out] que int with value equal to the next
 *
-* @return nothing. Sets the @p MotorDirection and updates the elevator state. 
+* @return nothing. The orders are added to the linkedlists
 */
-
 void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead);

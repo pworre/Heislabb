@@ -1,10 +1,22 @@
 #include "lightModule.h"
 
-void setLight(Lights *lights, LightType lightType, int state){
+void lgt_setLight(LightType lightType, int state){
     switch (lightType) {
-        case LIGHT_FLOOR4_DOWN: lights->light_orderFloor4_DOWN = state; 
+        case LIGHT_FLOOR4_DOWN: elevio_doorOpenLamp(state); 
             break;
-        case LIGHT_FLOOR3_UP: lights->light_orderFloor3_UP = state;
+        default: printf("Ugyldig lys\n");
+            break;
+    }
+}
+
+
+/*
+// Kode før fjernet ordrelys. Er implementert i ctrl_scanButtonInputs()
+void lgt_setLight(LightType lightType, int state){
+    switch (lightType) {
+        case LIGHT_FLOOR4_DOWN: elevio_doorOpenLamp(state); 
+            break;
+        case LIGHT_FLOOR3_UP: elevio_buttonLamp();
             break;
         case LIGHT_FLOOR3_DOWN: lights->light_orderFloor3_DOWN = state; 
             break;
@@ -16,5 +28,8 @@ void setLight(Lights *lights, LightType lightType, int state){
             break;
         case LIGHT_DOOR_OPEN: lights->light_door_OPEN = state; 
             break;
+        default: printf("Ugyldig lys\n");
+            break;
     }
 }
+*/

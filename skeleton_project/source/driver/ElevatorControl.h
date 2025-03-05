@@ -4,6 +4,7 @@
 #include "elevio.h"
 #include "queModule.h"
 #include "stdlib.h"
+#include "lightModule.h"
 
 /**
 * @file
@@ -52,4 +53,4 @@ void ctrl_run(Elevator* anElevator);
 * @return nothing. Sets the @p MotorDirection and updates the elevator state. 
 */
 
-int nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder);
+void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead);

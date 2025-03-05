@@ -10,13 +10,13 @@ int main(){
     elevio_init();
 
 
-    struct Elevator elev;
+    Elevator elev;
     //struct Orders *order_head = NULL;     <----i elevatorControl
     
     int run = 1;
 
     ctrl_startup(&elev);
-    ctrl_run(&elev,);
+    ctrl_run(&elev);
 
     //que_checkQue(&elev, &que);
 

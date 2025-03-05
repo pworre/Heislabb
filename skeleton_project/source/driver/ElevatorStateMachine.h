@@ -10,3 +10,4 @@ typedef enum {
 } ElevatorState;
 
 void SM_updateElevatorState();
+int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder);

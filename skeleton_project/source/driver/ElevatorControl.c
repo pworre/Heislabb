@@ -1,5 +1,6 @@
 #include "elevatorControl.h"
 #include "elevio.h"
+#include "time.h"
 
 ElevatorState ctrl_getElevatorState(Elevator* anElevator) {
     return anElevator->state;
@@ -23,8 +24,10 @@ void ctrl_startup(Elevator* anElevator) {
 
 void ctrl_run(Elevator* anElevator) {
     // Creates new and empty lists ready for orders
-    struct Orders *orderHead = NULL;
-    struct CabOrders *cabOrderHead = NULL;
+    Orders *orderHead = NULL;
+    CabOrders *cabOrderHead = NULL;
+    //Lights *lightsHead = NULL;    <----- Trengs kun om vil lagre verdier til lampene i registrer i form av struct
+    
 
     // Set state for running
     anElevator->run = 1;
@@ -33,30 +36,48 @@ void ctrl_run(Elevator* anElevator) {
         SM_updateElevatorState(&anElevator, &orderHead, &cabOrderHead);
 
         // BUTTONS: Scans continuosly for button inputs
-        for(int f = 0; f < N_FLOORS; f++){
-            for(int b = 0; b < N_BUTTONS; b++){
-                int btnPressed = elevio_callButton(f, b);
+        ctrl_scanButtonInputs(&anElevator, &orderHead, &cabOrderHead);
 
-                // if button is from OUTSIDE of the cab
-                if ((btnPressed == 1) && (b != BUTTON_CAB)) {
-                    que_addOrder(&orderHead, f, b);
-                // if the button is from INSIDE of the cab
-                } else if (btnPressed == 1) {
-                    que_addCabOrder(&cabOrderHead, f);
-                }
-                elevio_buttonLamp(f, b, btnPressed);
+        // DOOR_OPEN functionality
+        if ((anElevator->state != STATIONARY) && (anElevator->lastFloor == anElevator->nextFloor)) {
+            anElevator->state == STATIONARY;
+            lgt_setLight(LIGHT_DOOR_OPEN, 1);
+
+            // 3 sekunder ventetid
+            clock_t start_time = clock();
+            double seconds_passed = 0;
+            while(seconds_passed < 3.0) {
+                seconds_passed = (double)(clock() - start_time) / CLOCKS_PER_SEC;
+
+                // Sjekke for bestillinger under ventetid
+                ctrl_scanButtonInputs(&anElevator, &orderHead, &cabOrderHead);
+
+                // Obstruksjonsfunksjonalitet
+                //
+                //
             }
+
+            lgt_setLight(LIGHT_DOOR_OPEN, 0);
         }
 
         que_checkQue(anElevator, &orderHead, &cabOrderHead);
     }
 }
 
-int nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder){
-    if (anElevator->viabas == 1){
-        return order->orderFloor;
-    } else {
-        return cabOrder->cabOrderFloor;
+void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead){
+    for(int f = 0; f < N_FLOORS; f++){
+        for(int b = 0; b < N_BUTTONS; b++){
+            int btnPressed = elevio_callButton(f, b);
+
+            // if button is from OUTSIDE of the cab
+            if ((btnPressed == 1) && (b != BUTTON_CAB)) {
+                que_addOrder(&orderHead, f, b);
+            // if the button is from INSIDE of the cab
+            } else if (btnPressed == 1) {
+                que_addCabOrder(&cabOrderHead, f);
+            }
+            elevio_buttonLamp(f, b, btnPressed);
+        }
     }
 }
 

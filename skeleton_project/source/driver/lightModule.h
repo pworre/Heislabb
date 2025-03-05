@@ -1,5 +1,6 @@
 #pragma once
 
+/*
 typedef struct {
     int light_orderFloor4_DOWN;
     int light_orderFloor3_UP;
@@ -10,6 +11,7 @@ typedef struct {
     int light_door_OPEN;
     int light_door_CLOSED;
 } Lights;
+*/
 
 
 typedef enum {
@@ -25,4 +27,4 @@ typedef enum {
 
 
 
-void setLight(Lights *lights, LightType light, int state);
+void lgt_setLight(LightType light, int state);

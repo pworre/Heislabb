@@ -1,4 +1,5 @@
 #pragma once
+#include "elevatorControl.h"
 
 typedef enum { 
     MOVING_DOWN   = 0,

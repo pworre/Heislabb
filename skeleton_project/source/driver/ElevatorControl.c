@@ -26,9 +26,13 @@ void ctrl_run(Elevator* anElevator) {
     struct Orders *orderHead = NULL;
     struct CabOrders *cabOrderHead = NULL;
 
+    // Set state for running
+    anElevator->run = 1;
 
     while (anElevator->run) {
-        // Scans continuosly for button inputs
+        SM_updateElevatorState(&anElevator, &orderHead, &cabOrderHead);
+
+        // BUTTONS: Scans continuosly for button inputs
         for(int f = 0; f < N_FLOORS; f++){
             for(int b = 0; b < N_BUTTONS; b++){
                 int btnPressed = elevio_callButton(f, b);
@@ -43,11 +47,20 @@ void ctrl_run(Elevator* anElevator) {
                 elevio_buttonLamp(f, b, btnPressed);
             }
         }
-        // bruker viabas her for å sjekke om stoppe på veien
+
         que_checkQue(anElevator, &orderHead, &cabOrderHead);
     }
 }
 
+int nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder){
+    if (anElevator->viabas == 1){
+        return order->orderFloor;
+    } else {
+        return cabOrder->cabOrderFloor;
+    }
+}
+
+/*
 void nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder){
     if (anElevator->viabas == 1){
         anElevator->nextFloor = order->orderFloor;
@@ -55,3 +68,4 @@ void nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder){
         anElevator->nextFloor = cabOrder->cabOrderFloor;
     }
 }
+*/

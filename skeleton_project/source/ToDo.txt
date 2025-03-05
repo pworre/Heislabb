@@ -1,3 +1,4 @@
 1. Bestemme om order-listene skal initialiseres i main.c eller i ctrl_run()
 2. Dobbeltsjekke referering av pekere
 3. Vurdere endring av navn på que_checkQue(). ELLER så må vi flytte que_checkViabas() inn i que_checkQue for å gjøre den mer komplett
+4. ctrl_setFloor() er vel mer en elevatorStateMachine-funksjon. Finn tydelig definisjon på hva som skal være i statemachin og ikke. Hele Elevator-structen er vel hovedsaklig en elevatorStateMachine

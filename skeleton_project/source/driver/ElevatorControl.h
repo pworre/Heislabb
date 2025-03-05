@@ -51,4 +51,5 @@ void ctrl_run(Elevator* anElevator);
 *
 * @return nothing. Sets the @p MotorDirection and updates the elevator state. 
 */
-void nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder);
+
+int nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder);

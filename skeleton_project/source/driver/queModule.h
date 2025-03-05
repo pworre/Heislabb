@@ -38,6 +38,7 @@ struct CabOrders {
 void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requestedDirection);
 
 
+
 /**
 * @brief Checking the que and compares the current floor of the elevator and the next floor
 * according to the que-list. This for setting the motor direction and updating states. 
@@ -50,6 +51,8 @@ void que_addOrder(struct Orders **head, int requestedFloor, ButtonType requested
 */
 void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder);
 
+
+
 /**
 * @brief Check if the elevator will stop halfway for bringing mor passangers
 *
@@ -61,17 +64,32 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrd
 */
 void que_checkViabas(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder);
 
+
+
 /**
-* @brief A function for removing completed orders and 
+* @brief A function for removing completed orders from outside of cab. 
 *
-* @param[in] anElevator Pointer to the Elevator-struct to have access to elevator's last position and setting motor direction.
-* @param[in] que Pointer to the que of the elevator's orders. 
-* @param[in] cabOrder Pointer to the que of the elevator's orders from inside of cab. 
+* @param[in] orderHead Pointer to the que of the elevator's orders. 
 *
-* @return nothing. Sets the @p viabas as part of the struct.
+* @return nothing. Sets @p orderHead pointing to next element and deallocating
 */
 void que_removeCompletedOrder(struct Orders** orderHead);
 
+
+
 void que_clearOrders(struct Orders);
 
+
+
 void que_addCabOrder(struct CabOrders **head, int requestedFloor);
+
+
+
+/**
+* @brief A function for removing completed orders from inside of the cab. 
+*
+* @param[in] orderHead Pointer to the que of the elevator's orders. 
+*
+* @return nothing. Sets @p orderHead pointing to next element and deallocating
+*/
+void que_removeCompleteCabdOrder(struct CabOrders **orderHead);

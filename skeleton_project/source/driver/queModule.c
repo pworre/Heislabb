@@ -65,9 +65,20 @@ void que_addOrder(struct Orders **hode, int order) {
     //struct Orders* new_Order = ();
 };
 
-void que_removeCompletedOrder(struct Orders** orderHead){
-    
+void que_removeCompletedOrder(struct Orders **orderHead){
+    // Checks if there is nothing to remove
+    if (*orderHead == NULL){
+        return;
+    }
+
+    // Copying the pointer to the linkedlist and removing the first element
+    struct Orders *temp = *orderHead;   // saves current order in temp-pointer
+    *orderHead = (*orderHead)->next;    // points to next element in list
+    free(temp);                         // deallocate memory
+
 }
+
+
 void que_clearOrders(struct Orders);
 
 void que_addCabOrder(struct CabOrders **head, int requestedFloor){
@@ -96,3 +107,15 @@ void que_addCabOrder(struct CabOrders **head, int requestedFloor){
     }
 }
 
+void que_removeCompleteCabdOrder(struct CabOrders **orderHead){
+    // Checks if there is nothing to remove
+    if (*orderHead == NULL){
+        return;
+    }
+
+    // Copying the pointer to the linkedlist and removing the first element
+    struct CabOrders *temp = *orderHead;   // saves current order in temp-pointer
+    *orderHead = (*orderHead)->next;    // points to next element in list
+    free(temp);                         // deallocate memory
+
+}

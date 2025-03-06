@@ -73,6 +73,9 @@ void que_removeCompletedOrder(Orders** orderHead);
 void que_clearOrders(Orders **head);
 
 
+void que_clearCabOrders(CabOrders **head);
+
+
 
 void que_addCabOrder(CabOrders **head, int requestedFloor);
 

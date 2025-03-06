@@ -134,6 +134,25 @@ void que_clearOrders(Orders **head) {
     (*head)->next == NULL;
 }
 
+
+void que_clearCabOrders(CabOrders **head) {
+    if (*head == NULL) {return;}
+
+    CabOrders *current = (*head)->next;
+    CabOrders *nextNode;
+    
+
+    while (current != NULL) {
+        nextNode = current->next;
+        free(current);
+        current = nextNode;
+    }
+
+    (*head)->next == NULL;
+}
+
+
+
 void que_addCabOrder(CabOrders **head, int requestedFloor) {
     //Orders *newOrder = NULL;
     // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type

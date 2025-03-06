@@ -163,16 +163,8 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
     while(value == 1) {
         elevio_stopLamp(1);
         elevio_motorDirection(DIRN_STOP);
-        if (orderHead->next != NULL) {
-            if (anElevator->lastFloor == orderHead->next->orderFloor) {
-                que_removeCompletedOrder(&orderHead);
-            }
-        }
-        if (cabOrderHead->next != NULL) {
-            if (anElevator->lastFloor == cabOrderHead->next->cabOrderFloor) {
-                que_removeCompleteCabdOrder(&cabOrderHead);
-            }
-        }
+        que_clearOrders(&orderHead);
+        que_clearCabOrders(&cabOrderHead);
 
         anElevator->nextFloor = elevio_floorSensor();
 

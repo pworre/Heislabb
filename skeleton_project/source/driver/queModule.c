@@ -131,7 +131,7 @@ void que_clearOrders(Orders **head) {
         current = nextNode;
     }
 
-    (*head)->next == NULL;
+    (*head)->next = NULL;
 }
 
 
@@ -148,7 +148,7 @@ void que_clearCabOrders(CabOrders **head) {
         current = nextNode;
     }
 
-    (*head)->next == NULL;
+    (*head)->next = NULL;
 }
 
 

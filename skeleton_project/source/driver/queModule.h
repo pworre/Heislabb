@@ -17,7 +17,7 @@ typedef struct {
     ButtonType orderDirection;
 
     // Self-referential structure pointing to next the order and info about the next order
-    struct Orders *next;
+    Orders *next;
 } Orders;
 
 
@@ -25,7 +25,7 @@ typedef struct {
 typedef struct {
     int cabOrderFloor;
 
-    struct CabOrders *next;
+    CabOrders *next;
 } CabOrders;
 
 

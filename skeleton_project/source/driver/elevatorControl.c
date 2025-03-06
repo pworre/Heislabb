@@ -101,10 +101,10 @@ void ctrl_run(Elevator* anElevator) {
 
             lgt_setLight(LIGHT_DOOR_OPEN, 0);
         }*/
-        if (anElevator->lastFloor == orderHead->orderFloor) {
+        if ((anElevator->lastFloor == orderHead->orderFloor) && (orderHead != NULL)) {
             que_removeCompletedOrder(&orderHead);
         }
-        if (anElevator->lastFloor == cabOrderHead->cabOrderFloor) {
+        if ((anElevator->lastFloor == cabOrderHead->cabOrderFloor) && (cabOrderHead != NULL)) {
             que_removeCompleteCabdOrder(&cabOrderHead);
         }
 

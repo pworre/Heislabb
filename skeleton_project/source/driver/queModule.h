@@ -22,10 +22,10 @@ typedef struct OrderTag {
 
 
 
-typedef struct {
+typedef struct CabOrderTag {
     int cabOrderFloor;
 
-    CabOrders *next;
+    struct CabOrderTag *next;
 } CabOrders;
 
 

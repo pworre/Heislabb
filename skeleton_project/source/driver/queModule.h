@@ -70,7 +70,7 @@ void que_removeCompletedOrder(Orders** orderHead);
 
 
 
-void que_clearOrders(Orders);
+void que_clearOrders(Orders **head);
 
 
 

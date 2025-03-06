@@ -118,7 +118,21 @@ void que_removeCompletedOrder(Orders **orderHead){
 }
 
 
-void que_clearOrders(Orders);
+void que_clearOrders(Orders **head) {
+    if (*head == NULL) {return;}
+
+    Orders *current = (*head)->next;
+    Orders *nextNode;
+    
+
+    while (current != NULL) {
+        nextNode = current->next;
+        free(current);
+        current = nextNode;
+    }
+
+    (*head)->next == NULL;
+}
 
 void que_addCabOrder(CabOrders **head, int requestedFloor) {
     //Orders *newOrder = NULL;

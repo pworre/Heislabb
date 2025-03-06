@@ -1,12 +1,15 @@
 #pragma once
 #include "elevio.h"
-#include "elevatorControl.h"
+
 /**
 * @file
 * @brief A simple library for que-control of the elevator. 
 * Using a linked list to have control of the que of the orders. 
 * Functions in order to add, remove and check the que. 
 */
+
+// Forward-declaration
+typedef struct Elevator Elevator;
 
 // Linked list for que-system
 typedef struct {

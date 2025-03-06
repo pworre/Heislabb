@@ -1,5 +1,6 @@
 #include "queModule.h"
 #include "stdio.h"
+#include "elevatorControl.h"
 
 
 void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirection) {

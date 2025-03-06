@@ -74,6 +74,7 @@ void ctrl_run(Elevator* anElevator) {
         // Troubleshooting
         //que_addCabOrder(&orderHead, anElevator->lastFloor);
 
+        /*
         // DOOR_OPEN functionality
         if ((anElevator->state != STATIONARY) && (anElevator->lastFloor == anElevator->nextFloor)) {
             printf("Open door...Be carefull Mr.Tomren!\n");
@@ -97,7 +98,7 @@ void ctrl_run(Elevator* anElevator) {
             }
 
             lgt_setLight(LIGHT_DOOR_OPEN, 0);
-        }
+        }*/
 
         que_checkQue(anElevator, orderHead, cabOrderHead);
     }

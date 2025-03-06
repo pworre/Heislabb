@@ -70,8 +70,6 @@ void ctrl_run(Elevator* anElevator) {
         que_printOrders(orderHead);
         que_printCabOrders(cabOrderHead);
 
-        int btnPressed = elevio_callButton
-
         // BUTTONS: Scans continuosly for button inputs
         ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
 

@@ -73,3 +73,6 @@ void ctrl_run(Elevator* anElevator);
 * @return nothing. The orders are added to the linkedlists
 */
 void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead);
+
+
+void ctrl_stop(Orders *orderHead, CabOrders *cabOrderHead, int value);

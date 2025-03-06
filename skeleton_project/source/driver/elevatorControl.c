@@ -47,12 +47,12 @@ void ctrl_run(Elevator* anElevator) {
 
     // Sjekker om anElevator riktig allokert innad i run
     if (anElevator != NULL) {
-        printf("anElevator er vellykka innad i run :)\n");
+        printf("anElevator er vellykka innad i run :)\n");a
     }
     
 
     // Set state for running
-    anElevator->run = 0;
+    anElevator->run = 1;
 
     while (anElevator->run) {
         printf("entret while-løkke");

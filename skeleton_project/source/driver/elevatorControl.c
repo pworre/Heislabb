@@ -35,10 +35,10 @@ void ctrl_run(Elevator* anElevator) {
     anElevator->run = 0;
 
     while (anElevator->run) {
-        SM_updateElevatorState(&anElevator, &orderHead, &cabOrderHead);
+        SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
 
         // BUTTONS: Scans continuosly for button inputs
-        ctrl_scanButtonInputs(&anElevator, &orderHead, &cabOrderHead);
+        ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
 
         // DOOR_OPEN functionality
         if ((anElevator->state != STATIONARY) && (anElevator->lastFloor == anElevator->nextFloor)) {
@@ -52,7 +52,7 @@ void ctrl_run(Elevator* anElevator) {
                 seconds_passed = (double)(clock() - start_time) / CLOCKS_PER_SEC;
 
                 // Sjekke for bestillinger under ventetid
-                ctrl_scanButtonInputs(&anElevator, &orderHead, &cabOrderHead);
+                ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
 
                 // Obstruksjonsfunksjonalitet
                 //
@@ -62,7 +62,7 @@ void ctrl_run(Elevator* anElevator) {
             lgt_setLight(LIGHT_DOOR_OPEN, 0);
         }
 
-        que_checkQue(anElevator, &orderHead, &cabOrderHead);
+        que_checkQue(anElevator, orderHead, cabOrderHead);
     }
 
     // Deallokerer minnet

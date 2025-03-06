@@ -32,6 +32,7 @@ typedef enum ElevatorStateTag{
 */
 void SM_updateElevatorState(Elevator *anElevator, Orders *order, CabOrders *cabOrder);
 
+int SM_lastFloor(Elevator *anElevator);
 
 /**
 * @brief Function for startup procecure for the elevator

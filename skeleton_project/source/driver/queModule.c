@@ -33,7 +33,13 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
     }
 }
 
-
+void printOrders(Orders *head) {
+    Orders *temp = head;
+    while (temp != NULL) {
+        printf("Floor: %d, Direction: %d\n", temp->orderFloor, temp->orderDirection);
+        temp = temp->next;
+    }
+}
 
 /* KOMMENTERT UT FOR Å PRØVE Å TILPASSE checkQue TIL CABORDER-rekkefølge
 void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrders* cabOrder) {

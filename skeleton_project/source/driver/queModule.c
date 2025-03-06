@@ -63,9 +63,6 @@ void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder) {
     }
 }
 
-void que_addOrder(Orders **hode, int order) {
-    //struct Orders* new_Order = ();
-};
 
 void que_removeCompletedOrder(Orders **orderHead){
     // Checks if there is nothing to remove

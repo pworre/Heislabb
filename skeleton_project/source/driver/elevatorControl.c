@@ -32,6 +32,8 @@ void ctrl_startup(Elevator* anElevator) {
 }
 
 void ctrl_run(Elevator* anElevator) {
+    printf("Startet på ctrl_run()!");
+
     // Creates new and empty lists ready for orders
     Orders *orderHead = malloc(sizeof(Orders));
     CabOrders *cabOrderHead = malloc(sizeof(CabOrders));

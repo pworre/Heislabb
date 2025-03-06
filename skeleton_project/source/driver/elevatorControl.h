@@ -14,13 +14,13 @@
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
 
-typedef struct {
+typedef struct ElevatorTag{
     ElevatorState state;
     int lastFloor;
     int run;
     int viabas;             // variable which is 1 if the elevator will stop on either way for bringing more PAX
     int nextFloor;
-} Elevator;
+} ;
 
 #endif
 

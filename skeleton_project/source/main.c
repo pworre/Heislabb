@@ -19,8 +19,8 @@ int main(){
         printf("FEIL: Kunne ikke allokere minne riktig! \n");
     }
 
-    ctrl_startup(&elev);
-    ctrl_run(&elev);
+    ctrl_startup(elev);
+    ctrl_run(elev);
 
     //que_checkQue(&elev, &que);
 

@@ -71,7 +71,7 @@ void que_removeCompletedOrder(Orders **orderHead){
     }
 
     // Copying the pointer to the linkedlist and removing the first element
-    struct Orders *temp = *orderHead;   // saves current order in temp-pointer
+    Orders *temp = *orderHead;   // saves current order in temp-pointer
     *orderHead = (*orderHead)->next;    // points to next element in list
     free(temp);                         // deallocate memory
 
@@ -113,7 +113,7 @@ void que_removeCompleteCabdOrder(CabOrders **orderHead){
     }
 
     // Copying the pointer to the linkedlist and removing the first element
-    struct CabOrders *temp = *orderHead;   // saves current order in temp-pointer
+    CabOrders *temp = *orderHead;   // saves current order in temp-pointer
     *orderHead = (*orderHead)->next;    // points to next element in list
     free(temp);                         // deallocate memory
 

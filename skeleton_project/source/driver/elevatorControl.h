@@ -75,4 +75,4 @@ void ctrl_run(Elevator* anElevator);
 void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead);
 
 
-void ctrl_stop(Orders *orderHead, CabOrders *cabOrderHead, int value);
+void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int value);

@@ -178,7 +178,28 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
         }
         value = elevio_stopButton();
     }
+
     elevio_stopLamp(0);
+
+    // Wait 3 seconds after the stop-button is released
+    clock_t start_time = clock();
+    double seconds_passed = 0;
+    while(seconds_passed < 1.5) {
+        seconds_passed = (double)(clock() - start_time) / CLOCKS_PER_SEC;
+
+        // Sjekke for bestillinger under ventetid
+        ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
+
+        // Obstruksjonsfunksjonalitet
+        while (elevio_obstruction()) {
+            continue;
+        }
+
+        int stopValue = elevio_stopButton();
+        if (elevio_stopButton()) {
+            ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
+        }
+    }
     elevio_doorOpenLamp(0);
 }
 

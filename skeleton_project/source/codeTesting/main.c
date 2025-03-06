@@ -1,5 +1,5 @@
 #include "linkedlist.h"
-
+/*
 int main(){
     // Starts with a empty list
     struct Orders *head = NULL;
@@ -12,3 +12,4 @@ int main(){
     print_linkedlist(head);
     return 0;
 }
+*/

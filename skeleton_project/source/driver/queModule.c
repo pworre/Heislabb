@@ -4,7 +4,7 @@
 
 
 void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirection) {
-    //Orders *newOrder = NULL;
+    Orders *newOrder = NULL;
     // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
     Orders *newOrder = (Orders *)malloc(sizeof(Orders));
 

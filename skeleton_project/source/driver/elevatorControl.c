@@ -62,7 +62,7 @@ void ctrl_run(Elevator* anElevator) {
     anElevator->run = 1;
 
     while (anElevator->run) {
-        printf("entret while-løkke");
+        printf("entret while-løkke\n");
         SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
 
         que_printOrders(orderHead);
@@ -76,6 +76,8 @@ void ctrl_run(Elevator* anElevator) {
 
         // DOOR_OPEN functionality
         if ((anElevator->state != STATIONARY) && (anElevator->lastFloor == anElevator->nextFloor)) {
+            printf("Open door...Be carefull Mr.Tomren!\n")
+
             elevio_motorDirection(DIRN_STOP);
             anElevator->state = STATIONARY;
             lgt_setLight(LIGHT_DOOR_OPEN, 1);

@@ -44,6 +44,13 @@ void ctrl_run(Elevator* anElevator) {
     }
     printf("Minnet allokert til Orders og CabOrders\n");
 
+    orderHead->orderFloor = anElevator->lastFloor;
+    orderHead->orderDirection = BUTTON_HALL_UP;
+    orderHead->next = NULL;
+
+    cabOrderHead->cabOrderFloor = anElevator->lastFloor;
+    cabOrderHead->next = NULL;
+
 
     // Sjekker om anElevator riktig allokert innad i run
     if (anElevator != NULL) {

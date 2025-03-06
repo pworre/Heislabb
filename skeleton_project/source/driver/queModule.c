@@ -81,9 +81,9 @@ void que_removeCompletedOrder(Orders **orderHead){
 void que_clearOrders(Orders);
 
 void que_addCabOrder(CabOrders **head, int requestedFloor){
-    Orders *newOrder = NULL;
+    CabOrders *newOrder = NULL;
     // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
-    newOrder = (Orders *)malloc(sizeof(Orders));
+    newOrder = (CabOrders *)malloc(sizeof(CabOrders));
 
     // Checks if memory is allocated for the Orders-struct
     if (newOrder == NULL) {
@@ -91,7 +91,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor){
     }
 
     // Checks if there is already an order in the list. If not, adding it as first element
-    newOrder->orderFloor = requestedFloor;
+    newOrder->cabOrderFloor = requestedFloor;
     newOrder->next = NULL;
     
     if (*head == NULL) {

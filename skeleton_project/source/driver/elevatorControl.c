@@ -52,6 +52,7 @@ void ctrl_run(Elevator* anElevator) {
     cabOrderHead->next = NULL;
 
     int lastStop = -1;
+    int stopValue = 0;
 
 
     // Sjekker om anElevator riktig allokert innad i run
@@ -79,7 +80,8 @@ void ctrl_run(Elevator* anElevator) {
         //que_addCabOrder(&orderHead, anElevator->lastFloor);
 
         // STOP-FUNCTION
-        ctrl_stop(anElevator, orderHead, cabOrderHead, elevio_stopButton());
+        stopValue = elevio_stopButton();
+        ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
 
     
         // DOOR_OPEN functionality
@@ -105,7 +107,8 @@ void ctrl_run(Elevator* anElevator) {
                     continue;
                 }
 
-                ctrl_stop(anElevator, orderHead, cabOrderHead, elevio_stopButton());
+                stopValue = elevio_stopButton();
+                ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
             }
 
             elevio_doorOpenLamp(0);

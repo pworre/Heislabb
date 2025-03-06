@@ -104,6 +104,8 @@ void ctrl_run(Elevator* anElevator) {
                 while (elevio_obstruction()) {
                     continue;
                 }
+
+                ctrl_stop(anElevator, orderHead, cabOrderHead, elevio_stopButton());
             }
 
             elevio_doorOpenLamp(0);

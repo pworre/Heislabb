@@ -99,6 +99,12 @@ void ctrl_run(Elevator* anElevator) {
 
             lgt_setLight(LIGHT_DOOR_OPEN, 0);
         }*/
+        if (anElevator->lastFloor == orderHead->orderFloor) {
+            que_removeCompletedOrder(&orderHead);
+        }
+        if (anElevator->lastFloor == cabOrderHead->cabOrderFloor) {
+            que_removeCompleteCabdOrder(&cabOrderHead);
+        }
 
         que_checkQue(anElevator, orderHead, cabOrderHead);
 

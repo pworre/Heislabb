@@ -62,7 +62,7 @@ void ctrl_run(Elevator* anElevator) {
         ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
 
         // Troubleshooting
-        que_addOrder(&orderHead, anElevator->lastFloor, BUTTON_HALL_UP);
+        que_addCabOrder(&orderHead, anElevator->lastFloor);
 
         // DOOR_OPEN functionality
         if ((anElevator->state != STATIONARY) && (anElevator->lastFloor == anElevator->nextFloor)) {

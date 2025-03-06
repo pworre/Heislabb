@@ -14,11 +14,13 @@ void ctrl_setFloor(Elevator* anElevator, int floor) {
 }
 
 void ctrl_startup(Elevator* anElevator) {
-    elevio_motorDirection(DIRN_DOWN);
-    if (elevio_floorSensor >= 0) {
-        elevio_motorDirection(DIRN_STOP);
-        ctrl_updateElevatorState(anElevator, STATIONARY);
-        anElevator->lastFloor = elevio_floorSensor();
+    while (elevio_floorSensor() >= 0) {
+        elevio_motorDirection(DIRN_DOWN);
+        if (elevio_floorSensor() >= 0) {
+            elevio_motorDirection(DIRN_STOP);
+            ctrl_updateElevatorState(anElevator, STATIONARY);
+            anElevator->lastFloor = elevio_floorSensor();
+        }
     }
 }
 

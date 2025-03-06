@@ -8,7 +8,7 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
     // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
     Orders *newOrder = (Orders *)malloc(sizeof(Orders));
 
-    // Checks if memory is allocated for the Orders-struct
+    // Checks if memory is allocated for the new Orders-struct
     if (newOrder == NULL) {
         printf("Memory is not allocated for Orders");
     }
@@ -22,7 +22,10 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
         *head = newOrder;
     } else {
         Orders* temp = *head;
-        while ((temp != NULL) && (temp->next != NULL)) {
+        while (temp != NULL) {
+            if (temp->next == NULL) {
+                break;
+            }
             temp = temp->next;
         }
         

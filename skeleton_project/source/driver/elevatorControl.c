@@ -62,7 +62,7 @@ void ctrl_run(Elevator* anElevator) {
     anElevator->run = 1;
 
     while (anElevator->run) {
-        if ((anElevator != NULL) || (orderHead != NULL) || (cabOrderHead != NULL)) {
+        if ((anElevator != NULL) && (orderHead != NULL) && (cabOrderHead != NULL)) {
             SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
             anElevator->nextFloor = SM_nextDestination(anElevator, orderHead, cabOrderHead);
         }

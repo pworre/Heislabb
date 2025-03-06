@@ -91,7 +91,7 @@ void ctrl_run(Elevator* anElevator) {
             // 3 sekunder ventetid
             clock_t start_time = clock();
             double seconds_passed = 0;
-            while(seconds_passed < 3.0) {
+            while(seconds_passed < 1.5) {
                 seconds_passed = (double)(clock() - start_time) / CLOCKS_PER_SEC;
 
                 // Sjekke for bestillinger under ventetid
@@ -99,7 +99,7 @@ void ctrl_run(Elevator* anElevator) {
 
                 // Obstruksjonsfunksjonalitet
                 while (elevio_obstruction()) {
-                    elevio_stopLamp(1);
+                    continue;
                 }
             }
 
@@ -144,6 +144,20 @@ void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *c
             }
         }
     }
+}
+
+void ctrl_stop(Orders *orderHead, CabOrders *cabOrderHead, int value) {
+    if(value == 1) {
+        elevio_stopLamp(1);
+        elevio_motorDirection(DIRN_STOP);
+        que_removeCompletedOrder(orderHead);
+        que_removeCompleteCabdOrder(cabOrderHead);
+        if(elevio_floorSensor() != -1) {
+            elevio_doorOpenLamp(1);
+        }
+    }
+    elevio_stopLamp(0);
+    elevio_doorOpenLamp(0);
 }
 
 /*

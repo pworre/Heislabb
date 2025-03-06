@@ -82,9 +82,9 @@ void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder) {
         if (((cabOrder->next->cabOrderFloor < que->next->orderFloor) && ((anElevator->state == MOVING_DOWN) && que->orderDirection == BUTTON_HALL_DOWN)) || 
             ((cabOrder->next->cabOrderFloor > que->next->orderFloor) && ((anElevator->state == MOVING_UP) && que->orderDirection == BUTTON_HALL_UP)))  {
             anElevator->viabas = 1;
-        } else {
-            anElevator->viabas = 0;
         }
+    } else {
+        anElevator->viabas = 0;
     }
 
     // Deciding the next destination

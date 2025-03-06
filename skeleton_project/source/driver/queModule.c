@@ -4,7 +4,7 @@
 
 
 void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirection) {
-    Orders *newOrder = NULL;
+    //Orders *newOrder = NULL;
     // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
     newOrder = (Orders *)malloc(sizeof(Orders));
 
@@ -25,11 +25,10 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
         while ((temp != NULL) && (temp->next != NULL)) {
             temp = temp->next;
         }
-
+        
         // Adds the request to the next node after the last existing
-        if (temp != NULL){
-            temp->next = newOrder;
-        }
+        temp->next = newOrder;
+        
     }
 }
 

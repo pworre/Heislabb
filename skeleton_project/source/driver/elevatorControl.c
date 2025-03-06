@@ -177,6 +177,13 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
 
     elevio_stopLamp(0);
 
+    for(int f = 0; f < N_FLOORS; f++){
+        elevio_buttonLamp(f, BUTTON_HALL_DOWN, 0);
+        elevio_buttonLamp(f, BUTTON_HALL_UP, 0);
+        elevio_buttonLamp(f, BUTTON_CAB, 0);
+    }
+
+
     if (elevio_floorSensor() != -1) {
         // Wait 3 seconds after the stop-button is released
         clock_t start_time = clock();
@@ -200,11 +207,7 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
     }
 
     // fjerne alle lys
-    for(int f = 0; f < N_FLOORS; f++){
-            elevio_buttonLamp(f, BUTTON_HALL_DOWN, 0);
-            elevio_buttonLamp(f, BUTTON_HALL_UP, 0);
-            elevio_buttonLamp(f, BUTTON_CAB, 0);
-    }
+
 
 
     elevio_doorOpenLamp(0);

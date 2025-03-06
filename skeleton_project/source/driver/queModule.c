@@ -36,7 +36,7 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
 void que_printOrders(Orders *order) {
     Orders *temp = order;
     while (temp != NULL) {
-        printf("Floor: %d, Direction: %d\n", temp->orderFloor+1, temp->orderDirection);
+        printf("Floor: %d, Direction: %d\n", temp->orderFloor, temp->orderDirection);
         temp = temp->next;
     }
 }
@@ -44,7 +44,7 @@ void que_printOrders(Orders *order) {
 void que_printCabOrders(CabOrders *cabOrder) {
     CabOrders *temp = cabOrder;
     while (temp != NULL) {
-        printf("Floor: %d\n", temp->cabOrderFloor+1);
+        printf("Floor: %d\n", temp->cabOrderFloor);
         temp = temp->next;
     }
 }

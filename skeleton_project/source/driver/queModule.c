@@ -24,7 +24,7 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
         return; // Returns if the list is empty and added the neweOrder
     } else {
         Orders* temp = *head;
-        while (temp->next != NULL) {
+        while ((temp->next != NULL) && (temp != NULL)) {
             temp = temp->next;
         }
         

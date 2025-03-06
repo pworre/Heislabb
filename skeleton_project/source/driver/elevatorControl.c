@@ -166,6 +166,7 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
         if(elevio_floorSensor() != -1) {
             elevio_doorOpenLamp(1);
         }
+        value = elevio_stopButton();
     }
     elevio_stopLamp(0);
     elevio_doorOpenLamp(0);

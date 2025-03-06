@@ -201,11 +201,9 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
 
     // fjerne alle lys
     for(int f = 0; f < N_FLOORS; f++){
-        for(int b = 0; b < N_BUTTONS; b++){
-            elevio_buttonLamp(f, b, BUTTON_HALL_DOWN);
-            elevio_buttonLamp(f, b, BUTTON_HALL_UP);
-            elevio_buttonLamp(f, b, BUTTON_CAB);
-        }
+            elevio_buttonLamp(f, BUTTON_HALL_DOWN, 0);
+            elevio_buttonLamp(f, BUTTON_HALL_UP, 0);
+            elevio_buttonLamp(f, BUTTON_CAB, 0);
     }
 
 

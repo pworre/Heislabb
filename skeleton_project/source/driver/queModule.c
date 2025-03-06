@@ -94,6 +94,9 @@ void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder) {
     } else if ((anElevator->nextFloor > anElevator->lastFloor) && (anElevator->state != MOVING_DOWN)) {
         elevio_motorDirection(DIRN_UP);
         ctrl_updateElevatorState(anElevator, MOVING_UP);
+    } else {
+        elevio_motorDirection(DIRN_STOP);
+        ctrl_updateElevatorState(anElevator, STATIONARY);
     }
     
 }

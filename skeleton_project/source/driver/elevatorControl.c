@@ -102,7 +102,7 @@ void ctrl_run(Elevator* anElevator) {
 
         que_checkQue(anElevator, orderHead, cabOrderHead);
 
-        printf("NEXT FLOOR: %d", anElevator->nextFloor);
+        printf("NEXT FLOOR: %d\n", anElevator->nextFloor);
     }
 
     // Deallokerer minnet

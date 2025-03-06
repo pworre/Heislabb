@@ -22,7 +22,7 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
         *head = newOrder;
     } else {
         Orders* temp = *head;
-        while (temp->next != NULL) {
+        while ((temp != NULL) && (temp->next != NULL)) {
             temp = temp->next;
         }
         // Adds the request to the next node after the last existing

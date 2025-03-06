@@ -54,7 +54,7 @@ void ctrl_run(Elevator* anElevator) {
     // Set state for running
     anElevator->run = 1;
 
-    while (1) {
+    while (anElevator->run) {
         printf("entret while-løkke");
         SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
 

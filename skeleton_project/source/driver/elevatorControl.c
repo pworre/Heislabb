@@ -47,7 +47,7 @@ void ctrl_run(Elevator* anElevator) {
 
     // Sjekker om anElevator riktig allokert innad i run
     if (anElevator != NULL) {
-        printf("anElevator er vellykka innad i run :)\n");a
+        printf("anElevator er vellykka innad i run :)\n");
     }
     
 

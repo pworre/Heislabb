@@ -28,7 +28,8 @@ typedef struct CabOrderTag {
     struct CabOrderTag *next;
 } CabOrders;
 
-
+void que_printOrders(Orders *order);
+void que_printCabOrders(CabOrders *cabOrder);
 
 /**
 * @brief Adding new orders to a linkedlist of a struct Orders.

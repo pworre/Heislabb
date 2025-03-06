@@ -44,7 +44,7 @@ void ctrl_run(Elevator* anElevator) {
     }
     printf("Minnet allokert til Orders og CabOrders\n");
 
-    orderHead->orderFloor = anElevator->lastFloor;
+    orderHead->orderFloor = 3;
     orderHead->orderDirection = BUTTON_HALL_UP;
     orderHead->next = NULL;
 
@@ -64,6 +64,9 @@ void ctrl_run(Elevator* anElevator) {
     while (anElevator->run) {
         printf("entret while-løkke");
         SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
+
+        que_printOrders(orderHead);
+        que_printCabOrders(cabOrderHead);
 
         // BUTTONS: Scans continuosly for button inputs
         ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);

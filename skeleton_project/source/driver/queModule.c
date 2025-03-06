@@ -20,18 +20,15 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
     
     if (*head == NULL) {
         *head = newOrder;
+        return; // Returns if the list is empty and added the neweOrder
     } else {
         Orders* temp = *head;
-        while (temp != NULL) {
-            if (temp->next == NULL) {
-                break;
-            }
+        while (temp->next != NULL) {
             temp = temp->next;
         }
         
         // Adds the request to the next node after the last existing
         temp->next = newOrder;
-        
     }
 }
 
@@ -92,12 +89,12 @@ void que_removeCompletedOrder(Orders **orderHead){
 
 void que_clearOrders(Orders);
 
-void que_addCabOrder(CabOrders **head, int requestedFloor){
-    CabOrders *newOrder = NULL;
+void que_addCabOrder(CabOrders **head, int requestedFloor) {
+    //Orders *newOrder = NULL;
     // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
-    newOrder = (CabOrders *)malloc(sizeof(CabOrders));
+    CabOrders *newOrder = (CabOrders *)malloc(sizeof(CabOrders));
 
-    // Checks if memory is allocated for the Orders-struct
+    // Checks if memory is allocated for the new Orders-struct
     if (newOrder == NULL) {
         printf("Memory is not allocated for Orders");
     }
@@ -108,11 +105,13 @@ void que_addCabOrder(CabOrders **head, int requestedFloor){
     
     if (*head == NULL) {
         *head = newOrder;
+        return; // Returns if the list is empty and added the neweOrder
     } else {
         CabOrders* temp = *head;
         while (temp->next != NULL) {
             temp = temp->next;
         }
+        
         // Adds the request to the next node after the last existing
         temp->next = newOrder;
     }

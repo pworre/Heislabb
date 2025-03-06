@@ -1,6 +1,5 @@
 #include "elevatorControl.h"
-#include "elevio.h"
-#include "time.h"
+
 
 ElevatorState ctrl_getElevatorState(Elevator* anElevator) {
     return anElevator->state;

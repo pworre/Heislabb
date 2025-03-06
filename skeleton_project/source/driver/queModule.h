@@ -1,6 +1,6 @@
 #pragma once
-#include "elevatorControl.h"
 #include "elevio.h"
+#include "elevatorControl.h"
 /**
 * @file
 * @brief A simple library for que-control of the elevator. 

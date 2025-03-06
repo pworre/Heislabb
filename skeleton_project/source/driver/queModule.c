@@ -97,7 +97,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor){
     if (*head == NULL) {
         *head = newOrder;
     } else {
-        Orders* temp = *head;
+        CabOrders* temp = *head;
         while (temp->next != NULL) {
             temp = temp->next;
         }

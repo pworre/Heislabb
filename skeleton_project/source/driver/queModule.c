@@ -108,6 +108,8 @@ void que_removeCompletedOrder(Orders **orderHead){
         return;
     }
 
+    elevio_buttonLamp((*orderHead)->orderFloor, (*orderHead)->orderDirection, 0);
+
     // Copying the pointer to the linkedlist and removing the first element
     Orders *temp = *orderHead;   // saves current order in temp-pointer
     *orderHead = (*orderHead)->next;    // points to next element in list

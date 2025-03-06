@@ -15,10 +15,14 @@ int SM_lastFloor(Elevator *anElevator){
 }
 
 int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder){
-    if ((anElevator->viabas == 1) && (order->next != NULL)) {
-        return order->next->orderFloor;
-    } else if ((anElevator->viabas == 0) && (cabOrder->next != NULL)) {
-        return cabOrder->next->cabOrderFloor;
+    if (order->next != NULL) {
+        if ((anElevator->viabas == 1) || (cabOrder->next == NULL)) {
+            return order->next->orderFloor;
+        } 
+    }
+    if (cabOrder->next != NULL){
+        if ((anElevator->viabas == 0) || (order->next == NULL))
+            return cabOrder->next->cabOrderFloor;
     } else {
         return anElevator->lastFloor;
     }

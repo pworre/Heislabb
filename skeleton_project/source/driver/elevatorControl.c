@@ -81,7 +81,10 @@ void ctrl_run(Elevator* anElevator) {
 
         // STOP-FUNCTION
         stopValue = elevio_stopButton();
-        ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
+        if (stopValue == 1) {
+            ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
+        }
+
 
     
         // DOOR_OPEN functionality
@@ -108,7 +111,9 @@ void ctrl_run(Elevator* anElevator) {
                 }
 
                 stopValue = elevio_stopButton();
-                ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
+                if (elevio_stopButton()) {
+                    ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
+                }
             }
 
             elevio_doorOpenLamp(0);

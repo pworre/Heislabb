@@ -34,18 +34,26 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
 }
 
 void que_printOrders(Orders *order) {
-    Orders *temp = order;
-    while (temp != NULL) {
-        printf("ETASJEBESTILLING    || Floor: %d, Direction: %d\n", temp->next->orderFloor, temp->orderDirection);
-        temp = temp->next;
+    if (order->next != NULL) {
+        Orders *temp = order;
+        while (temp != NULL) {
+            printf("ETASJEBESTILLING    || Floor: %d, Direction: %d\n", temp->next->orderFloor, temp->orderDirection);
+            temp = temp->next;
+        }
+    } else {
+        printf("ETASJEBESTILLING    || Ingen aktive\n");
     }
 }
 
 void que_printCabOrders(CabOrders *cabOrder) {
-    CabOrders *temp = cabOrder;
-    while (temp != NULL) {
-        printf("CAB_BESTILLING      || Floor: %d\n", temp->next->cabOrderFloor);
-        temp = temp->next;
+    if (cabOrder->next != NULL) {
+        CabOrders *temp = cabOrder;
+        while (temp != NULL) {
+            printf("CAB_BESTILLING      || Floor: %d\n", temp->next->cabOrderFloor);
+            temp = temp->next;
+        }
+    } else {
+        printf("CAB_BESTILLING      || Ingen aktive\n");
     }
 }
 

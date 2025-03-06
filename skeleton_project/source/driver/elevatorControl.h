@@ -11,8 +11,9 @@
 * @brief A simple library for struct Elevator and
 * and control function for the elevator. 
 */
-#ifndef ELEVATOR_H
-#define ELEVATOR_H
+
+// Forward-Declaration
+typedef enum ElevatorStateTag ElevatorState;
 
 typedef struct ElevatorTag{
     ElevatorState state;
@@ -22,7 +23,7 @@ typedef struct ElevatorTag{
     int nextFloor;
 } Elevator;
 
-#endif
+
 
 ElevatorState ctrl_getElevatorState(Elevator* anElevator);
 

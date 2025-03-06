@@ -10,7 +10,7 @@
 *state of the elevator.
 */
 
-typedef enum { 
+typedef enum ElevatorStateTag{ 
     MOVING_DOWN   = 0,
     STATIONARY   = 1,
     MOVING_UP     = 2

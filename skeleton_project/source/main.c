@@ -20,6 +20,7 @@ int main(){
     }
 
     ctrl_startup(elev);
+    printf("Overgang i main til ctrl_run()");
     ctrl_run(elev);
 
     //que_checkQue(&elev, &que);

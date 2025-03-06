@@ -5,6 +5,7 @@
 #include "stdlib.h"
 #include "lightModule.h"
 #include "time.h"
+#include "elevatorStateMachine.h"
 
 /**
 * @file

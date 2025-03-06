@@ -10,11 +10,16 @@
 *state of the elevator.
 */
 
+#ifndef ELEVATOR_STATE_H
+#define ELEVATOR_STATE_H
+
 typedef enum ElevatorStateTag{ 
     MOVING_DOWN   = 0,
     STATIONARY   = 1,
     MOVING_UP     = 2
 } ElevatorState;
+
+#endif
 
 /**
 * @brief Function for updating the state-values for the elevator

@@ -42,7 +42,7 @@ void ctrl_run(Elevator* anElevator) {
 
         // DOOR_OPEN functionality
         if ((anElevator->state != STATIONARY) && (anElevator->lastFloor == anElevator->nextFloor)) {
-            anElevator->state == STATIONARY;
+            anElevator->state = STATIONARY;
             lgt_setLight(LIGHT_DOOR_OPEN, 1);
 
             // 3 sekunder ventetid

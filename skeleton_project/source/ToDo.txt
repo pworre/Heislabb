@@ -6,3 +6,12 @@
     1. bruker kun elevio_doorDoorOpenLamp() og ingen andre
     2. bestillingslys er er ctrl_scanButtonInputs()
 Legge til obstruksjonsfunksjonalitet
+
+
+
+
+Logikkfeil:
+1. Hvis heis skal forbi for eksempel 3 etasje hvor det både er viabas opp og 3 på heispanel, så er det kun i rekkefølge den går i.
+    Beggelysene burde da gå av. 
+
+2. Må gå til bestillinger opp om den allerede er på!

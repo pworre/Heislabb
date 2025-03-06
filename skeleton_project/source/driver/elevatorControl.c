@@ -76,14 +76,14 @@ void ctrl_run(Elevator* anElevator) {
         // Troubleshooting
         //que_addCabOrder(&orderHead, anElevator->lastFloor);
 
-        /*
+    
         // DOOR_OPEN functionality
-        if ((anElevator->state != STATIONARY) && (anElevator->lastFloor == anElevator->nextFloor)) {
+        if (anElevator->lastFloor == anElevator->nextFloor) {
             printf("Open door...Be carefull Mr.Tomren!\n");
 
             elevio_motorDirection(DIRN_STOP);
             anElevator->state = STATIONARY;
-            lgt_setLight(LIGHT_DOOR_OPEN, 1);
+            elevio_doorOpenLamp(1);
 
             // 3 sekunder ventetid
             clock_t start_time = clock();
@@ -95,12 +95,14 @@ void ctrl_run(Elevator* anElevator) {
                 ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
 
                 // Obstruksjonsfunksjonalitet
-                //
-                //
+                while (elevio_obstruction()) {
+                    elevio_stopLamp(1);
+                }
             }
 
-            lgt_setLight(LIGHT_DOOR_OPEN, 0);
-        }*/
+            elevio_doorOpenLamp(0);
+        }
+
         if (orderHead->next != NULL) {
             if (anElevator->lastFloor == orderHead->next->orderFloor) {
                 que_removeCompletedOrder(&orderHead);

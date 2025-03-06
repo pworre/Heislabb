@@ -16,8 +16,8 @@ int SM_lastFloor(Elevator *anElevator){
 
 int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder){
     if (anElevator->viabas == 1){
-        return order->orderFloor;
+        return order->next->orderFloor;
     } else {
-        return cabOrder->cabOrderFloor;
+        return cabOrder->next->cabOrderFloor;
     }
 }

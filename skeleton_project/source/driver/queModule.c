@@ -36,7 +36,7 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
 void que_printOrders(Orders *order) {
     Orders *temp = order;
     while (temp != NULL) {
-        printf("Floor: %d, Direction: %d\n", temp->orderFloor, temp->orderDirection);
+        printf("ETASJEBESTILLING    || Floor: %d, Direction: %d\n", temp->next->orderFloor, temp->orderDirection);
         temp = temp->next;
     }
 }
@@ -44,7 +44,7 @@ void que_printOrders(Orders *order) {
 void que_printCabOrders(CabOrders *cabOrder) {
     CabOrders *temp = cabOrder;
     while (temp != NULL) {
-        printf("Floor: %d\n", temp->cabOrderFloor);
+        printf("CAB_BESTILLING      || Floor: %d\n", temp->next->cabOrderFloor);
         temp = temp->next;
     }
 }
@@ -63,16 +63,16 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrd
 
 void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder) {
     // Sjekker at vi ikke har nullpekere
-    if ((cabOrder == NULL) || (que == NULL) || (cabOrder == NULL)) {
+    if ((anElevator == NULL) || (que == NULL) || (cabOrder == NULL)) {
         printf("ERROR: Null-ptr detected in que_checkQue()!\n");
     }
 
 
     printf("Sjekker køen...");
     // Setting parameter if outside cab order is between elevator and cabOrder and goes in same direction
-    if (que->next != NULL) {
-        if (((cabOrder->cabOrderFloor < que->next->orderFloor) && ((anElevator->state == MOVING_DOWN) && que->orderDirection == BUTTON_HALL_DOWN)) || 
-            ((cabOrder->cabOrderFloor > que->next->orderFloor) && ((anElevator->state == MOVING_UP) && que->orderDirection == BUTTON_HALL_UP)))  {
+    if ((que->next != NULL) && (cabOrder->next != NULL)) {
+        if (((cabOrder->next->cabOrderFloor < que->next->orderFloor) && ((anElevator->state == MOVING_DOWN) && que->orderDirection == BUTTON_HALL_DOWN)) || 
+            ((cabOrder->next->cabOrderFloor > que->next->orderFloor) && ((anElevator->state == MOVING_UP) && que->orderDirection == BUTTON_HALL_UP)))  {
             anElevator->viabas = 1;
         } else {
             anElevator->viabas = 0;
@@ -93,7 +93,7 @@ void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder) {
 
 void que_removeCompletedOrder(Orders **orderHead){
     // Checks if there is nothing to remove
-    if (*orderHead == NULL){
+    if ((*orderHead == NULL) || ((*orderHead)->next == NULL)) {
         return;
     }
 
@@ -137,7 +137,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
 
 void que_removeCompleteCabdOrder(CabOrders **orderHead){
     // Checks if there is nothing to remove
-    if (*orderHead == NULL){
+    if ((*orderHead == NULL) && ((*orderHead)->next == NULL)) {
         return;
     }
 

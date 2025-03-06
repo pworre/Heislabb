@@ -11,6 +11,7 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
     // Checks if memory is allocated for the new Orders-struct
     if (newOrder == NULL) {
         printf("Memory is not allocated for Orders");
+        return;
     }
 
     // Checks if there is already an order in the list. If not, adding it as first element

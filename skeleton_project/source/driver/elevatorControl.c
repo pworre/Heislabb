@@ -79,7 +79,7 @@ void ctrl_run(Elevator* anElevator) {
         //que_addCabOrder(&orderHead, anElevator->lastFloor);
 
         // STOP-FUNCTION
-        ctrl_stop(orderHead, cabOrderHead, elevio_stopButton());
+        ctrl_stop(anElevator, orderHead, cabOrderHead, elevio_stopButton());
 
     
         // DOOR_OPEN functionality

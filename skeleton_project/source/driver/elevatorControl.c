@@ -19,16 +19,16 @@ void ctrl_startup(Elevator* anElevator) {
     // elevio_floorSensor() gives output -1 when not receiving any information
     while (elevio_floorSensor() == -1) {
         elevio_motorDirection(DIRN_DOWN);
-        printf("FloorSensor: %d\n", elevio_floorSensor());
+        //printf("FloorSensor: %d\n", elevio_floorSensor());
         if (elevio_floorSensor() >= 0) {
             elevio_motorDirection(DIRN_STOP);
             ctrl_updateElevatorState(anElevator, STATIONARY);
             anElevator->lastFloor = elevio_floorSensor();
         }
     }
-
+    anElevator->lastFloor = elevio_floorSensor();
     elevio_motorDirection(DIRN_STOP);
-    printf("Gitt posisjon er: %d\n", elevio_floorSensor());
+    printf("Gitt startposisjon er: %d\n", elevio_floorSensor());
 }
 
 void ctrl_run(Elevator* anElevator) {
@@ -38,12 +38,14 @@ void ctrl_run(Elevator* anElevator) {
     if ((orderHead == NULL) || (cabOrderHead == NULL)) {
         printf("FEIL: Kunne ikke allokere minne til CabOrder eller Order!\n");
     }
+    printf("Minnet allokert til Orders og CabOrders");
     
 
     // Set state for running
     anElevator->run = 1;
 
     while (anElevator->run) {
+        printf("entret while-løkke");
         SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
 
         // BUTTONS: Scans continuosly for button inputs

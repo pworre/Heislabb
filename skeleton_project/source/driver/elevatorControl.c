@@ -153,8 +153,8 @@ void ctrl_stop(Orders *orderHead, CabOrders *cabOrderHead, int value) {
     if(value == 1) {
         elevio_stopLamp(1);
         elevio_motorDirection(DIRN_STOP);
-        que_removeCompletedOrder(orderHead);
-        que_removeCompleteCabdOrder(cabOrderHead);
+        que_removeCompletedOrder(&orderHead);
+        que_removeCompleteCabdOrder(&cabOrderHead);
         if(elevio_floorSensor() != -1) {
             elevio_doorOpenLamp(1);
         }

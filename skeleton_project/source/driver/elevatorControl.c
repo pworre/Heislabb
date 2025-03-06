@@ -35,7 +35,7 @@ void ctrl_run(Elevator* anElevator) {
     
 
     // Set state for running
-    anElevator->run = 0;
+    anElevator->run = 1;
 
     while (anElevator->run) {
         SM_updateElevatorState(anElevator, orderHead, cabOrderHead);

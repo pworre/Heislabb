@@ -11,6 +11,8 @@
 * @brief A simple library for struct Elevator and
 * and control function for the elevator. 
 */
+#ifndef ELEVATOR_H
+#define ELEVATOR_H
 
 typedef struct {
     ElevatorState state;
@@ -19,6 +21,8 @@ typedef struct {
     int viabas;             // variable which is 1 if the elevator will stop on either way for bringing more PAX
     int nextFloor;
 } Elevator;
+
+#endif
 
 ElevatorState ctrl_getElevatorState(Elevator* anElevator);
 

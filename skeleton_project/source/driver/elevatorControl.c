@@ -76,7 +76,7 @@ void ctrl_run(Elevator* anElevator) {
 
         // DOOR_OPEN functionality
         if ((anElevator->state != STATIONARY) && (anElevator->lastFloor == anElevator->nextFloor)) {
-            printf("Open door...Be carefull Mr.Tomren!\n")
+            printf("Open door...Be carefull Mr.Tomren!\n");
 
             elevio_motorDirection(DIRN_STOP);
             anElevator->state = STATIONARY;

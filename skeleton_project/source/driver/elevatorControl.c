@@ -34,7 +34,7 @@ void ctrl_startup(Elevator* anElevator) {
 }
 
 void ctrl_run(Elevator* anElevator) {
-    printf("Startet på ctrl_run()!");
+    printf("Startet på ctrl_run()!\n");
 
     // Creates new and empty lists ready for orders
     Orders *orderHead = malloc(sizeof(Orders));
@@ -42,7 +42,13 @@ void ctrl_run(Elevator* anElevator) {
     if ((orderHead == NULL) || (cabOrderHead == NULL)) {
         printf("FEIL: Kunne ikke allokere minne til CabOrder eller Order!\n");
     }
-    printf("Minnet allokert til Orders og CabOrders");
+    printf("Minnet allokert til Orders og CabOrders\n");
+
+
+    // Sjekker om anElevator riktig allokert innad i run
+    if (anElevator != NULL) {
+        printf("anElevator er vellykka innad i run :)\n");
+    }
     
 
     // Set state for running
@@ -57,6 +63,7 @@ void ctrl_run(Elevator* anElevator) {
 
         // DOOR_OPEN functionality
         if ((anElevator->state != STATIONARY) && (anElevator->lastFloor == anElevator->nextFloor)) {
+            elevio_motorDirection(DIRN_STOP);
             anElevator->state = STATIONARY;
             lgt_setLight(LIGHT_DOOR_OPEN, 1);
 

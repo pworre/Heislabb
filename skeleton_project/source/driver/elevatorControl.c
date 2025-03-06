@@ -62,8 +62,8 @@ void ctrl_run(Elevator* anElevator) {
     anElevator->run = 1;
 
     while (anElevator->run) {
-        printf("entret while-løkke\n");
         SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
+        anElevator->nextFloor = SM_nextDestination(anElevator, orderHead, cabOrderHead) + 1;
 
         que_printOrders(orderHead);
         que_printCabOrders(cabOrderHead);

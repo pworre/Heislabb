@@ -20,11 +20,13 @@ void ctrl_startup(Elevator* anElevator) {
     while (elevio_floorSensor() == -1) {
         elevio_motorDirection(DIRN_DOWN);
         //printf("FloorSensor: %d\n", elevio_floorSensor());
+        /*
         if (elevio_floorSensor() >= 0) {
             elevio_motorDirection(DIRN_STOP);
             ctrl_updateElevatorState(anElevator, STATIONARY);
             anElevator->lastFloor = elevio_floorSensor();
         }
+        */
     }
     anElevator->lastFloor = elevio_floorSensor();
     elevio_motorDirection(DIRN_STOP);

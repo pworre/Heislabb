@@ -17,7 +17,7 @@ void ctrl_startup(Elevator* anElevator) {
     printf("FloorSensor: %d\n", elevio_floorSensor());
 
     // elevio_floorSensor() gives output -1 when not receiving any information
-    while (elevio_floorSensor() != -1) {
+    while (elevio_floorSensor() == -1) {
         elevio_motorDirection(DIRN_DOWN);
         printf("FloorSensor: %d\n", elevio_floorSensor());
         if (elevio_floorSensor() >= 0) {

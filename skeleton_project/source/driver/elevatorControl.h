@@ -20,7 +20,7 @@ typedef struct ElevatorTag{
     int run;
     int viabas;             // variable which is 1 if the elevator will stop on either way for bringing more PAX
     int nextFloor;
-} ;
+} Elevator;
 
 #endif
 

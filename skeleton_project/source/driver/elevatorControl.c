@@ -161,6 +161,7 @@ void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *c
 
 void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int value) {
     while(value == 1) {
+        anElevator->state = STATIONARY;
         elevio_stopLamp(1);
         elevio_motorDirection(DIRN_STOP);
         que_clearOrders(&orderHead);
@@ -197,6 +198,17 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
             }
         }
     }
+
+    // fjerne alle lys
+    for(int f = 0; f < N_FLOORS; f++){
+        for(int b = 0; b < N_BUTTONS; b++){
+            elevio_buttonLamp(f, b, BUTTON_HALL_DOWN);
+            elevio_buttonLamp(f, b, BUTTON_HALL_UP);
+            elevio_buttonLamp(f, b, BUTTON_CAB);
+        }
+    }
+
+
     elevio_doorOpenLamp(0);
 }
 

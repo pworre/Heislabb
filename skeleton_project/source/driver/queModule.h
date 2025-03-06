@@ -9,7 +9,7 @@
 */
 
 // Forward-declaration
-struct Elevator;
+typedef struct Elevator;
 
 // Linked list for que-system
 typedef struct {

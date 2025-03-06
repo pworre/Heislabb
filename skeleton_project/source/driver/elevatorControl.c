@@ -44,12 +44,14 @@ void ctrl_run(Elevator* anElevator) {
     }
     printf("Minnet allokert til Orders og CabOrders\n");
 
-    orderHead->orderFloor = 3;
+    orderHead->orderFloor = anElevator->lastFloor;
     orderHead->orderDirection = BUTTON_HALL_UP;
     orderHead->next = NULL;
 
     cabOrderHead->cabOrderFloor = anElevator->lastFloor;
     cabOrderHead->next = NULL;
+
+    int lastStop = -1;
 
 
     // Sjekker om anElevator riktig allokert innad i run
@@ -78,8 +80,9 @@ void ctrl_run(Elevator* anElevator) {
 
     
         // DOOR_OPEN functionality
-        if (anElevator->lastFloor == anElevator->nextFloor) {
+        if ((anElevator->lastFloor == anElevator->nextFloor) && (lastStop != anElevator->lastFloor)) {
             printf("Open door...Be carefull Mr.Tomren!\n");
+            lastStop = anElevator->lastFloor;
 
             elevio_motorDirection(DIRN_STOP);
             anElevator->state = STATIONARY;

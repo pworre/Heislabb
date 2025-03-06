@@ -149,12 +149,20 @@ void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *c
     }
 }
 
-void ctrl_stop(Orders *orderHead, CabOrders *cabOrderHead, int value) {
+void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int value) {
     if(value == 1) {
         elevio_stopLamp(1);
         elevio_motorDirection(DIRN_STOP);
-        que_removeCompletedOrder(&orderHead);
-        que_removeCompleteCabdOrder(&cabOrderHead);
+        if (orderHead->next != NULL) {
+            if (anElevator->lastFloor == orderHead->next->orderFloor) {
+                que_removeCompletedOrder(&orderHead);
+            }
+        }
+        if (cabOrderHead->next != NULL) {
+            if (anElevator->lastFloor == cabOrderHead->next->cabOrderFloor) {
+                que_removeCompleteCabdOrder(&cabOrderHead);
+            }
+        }
         if(elevio_floorSensor() != -1) {
             elevio_doorOpenLamp(1);
         }

@@ -70,6 +70,8 @@ void ctrl_run(Elevator* anElevator) {
         que_printOrders(orderHead);
         que_printCabOrders(cabOrderHead);
 
+        int btnPressed = elevio_callButton
+
         // BUTTONS: Scans continuosly for button inputs
         ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
 
@@ -127,14 +129,16 @@ void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *c
         for(int b = 0; b < N_BUTTONS; b++){
             int btnPressed = elevio_callButton(f, b);
 
-            // if button is from OUTSIDE of the cab
-            if ((btnPressed == 1) && (b != BUTTON_CAB)) {
-                que_addOrder(&orderHead, f, b);
-            // if the button is from INSIDE of the cab
-            } else if (btnPressed == 1) {
-                que_addCabOrder(&cabOrderHead, f);
+            if (btnPressed) {
+                // if button is from OUTSIDE of the cab
+                if (b != BUTTON_CAB) {
+                    que_addOrder(&orderHead, f, b);
+                // if the button is from INSIDE of the cab
+                } else {
+                    que_addCabOrder(&cabOrderHead, f);
+                }
+                elevio_buttonLamp(f, b, btnPressed);
             }
-            elevio_buttonLamp(f, b, btnPressed);
         }
     }
 }

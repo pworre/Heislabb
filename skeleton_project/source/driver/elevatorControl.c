@@ -61,6 +61,9 @@ void ctrl_run(Elevator* anElevator) {
         // BUTTONS: Scans continuosly for button inputs
         ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
 
+        // Troubleshooting
+        que_addOrder(&orderHead, anElevator->lastFloor, DIRN_STOP);
+
         // DOOR_OPEN functionality
         if ((anElevator->state != STATIONARY) && (anElevator->lastFloor == anElevator->nextFloor)) {
             elevio_motorDirection(DIRN_STOP);

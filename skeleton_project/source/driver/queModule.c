@@ -45,6 +45,12 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrd
 */
 
 void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder) {
+    // Sjekker at vi ikke har nullpekere
+    if ((cabOrder == NULL) || (que == NULL) || (cabOrder == NULL)) {
+        printf("ERROR: Null-ptr detected in que_checkQue()!\n");
+    }
+
+
     printf("Sjekker køen...");
     // Setting parameter if outside cab order is between elevator and cabOrder and goes in same direction
     if (((cabOrder->cabOrderFloor < que->next->orderFloor) && ((anElevator->state == MOVING_DOWN) && que->orderDirection == BUTTON_HALL_DOWN)) || 

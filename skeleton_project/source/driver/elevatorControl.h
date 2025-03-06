@@ -3,6 +3,7 @@
 #include "elevatorStateMachine.h"
 #include "queModule.h"
 #include "stdlib.h"
+#include "elevatorStateMachine.h"
 #include "lightModule.h"
 #include "time.h"
 
@@ -13,7 +14,7 @@
 */
 
 // Forward-Declaration
-typedef enum ElevatorStateTag ElevatorState;
+
 
 typedef struct ElevatorTag{
     ElevatorState state;

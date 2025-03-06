@@ -1,5 +1,4 @@
 #include "elevatorControl.h"
-#include "elevatorStateMachine.h"
 
 
 ElevatorState ctrl_getElevatorState(Elevator* anElevator) {

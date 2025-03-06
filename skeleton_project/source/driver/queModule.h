@@ -12,12 +12,12 @@
 typedef struct ElevatorTag Elevator;
 
 // Linked list for que-system
-typedef struct {
+typedef struct OrderTag {
     int orderFloor;
     ButtonType orderDirection;
 
     // Self-referential structure pointing to next the order and info about the next order
-    Orders *next;
+    struct OrderTag *next;
 } Orders;
 
 

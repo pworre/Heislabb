@@ -40,8 +40,8 @@ void ctrl_run(Elevator* anElevator) {
     CabOrders *cabOrderHead = NULL;
 
     // Creates new and empty lists ready for orders
-    Orders *orderHead = malloc(sizeof(Orders));
-    CabOrders *cabOrderHead = malloc(sizeof(CabOrders));
+    orderHead = malloc(sizeof(Orders));
+    cabOrderHead = malloc(sizeof(CabOrders));
     if ((orderHead == NULL) || (cabOrderHead == NULL)) {
         printf("FEIL: Kunne ikke allokere minne til CabOrder eller Order!\n");
     }

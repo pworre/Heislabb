@@ -198,8 +198,8 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
 
 
    // Checks if there is more than 2 caborders to avoid SEGV-fault
-    CabOrders *current = (*orderHead)->next;   // saves current order in temp-pointer
-    CabOrders *prev = *orderHead;
+    CabOrders *prev = *orderHead;   // saves current order in temp-pointer
+    CabOrders *current = prev->next;
 
 
     // If removing element 2

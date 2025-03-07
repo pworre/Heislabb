@@ -115,6 +115,17 @@ void ctrl_run(Elevator* anElevator) {
                 // Sjekke for bestillinger under ventetid
                 ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
 
+            if (orderHead->next != NULL) {
+                if (anElevator->lastFloor == orderHead->next->orderFloor) {
+                    que_removeCompletedOrder(&orderHead);
+            }
+            }
+            if (cabOrderHead->next != NULL) {
+                if (anElevator->lastFloor == cabOrderHead->next->cabOrderFloor) {
+                    que_removeCompleteCabdOrder(&cabOrderHead);
+                }
+            }
+
                 // Obstruksjonsfunksjonalitet
                 while (elevio_obstruction()) {
                     obstruction = 1;

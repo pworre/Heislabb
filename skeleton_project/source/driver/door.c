@@ -5,7 +5,7 @@ void door_open(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
     // DOOR_OPEN functionality
     if ((anElevator->lastFloor == anElevator->nextFloor) && (lastStop != anElevator->lastFloor)) {
             printf("Open door...Be carefull Mr.Tomren!\n");
-            lastStop = anElevator->lastFloor;
+            *lastStop = anElevator->lastFloor;
 
             elevio_motorDirection(DIRN_STOP);
             anElevator->state = STATIONARY;

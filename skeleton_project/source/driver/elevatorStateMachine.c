@@ -53,6 +53,7 @@ int SM_lastFloor(Elevator *anElevator){
     return anElevator->lastFloor;
 }*/
 
+/*
 int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder) {
     int nextCaborder;
     int floorToCompare;
@@ -92,4 +93,17 @@ int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder)
     }
 
     return anElevator->lastFloor; // Default return value if no orders exist
+}*/
+
+int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder){
+    if (order->next != NULL) {
+        if ((anElevator->viabas == 1) || (cabOrder->next == NULL)) {
+            return order->next->orderFloor;
+        } 
+    }
+    if (cabOrder->next != NULL){
+        if ((anElevator->viabas == 0) || (order->next == NULL))
+            return cabOrder->next->cabOrderFloor;
+    }
+    return anElevator->lastFloor;
 }

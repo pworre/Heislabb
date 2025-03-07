@@ -275,6 +275,6 @@ int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outside
     } else if (floorToReturn_DOWN != -1) {
         return floorToReturn_DOWN;
     } else {
-        return -2;
+        return outsideOrder->orderFloor;
     }
 }

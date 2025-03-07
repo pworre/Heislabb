@@ -25,7 +25,7 @@ int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder)
         } 
     }
     if (cabOrder->next != NULL){
-        if ((anElevator->viabas == 0) || (order->next == NULL))
+        if ((anElevator->viabas == 0) || (order->next == NULL)) {
             nextCaborder = cabOrder->next->cabOrderFloor;
 
             if (order->orderDirection == BUTTON_HALL_UP) {

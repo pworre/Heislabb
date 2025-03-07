@@ -280,7 +280,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
     }
 }
 
-/*
+
 void que_removeFloorCabOrder(Elevator *anElevator, CabOrders **orderHead, int floorToRemove) {
     if (((*orderHead) == NULL) || ((*orderHead)->next == NULL)) {
         return;
@@ -299,6 +299,36 @@ void que_removeFloorCabOrder(Elevator *anElevator, CabOrders **orderHead, int fl
                 current = current->next;
                 free(prev->next);
             }
+            prev->next = current;
+        } 
+        if (current->next == NULL) {return;}
         prev->next = current;
     }
-}*/
+}
+
+int que_nextCabOrder(Elevator *anElevator, CabOrders **orderHead, Orders *outsideOrder) {
+    if ((*orderHead == NULL) || ((*orderHead)->next == NULL)) {
+        return;
+    }
+
+    //CabOrders *prev = *orderHead;
+    CabOrders *current = (*orderHead)->next;
+    ButtonType directionOrdered = outsideOrder->orderDirection; // Bruker første node siden den er den som kjøres på (IKKE TIL!)
+    int floorToReturn_UP = 5;
+    int floorToReturn_DOWN = -1;
+    int tallestOrder;
+
+
+    while (current != NULL) {
+        if ((directionOrdered == BUTTON_HALL_UP) && (anElevator->lastFloor <= current->cabOrderFloor)) {
+            if (current->cabOrderFloor < floorToReturn_UP) {
+                floorToReturn_UP = current->cabOrderFloor;
+            } 
+        } else if ((directionOrdered == BUTTON_HALL_DOWN) && (anElevator->lastFloor >= current->cabOrderFloor)) {
+            if (current->cabOrderFloor > floorToReturn_DOWN) {
+                floorToReturn_DOWN = current->cabOrderFloor;
+            } 
+        }
+        current = current->next;
+    }
+}

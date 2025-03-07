@@ -121,6 +121,7 @@ void ctrl_run(Elevator* anElevator) {
             }
             }
             if (cabOrderHead->next != NULL) {
+                if ()
                 que_removeCompleteCabdOrder(anElevator, &cabOrderHead);
             }
 

@@ -230,7 +230,6 @@ int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outside
     ButtonType directionOrdered = outsideOrder->orderDirection; // Bruker første node siden den er den som kjøres på (IKKE TIL!)
     int floorToReturn_UP = 5;
     int floorToReturn_DOWN = -1;
-    int tallestOrder;
 
 
     while (current != NULL) {
@@ -244,5 +243,13 @@ int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outside
             } 
         }
         current = current->next;
+    }
+
+    if (floorToReturn_UP != 5) {
+        return floorToReturn_UP;
+    } else if (floorToReturn_DOWN != -1) {
+        return floorToReturn_DOWN;
+    } else {
+        return -2;
     }
 }

@@ -189,7 +189,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
 
     elevio_buttonLamp((*orderHead)->cabOrderFloor, BUTTON_CAB, 0);
 
-    /*  GAMMEL REMOVE!!!!!
+      GAMMEL REMOVE!!!!!
     // Copying the pointer to the linkedlist and removing the first element
     CabOrders *temp = *orderHead;   // saves current order in temp-pointer
     *orderHead = (*orderHead)->next;    // points to next element in list

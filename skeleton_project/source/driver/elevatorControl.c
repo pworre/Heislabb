@@ -14,19 +14,19 @@ void ctrl_setFloor(Elevator* anElevator, int floor) {
 }
 
 void ctrl_startup(Elevator* anElevator) {
+    // Skrur av alle lys hvis noen var på
+    for(int f = 0; f < N_FLOORS; f++){
+        elevio_buttonLamp(f, BUTTON_HALL_DOWN, 0);
+        elevio_buttonLamp(f, BUTTON_HALL_UP, 0);
+        elevio_buttonLamp(f, BUTTON_CAB, 0);
+    }
+
+
     printf("FloorSensor: %d\n", elevio_floorSensor());
 
     // elevio_floorSensor() gives output -1 when not receiving any information
     while (elevio_floorSensor() == -1) {
         elevio_motorDirection(DIRN_DOWN);
-        //printf("FloorSensor: %d\n", elevio_floorSensor());
-        /*
-        if (elevio_floorSensor() >= 0) {
-            elevio_motorDirection(DIRN_STOP);
-            ctrl_updateElevatorState(anElevator, STATIONARY);
-            anElevator->lastFloor = elevio_floorSensor();
-        }
-        */
     }
     anElevator->lastFloor = elevio_floorSensor();
     elevio_motorDirection(DIRN_STOP);

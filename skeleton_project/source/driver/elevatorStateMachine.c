@@ -37,6 +37,15 @@ int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder)
                     }
                     tempCabOrder = tempCabOrder->next;
                 }
+            } else if (order->orderDirection == BUTTON_HALL_DOWN) {
+                CabOrders *tempCabOrder = cabOrder->next;
+                while (tempCabOrder->next != NULL) {
+                    floorToCompare = tempCabOrder->next->cabOrderFloor;
+                    if ((floorToCompare > nextCaborder) && (floorToCompare <= anElevator->lastFloor)) {
+                        nextCaborder = floorToCompare;
+                    }
+                    tempCabOrder = tempCabOrder->next;
+                } 
             }
 
             return nextCaborder;

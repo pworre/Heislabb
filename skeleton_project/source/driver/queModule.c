@@ -154,31 +154,43 @@ void que_clearCabOrders(CabOrders **head) {
 
 
 void que_addCabOrder(CabOrders **head, int requestedFloor) {
-    //Orders *newOrder = NULL;
-    // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
-    CabOrders *newOrder = (CabOrders *)malloc(sizeof(CabOrders));
-
-    // Checks if memory is allocated for the new Orders-struct
-    if (newOrder == NULL) {
-        printf("Memory is not allocated for Orders");
+    // Check if the order already exists in the list
+    CabOrders* temp = *head;
+    while (temp != NULL) {
+        if (temp->cabOrderFloor == requestedFloor) {
+            printf("Duplicate order: Floor %d already exists.\n", requestedFloor);
+            return; // Don't add the order if it's a duplicate
+        }
+        temp = temp->next;
     }
 
-    // Checks if there is already an order in the list. If not, adding it as first element
+    // Allocate memory for the new order
+    CabOrders* newOrder = (CabOrders *)malloc(sizeof(CabOrders));
+
+    // Check if memory allocation was successful
+    if (newOrder == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    // Set the new order's values
     newOrder->cabOrderFloor = requestedFloor;
     newOrder->next = NULL;
-    
+
+    // If the list is empty, set the new order as the head
     if (*head == NULL) {
         *head = newOrder;
-        return; // Returns if the list is empty and added the neweOrder
-    } else {
-        CabOrders* temp = *head;
-        while (temp->next != NULL) {
-            temp = temp->next;
-        }
-        
-        // Adds the request to the next node after the last existing
-        temp->next = newOrder;
+        printf("Added new order: Floor %d\n", requestedFloor);
+        return;
     }
+
+    // If the list is not empty, traverse to the end and add the new order
+    temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newOrder;
+    printf("Added new order: Floor %d\n", requestedFloor);
 }
 
 void que_removeCompleteCabdOrder(CabOrders **orderHead){

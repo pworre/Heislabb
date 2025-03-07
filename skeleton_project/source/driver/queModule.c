@@ -181,7 +181,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
     }
 }
 
-void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
+/*void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
     // Checks if there is nothing to remove
     if ((*orderHead == NULL) || ((*orderHead)->next == NULL)) {
         return;
@@ -194,7 +194,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
     CabOrders *temp = *orderHead;   // saves current order in temp-pointer
     *orderHead = (*orderHead)->next;    // points to next element in list
     free(temp);                         // deallocate memory
-    */
+    
 
 
    // Checks if there is more than 2 caborders to avoid SEGV-fault
@@ -216,9 +216,35 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
             prev->next = NULL;
         } else if (!((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) && (current->next == NULL)) {
             prev->next = NULL;
-        } */else {
+        } else {
             prev = current;
             current = current->next;
+        }
+    }*/
+
+void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
+    // Ensure list is valid and has at least two elements
+    if ((*orderHead == NULL) || ((*orderHead)->next == NULL)) {
+        return;
+    }
+
+    elevio_buttonLamp((*orderHead)->cabOrderFloor, BUTTON_CAB, 0);
+
+    CabOrders *current = (*orderHead)->next;  // Start from second node
+    CabOrders *prev = *orderHead;  // First node is not removed
+
+    // Iterate over the list
+    while (current != NULL) {
+        printf("DELETING: sjekker om mer enn 2 elementer\n");
+
+        // If the current node matches the elevator's next floor, remove it
+        if ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
+            prev->next = current->next;  // Bypass current node
+            free(current);  // Free memory
+            current = prev->next;  // Move to the next node
+        } else {
+            prev = current;  // Move prev forward
+            current = current->next;  // Move current forward
         }
     }
 }

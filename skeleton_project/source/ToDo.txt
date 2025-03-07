@@ -15,3 +15,6 @@ Logikkfeil:
     Beggelysene burde da gå av. 
 
 2. Må gå til bestillinger opp om den allerede er på!
+
+
+legge til at hvis cab order 2 allere ligger inne må det ventes før legges til. 

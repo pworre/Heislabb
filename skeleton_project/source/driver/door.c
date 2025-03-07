@@ -1,7 +1,7 @@
 #include "door.h"
 
 
-void door_open(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int lastStop, int stopValue){
+void door_open(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int *lastStop, int *stopValue){
     // DOOR_OPEN functionality
     if ((anElevator->lastFloor == anElevator->nextFloor) && (lastStop != anElevator->lastFloor)) {
             printf("Open door...Be carefull Mr.Tomren!\n");
@@ -47,7 +47,7 @@ void door_open(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
                         }
                 }
 
-                stopValue = elevio_stopButton();
+                *stopValue = elevio_stopButton();
                 if (elevio_stopButton()) {
                     ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
                 }

@@ -181,7 +181,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
     }
 }
 
-void que_removeCompleteCabdOrder(CabOrders **orderHead){
+void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
     // Checks if there is nothing to remove
     if ((*orderHead == NULL) && ((*orderHead)->next == NULL)) {
         return;
@@ -189,9 +189,34 @@ void que_removeCompleteCabdOrder(CabOrders **orderHead){
 
     elevio_buttonLamp((*orderHead)->cabOrderFloor, BUTTON_CAB, 0);
 
+    /*  GAMMEL REMOVE!!!!!
     // Copying the pointer to the linkedlist and removing the first element
     CabOrders *temp = *orderHead;   // saves current order in temp-pointer
     *orderHead = (*orderHead)->next;    // points to next element in list
     free(temp);                         // deallocate memory
+    */
 
+
+   // Checks if there is more than 2 caborders to avoid SEGV-fault
+   if ((*orderHead)->next->next != NULL) {
+        CabOrders *current = (*orderHead);   // saves current order in temp-pointer
+        CabOrders *nextNode = (*orderHead)->next;
+
+        // If removing element 2
+        while (current->next != NULL) {
+            if ((current->next->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor) && (current->next->next != NULL)) {
+                // connecting node 1 to node 3
+                nextNode = current->next->next;
+                free(current->next);
+                current = nextNode;
+            } else if ((current->next->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
+                free(current->next);
+                current->next == NULL;
+            }
+        }
+   } else { // Hvis det kun er en cabOrder
+        CabOrders *temp = *orderHead;
+        *orderHead = (*orderHead)->next;
+        free(temp);
+   }
 }

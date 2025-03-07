@@ -211,7 +211,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
                 current = nextNode;
             } else if ((current->next->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
                 free(current->next);
-                current->next == NULL;
+                current->next = NULL;
             }
         }
    } else { // Hvis det kun er en cabOrder

@@ -235,7 +235,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders 
                 free(current);
                 return;
             }
-            printf("------------    DELETED A CABORDER  ------------!\n")
+            printf("------------    DELETED A CABORDER  ------------!\n");
         }
         current = prev->next;     
    }

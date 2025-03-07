@@ -268,8 +268,8 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
 
     // Now handle the rest of the list
     while (current != NULL) {
+        // If the current node matches the condition, remove it
         if ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
-            // If the current node matches the condition, remove it
             prev->next = current->next; // Skip over the current node
             free(current);              // Free the current node
             current = prev->next;       // Move current to the next node
@@ -282,18 +282,23 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
 
 /*
 void que_removeFloorCabOrder(Elevator *anElevator, CabOrders **orderHead, int floorToRemove) {
+    if (((*orderHead) == NULL) || ((*orderHead)->next == NULL)) {
+        return;
+    }
+
     CabOrders *prev = *orderHead;
     CabOrders *current = prev->next;
 
     while (current != NULL) {
         if (current->cabOrderFloor == floorToRemove) {
-            free(current);
-            prev->next == NULL;
-            return;
-        } else {
-            current = current->next;
-            free(prev->next);
-        }
+            if (current->next == NULL) {
+                free(current);
+                prev->next == NULL;
+                return;
+            } else {
+                current = current->next;
+                free(prev->next);
+            }
         prev->next = current;
     }
 }*/

@@ -46,9 +46,10 @@ void ctrl_run(Elevator* anElevator) {
 
     cabOrderHead->cabOrderFloor = anElevator->lastFloor;
     cabOrderHead->next = NULL;
-
-    int *lastStop = -1;
-    int *stopValue = 0;
+    int lastStopValue = -1;
+    int stopValueInt = 0;
+    int *lastStop = &lastStopValue;
+    int *stopValue = &stopValueInt;
 
 
     // Sjekker om anElevator riktig allokert innad i run

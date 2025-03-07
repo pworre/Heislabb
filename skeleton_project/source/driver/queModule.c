@@ -198,30 +198,24 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
 
 
    // Checks if there is more than 2 caborders to avoid SEGV-fault
-   if ((*orderHead)->next->next != NULL) {
-        CabOrders *current = (*orderHead);   // saves current order in temp-pointer
-        CabOrders *nextNode = (*orderHead)->next;
-        printf("DELETING: sjekker om mer enn 2 elementer\n");
+    CabOrders *current = (*orderHead)->next;   // saves current order in temp-pointer
+    CabOrders *prev = *orderHead;
+    printf("DELETING: sjekker om mer enn 2 elementer\n");
 
-        // If removing element 2
-        while (current->next != NULL) {
-            if ((current->next->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor) && (current->next->next != NULL)) {
-                // connecting node 1 to node 3
-                nextNode = current->next->next;
-                free(current->next);
-                current->next = NULL;
-                current = nextNode;
-                printf("DELETING: Fjernet en node midt i :))\n");
-            } else if ((current->next->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
-                free(current->next);
-                current->next = NULL;
-            } else {
-                current = current->next;
-            }
+    // If removing element 2
+    while (current != NULL) {
+        if ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor) && (current->next != NULL)) {
+            // connecting node 1 to node 3
+            prev->next = current->next;
+            free(current);
+            current->next = prev->next;
+            printf("DELETING: Fjernet en node midt i :))\n");
+        } /*else if ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
+            free(current);
+            current = prev->next;
+        }*/ else {
+            prev = current;
+            current = current->next;
         }
-   } else { // Hvis det kun er en cabOrder
-        CabOrders *temp = *orderHead;
-        *orderHead = (*orderHead)->next;
-        free(temp);
-   }
+    }
 }

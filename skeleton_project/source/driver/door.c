@@ -3,7 +3,7 @@
 
 void door_open(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int *lastStop, int *stopValue){
     // DOOR_OPEN functionality
-    if ((anElevator->lastFloor == anElevator->nextFloor) && (lastStop != anElevator->lastFloor)) {
+    if ((anElevator->lastFloor == anElevator->nextFloor) && (*lastStop != anElevator->lastFloor)) {
             printf("Open door...Be carefull Mr.Tomren!\n");
             *lastStop = anElevator->lastFloor;
 

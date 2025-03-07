@@ -203,7 +203,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
 
 
     // If removing element 2
-    while (current->next != NULL) {
+    while (current != NULL) {
         printf("DELETING: sjekker om mer enn 2 elementer\n");
         if ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor) && (current->next != NULL)) {
             // connecting node 1 to node 3
@@ -211,10 +211,11 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
             free(current);
             current = prev->next;
             printf("DELETING: Fjernet en node midt i :))\n");
-        } /*else if ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
+        } else if ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
             free(current);
-            current = prev->next;
-        }*/ else {
+            current = NULL;
+            //prev->next = NULL;
+        } else {
             prev = current;
             current = current->next;
         }

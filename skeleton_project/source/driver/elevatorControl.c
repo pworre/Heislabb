@@ -93,9 +93,7 @@ void ctrl_run(Elevator* anElevator) {
             }
         }
         if (cabOrderHead->next != NULL) {
-            if (anElevator->lastFloor == cabOrderHead->next->cabOrderFloor) {
-                que_removeCompleteCabdOrder(anElevator, &cabOrderHead);
-            }
+            que_removeCompleteCabdOrder(anElevator, &cabOrderHead);
         }
     
         // DOOR_OPEN functionality
@@ -123,9 +121,7 @@ void ctrl_run(Elevator* anElevator) {
             }
             }
             if (cabOrderHead->next != NULL) {
-                if (anElevator->lastFloor == cabOrderHead->next->cabOrderFloor) {
-                    que_removeCompleteCabdOrder(anElevator, &cabOrderHead);
-                }
+                que_removeCompleteCabdOrder(anElevator, &cabOrderHead);
             }
 
                 // Obstruksjonsfunksjonalitet

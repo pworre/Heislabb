@@ -85,7 +85,16 @@ void ctrl_run(Elevator* anElevator) {
             ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
         }
 
-
+        if (orderHead->next != NULL) {
+            if (anElevator->lastFloor == orderHead->next->orderFloor) {
+                que_removeCompletedOrder(&orderHead);
+            }
+        }
+        if (cabOrderHead->next != NULL) {
+            if (anElevator->lastFloor == cabOrderHead->next->cabOrderFloor) {
+                que_removeCompleteCabdOrder(&cabOrderHead);
+            }
+        }
     
         // DOOR_OPEN functionality
         if ((anElevator->lastFloor == anElevator->nextFloor) && (lastStop != anElevator->lastFloor)) {
@@ -130,16 +139,6 @@ void ctrl_run(Elevator* anElevator) {
             elevio_doorOpenLamp(0);
         }
 
-        if (orderHead->next != NULL) {
-            if (anElevator->lastFloor == orderHead->next->orderFloor) {
-                que_removeCompletedOrder(&orderHead);
-            }
-        }
-        if (cabOrderHead->next != NULL) {
-            if (anElevator->lastFloor == cabOrderHead->next->cabOrderFloor) {
-                que_removeCompleteCabdOrder(&cabOrderHead);
-            }
-        }
 
         que_checkQue(anElevator, orderHead, cabOrderHead);
 

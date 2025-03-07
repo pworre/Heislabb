@@ -200,10 +200,11 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
    // Checks if there is more than 2 caborders to avoid SEGV-fault
     CabOrders *current = (*orderHead)->next;   // saves current order in temp-pointer
     CabOrders *prev = *orderHead;
-    printf("DELETING: sjekker om mer enn 2 elementer\n");
+
 
     // If removing element 2
-    while (current->next != NULL) {
+    while (current != NULL) {
+        printf("DELETING: sjekker om mer enn 2 elementer\n");
         if ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor) && (current->next != NULL)) {
             // connecting node 1 to node 3
             prev->next = current->next;

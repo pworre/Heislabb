@@ -87,7 +87,7 @@ void ctrl_run(Elevator* anElevator) {
                 que_removeCompletedOrder(&orderHead);
             }
         }
-        if (cabOrderHead->next != NULL) {
+        if ((cabOrderHead->next != NULL) && (que_nextCabOrder(anElevator, orderHead, cabOrderHead) == anElevator->lastFloor)) {
             que_removeCompleteCabdOrder(anElevator, orderHead, &cabOrderHead);
         }
     

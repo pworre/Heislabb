@@ -221,12 +221,12 @@ void que_removeCompleteCabdOrder(CabOrders **orderHead){
 
 
 int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outsideOrder) {
-    if ((*orderHead == NULL) || ((*orderHead)->next == NULL)) {
+    if ((orderHead == NULL) || ((orderHead)->next == NULL)) {
         return;
     }
 
     //CabOrders *prev = *orderHead;
-    CabOrders *current = (*orderHead)->next;
+    CabOrders *current = orderHead->next;
     ButtonType directionOrdered = outsideOrder->orderDirection; // Bruker første node siden den er den som kjøres på (IKKE TIL!)
     int floorToReturn_UP = 5;
     int floorToReturn_DOWN = -1;

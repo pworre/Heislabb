@@ -23,7 +23,7 @@ int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder)
     }
     if (cabOrder->next != NULL){
         if ((anElevator->viabas == 0) || (order->next == NULL))
-            return cabOrder->next->cabOrderFloor;
+            return que_nextCabOrder(anElevator, order, cabOrder);
     }
     return anElevator->lastFloor;
 }

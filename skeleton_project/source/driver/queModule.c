@@ -79,8 +79,8 @@ void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder) {
     printf("Sjekker køen...");
     // Setting parameter if outside cab order is between elevator and cabOrder and goes in same direction
     if ((que->next != NULL) && (cabOrder->next != NULL)) {
-        if (((cabOrder->next->cabOrderFloor < que->next->orderFloor) && ((anElevator->state == MOVING_DOWN) && que->orderDirection == BUTTON_HALL_DOWN)) || 
-            ((cabOrder->next->cabOrderFloor > que->next->orderFloor) && ((anElevator->state == MOVING_UP) && que->orderDirection == BUTTON_HALL_UP)))  {
+        if (((cabOrder->next->cabOrderFloor < que->next->orderFloor) && ((anElevator->state == MOVING_DOWN) && (que->orderDirection == BUTTON_HALL_DOWN))) || 
+            ((cabOrder->next->cabOrderFloor > que->next->orderFloor) && ((anElevator->state == MOVING_UP) && (que->orderDirection == BUTTON_HALL_UP))))  {
             anElevator->viabas = 1;
         }
     } else {

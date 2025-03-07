@@ -88,9 +88,7 @@ void ctrl_run(Elevator* anElevator) {
             }
         }
         if (cabOrderHead->next != NULL) {
-            if (anElevator->lastFloor == cabOrderHead->next->cabOrderFloor) {
-                que_removeCompleteCabdOrder(anElevator, orderHead, &cabOrderHead);
-            }
+            que_removeCompleteCabdOrder(anElevator, orderHead, &cabOrderHead);
         }
     
         door_open(anElevator, orderHead, cabOrderHead, lastStop, stopValue);

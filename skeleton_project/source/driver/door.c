@@ -27,9 +27,7 @@ void door_open(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
             }
             }
             if (cabOrderHead->next != NULL) {
-                if (anElevator->lastFloor == cabOrderHead->next->cabOrderFloor) {
-                    que_removeCompleteCabdOrder(anElevator, orderHead, &cabOrderHead);
-                }
+                que_removeCompleteCabdOrder(anElevator, orderHead, &cabOrderHead);
             }
 
                 // Obstruksjonsfunksjonalitet

@@ -93,4 +93,4 @@ void que_removeCompleteCabdOrder(CabOrders **orderHead);
 
 
 
-int que_nextCabOrder(Elevator *anElevator, CabOrders **orderHead, Orders *outsideOrder);
+int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outsideOrder);

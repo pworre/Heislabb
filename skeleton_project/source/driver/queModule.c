@@ -211,7 +211,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
             free(current);
             current = prev->next;
             printf("DELETING: Fjernet en node midt i :))\n");
-        } /*else if (((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) && (current->next == NULL)) {
+        } else if (((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) && (current->next == NULL)) {
             free(current);
             prev->next = NULL;
         } else if (!((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) && (current->next == NULL)) {

@@ -77,8 +77,8 @@ void ctrl_run(Elevator* anElevator) {
         //que_addCabOrder(&orderHead, anElevator->lastFloor);
 
         // STOP-FUNCTION
-        stopValue = elevio_stopButton();
-        if (stopValue == 1) {
+        *stopValue = elevio_stopButton();
+        if (*stopValue == 1) {
             ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
         }
 
@@ -127,7 +127,7 @@ void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *c
 }
 
 void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int *value) {
-    while(value == 1) {
+    while(*value == 1) {
         anElevator->state = STATIONARY;
         elevio_stopLamp(1);
         elevio_motorDirection(DIRN_STOP);
@@ -139,7 +139,7 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
         if(elevio_floorSensor() != -1) {
             elevio_doorOpenLamp(1);
         }
-        value = elevio_stopButton();
+        *value = elevio_stopButton();
     }
 
     elevio_stopLamp(0);

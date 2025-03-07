@@ -251,32 +251,31 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
 }*/
 
 void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
-    // Ensure list is valid and has at least two elements
-    if ((*orderHead == NULL) || ((*orderHead)->next == NULL)) {
-        return;
+    // Ensure the list is valid
+    if (*orderHead == NULL) {
+        return;  // If the list is empty, return early
     }
 
     CabOrders *current = *orderHead;
     CabOrders *prev = NULL;
 
-    // Handle the case where the head itself has the specific value
-    while ((current != NULL) && ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor))) {
-        (*orderHead) = current->next;  // Move the head to the next node
-        free(current);           // Free the current node
-        current = (*orderHead);         // Move current to the next node
+    // Handle the case where the head itself matches the condition
+    while (current != NULL && (current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
+        *orderHead = current->next;  // Move the head to the next node
+        free(current);               // Free the current node
+        current = *orderHead;        // Move to the next node
     }
 
-    // Now handle the case where nodes after the head have the specific value
+    // Now handle the rest of the list
     while (current != NULL) {
-        while ((current != NULL) && ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor))) {
-            prev = current;
-            current = current->next;
-        }
-        // If we found a node with the specific value
-        if (current != NULL) {
-            prev->next = current->next; // Bypass the current node
-            free(current);               // Free the current node
-            current = prev->next;        // Move current to the next node
+        if ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
+            // If the current node matches the condition, remove it
+            prev->next = current->next; // Skip over the current node
+            free(current);              // Free the current node
+            current = prev->next;       // Move current to the next node
+        } else {
+            prev = current;            // Move prev to the current node
+            current = current->next;   // Move current to the next node
         }
     }
 }
@@ -287,15 +286,13 @@ void que_removeFloorCabOrder(Elevator *anElevator, CabOrders **orderHead, int fl
     CabOrders *current = prev->next;
 
     while (current != NULL) {
-        while (current->cabOrderFloor == floorToRemove) {
-            if (current->next == NULL) {
-                free(current);
-                prev->next == NULL;
-                return;
-            } else {
-                current = current->next;
-                free(prev->next);
-            }
+        if (current->cabOrderFloor == floorToRemove) {
+            free(current);
+            prev->next == NULL;
+            return;
+        } else {
+            current = current->next;
+            free(prev->next);
         }
         prev->next = current;
     }

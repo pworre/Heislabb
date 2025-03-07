@@ -8,6 +8,7 @@ void SM_updateElevatorState(Elevator *anElevator, Orders *order, CabOrders *cabO
 int SM_lastFloor(Elevator *anElevator){
     int currentFloor = elevio_floorSensor();
     if ((anElevator->lastFloor != currentFloor) && (currentFloor != -1)){
+        elevio_floorIndicator(currentFloor);
         return currentFloor;
     } else {
         return anElevator->lastFloor;

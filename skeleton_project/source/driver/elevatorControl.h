@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include "time.h"
 #include "elevatorStateMachine.h"
+#include "door.h"
 
 /**
 * @file

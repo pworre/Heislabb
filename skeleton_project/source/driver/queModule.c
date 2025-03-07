@@ -201,7 +201,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
    if ((*orderHead)->next->next != NULL) {
         CabOrders *current = (*orderHead);   // saves current order in temp-pointer
         CabOrders *nextNode = (*orderHead)->next;
-        printf("DELETING: sjekker om mer enn 2 elementer");
+        printf("DELETING: sjekker om mer enn 2 elementer\n");
 
         // If removing element 2
         while (current->next != NULL) {
@@ -211,7 +211,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
                 free(current->next);
                 current->next = NULL;
                 current = nextNode;
-                printf("DELETING: Fjernet en node midt i :))");
+                printf("DELETING: Fjernet en node midt i :))\n");
             } else if ((current->next->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
                 free(current->next);
                 current->next = NULL;

@@ -88,7 +88,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor);
 *
 * @return nothing. Sets @p orderHead pointing to next element and deallocating
 */
-void que_removeCompleteCabdOrder(CabOrders **orderHead);
+void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders **orderHead);
 
 
 

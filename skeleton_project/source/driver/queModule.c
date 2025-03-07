@@ -206,7 +206,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
     printf("Added new order: Floor %d\n", requestedFloor);
 }
 
-void que_removeCompleteCabdOrder(CabOrders **orderHead){
+void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders **orderHead){
     // Checks if there is nothing to remove
     if ((*orderHead == NULL) && ((*orderHead)->next == NULL)) {
         return;
@@ -214,10 +214,30 @@ void que_removeCompleteCabdOrder(CabOrders **orderHead){
 
     elevio_buttonLamp((*orderHead)->cabOrderFloor, BUTTON_CAB, 0);
 
+    /*
     // Copying the pointer to the linkedlist and removing the first element
     CabOrders *temp = *orderHead;   // saves current order in temp-pointer
     *orderHead = (*orderHead)->next;    // points to next element in list
     free(temp);                         // deallocate memory
+    */
+
+   CabOrders *prev = *orderHead;
+   CabOrders *current = prev->next;
+
+   while(current != NULL) {
+        if (current->cabOrderFloor == que_nextCabOrder(anElevator, orderHead, order)) {
+            if (current->next != NULL) {
+                prev->next = current->next;
+                free(current);
+                return;           
+            } else {
+                prev->next = NULL;
+                free(current);
+                return;
+            }
+        }
+        current = prev->next;     
+   }
 
 }
 

@@ -222,6 +222,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
         }
     }*/
 
+/*
 void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
     // Ensure list is valid and has at least two elements
     if ((*orderHead == NULL) || ((*orderHead)->next == NULL)) {
@@ -247,4 +248,50 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
             current = current->next;  // Move current forward
         }
     }
+}*/
+
+void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
+    CabOrders *current = *orderHead;
+    CabOrders *prev = NULL;
+
+    // Handle the case where the head itself has the specific value
+    while ((current != NULL) && ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor))) {
+        (*orderHead) = current->next;  // Move the head to the next node
+        free(current);           // Free the current node
+        current = (*orderHead);         // Move current to the next node
+    }
+
+    // Now handle the case where nodes after the head have the specific value
+    while (current != NULL) {
+        while ((current != NULL) && ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor))) {
+            prev = current;
+            current = current->next;
+        }
+        // If we found a node with the specific value
+        if (current != NULL) {
+            prev->next = current->next; // Bypass the current node
+            free(current);               // Free the current node
+            current = prev->next;        // Move current to the next node
+        }
+    }
 }
+
+/*
+void que_removeFloorCabOrder(Elevator *anElevator, CabOrders **orderHead, int floorToRemove) {
+    CabOrders *prev = *orderHead;
+    CabOrders *current = prev->next;
+
+    while (current != NULL) {
+        while (current->cabOrderFloor == floorToRemove) {
+            if (current->next == NULL) {
+                free(current);
+                prev->next == NULL;
+                return;
+            } else {
+                current = current->next;
+                free(prev->next);
+            }
+        }
+        prev->next = current;
+    }
+}*/

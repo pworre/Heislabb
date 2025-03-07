@@ -117,7 +117,7 @@ void ctrl_run(Elevator* anElevator) {
                     clock_t start_time_obstruction = clock();
                     double seconds_passed_obstruction = 0;
                     while(seconds_passed_obstruction < 1.5) {
-                        seconds_passed_obstruction = (double)(clock() - start_time) / CLOCKS_PER_SEC;
+                        seconds_passed_obstruction = (double)(clock() - start_time_obstruction) / CLOCKS_PER_SEC;
                         }
                 }
 

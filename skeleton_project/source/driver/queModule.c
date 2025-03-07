@@ -208,7 +208,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
             // connecting node 1 to node 3
             prev->next = current->next;
             free(current);
-            current->next = prev->next;
+            current = prev->next;
             printf("DELETING: Fjernet en node midt i :))\n");
         } /*else if ((current->cabOrderFloor == anElevator->nextFloor) && (anElevator->lastFloor == anElevator->nextFloor)) {
             free(current);

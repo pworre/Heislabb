@@ -95,6 +95,7 @@ void ctrl_run(Elevator* anElevator) {
             elevio_motorDirection(DIRN_STOP);
             anElevator->state = STATIONARY;
             elevio_doorOpenLamp(1);
+            int obstruction = 0;
 
             // 3 sekunder ventetid
             clock_t start_time = clock();
@@ -107,7 +108,17 @@ void ctrl_run(Elevator* anElevator) {
 
                 // Obstruksjonsfunksjonalitet
                 while (elevio_obstruction()) {
+                    obstruction = 1;
                     continue;
+                }
+
+                if (obstruction == 1) {
+                    // 3 sekunder ventetid
+                    clock_t start_time_obstruction = clock();
+                    double seconds_passed_obstruction = 0;
+                    while(seconds_passed_obstruction < 1.5) {
+                        seconds_passed_obstruction = (double)(clock() - start_time) / CLOCKS_PER_SEC;
+                        }
                 }
 
                 stopValue = elevio_stopButton();

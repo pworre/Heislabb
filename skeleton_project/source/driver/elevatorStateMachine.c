@@ -40,6 +40,7 @@ int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder)
             }
 
             return nextCaborder;
+        }
     }
     return anElevator->lastFloor;
 }

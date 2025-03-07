@@ -4,33 +4,44 @@
 
 
 void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirection) {
-    //Orders *newOrder = NULL;
-    // Saves the adress for Order-type in head and allocate memory. Using "struct Orders *" to convert from void * to struct-type
-    Orders *newOrder = (Orders *)malloc(sizeof(Orders));
+    // Check if the order already exists in the list
+    Orders* temp = *head;
+    while (temp != NULL) {
+        if (temp->orderFloor == requestedFloor && temp->orderDirection == requestedDirection) {
+            printf("Duplicate order: Floor %d, Direction %d already exists.\n", requestedFloor, requestedDirection);
+            return; // Don't add the order if it's a duplicate
+        }
+        temp = temp->next;
+    }
 
-    // Checks if memory is allocated for the new Orders-struct
+    // Allocate memory for the new order
+    Orders* newOrder = (Orders *)malloc(sizeof(Orders));
+
+    // Check if memory allocation was successful
     if (newOrder == NULL) {
-        printf("Memory is not allocated for Orders");
+        printf("Memory allocation failed.\n");
         return;
     }
 
-    // Checks if there is already an order in the list. If not, adding it as first element
+    // Set the new order's values
     newOrder->orderFloor = requestedFloor;
     newOrder->orderDirection = requestedDirection;
     newOrder->next = NULL;
-    
+
+    // If the list is empty, set the new order as the head
     if (*head == NULL) {
         *head = newOrder;
-        return; // Returns if the list is empty and added the neweOrder
-    } else {
-        Orders* temp = *head;
-        while ((temp->next != NULL) && (temp != NULL)) {
-            temp = temp->next;
-        }
-        
-        // Adds the request to the next node after the last existing
-        temp->next = newOrder;
+        printf("Added new order: Floor %d, Direction %d\n", requestedFloor, requestedDirection);
+        return;
     }
+
+    // If the list is not empty, traverse to the end and add the new order
+    temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newOrder;
+    printf("Added new order: Floor %d, Direction %d\n", requestedFloor, requestedDirection);
 }
 
 void que_printOrders(Orders *order) {

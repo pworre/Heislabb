@@ -85,6 +85,8 @@ void ctrl_run(Elevator* anElevator) {
             ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
         }
 
+        printf("VIABAS : %d\n", anElevator->viabas);
+
         if (orderHead->next != NULL) {
             if ((anElevator->lastFloor == orderHead->next->orderFloor) && (anElevator->viabas == 1)) {
                 que_removeCompletedOrder(&orderHead);

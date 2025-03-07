@@ -9,10 +9,6 @@ void ctrl_updateElevatorState(Elevator* anElevator, ElevatorState aState){
     anElevator->state = aState;
 }
 
-void ctrl_setFloor(Elevator* anElevator, int floor) {
-    anElevator->lastFloor = floor;
-}
-
 void ctrl_startup(Elevator* anElevator) {
     // Skrur av alle lys hvis noen var på
     for(int f = 0; f < N_FLOORS; f++){
@@ -154,6 +150,7 @@ void ctrl_run(Elevator* anElevator) {
         que_checkQue(anElevator, orderHead, cabOrderHead);
 
         printf("NEXT FLOOR: %d\n", anElevator->nextFloor);
+        printf("NEXT CABFLOOR: %d\n", que_nextCabOrder(anElevator, cabOrderHead, orderHead));
     }
 
     // Deallokerer minnet

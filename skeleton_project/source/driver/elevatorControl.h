@@ -4,7 +4,6 @@
 #include "queModule.h"
 #include "stdlib.h"
 #include <stdio.h>
-#include "lightModule.h"
 #include "time.h"
 #include "elevatorStateMachine.h"
 

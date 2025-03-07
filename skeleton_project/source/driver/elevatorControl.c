@@ -86,7 +86,7 @@ void ctrl_run(Elevator* anElevator) {
         }
 
         if (orderHead->next != NULL) {
-            if ((anElevator->lastFloor == orderHead->next->orderFloor) && (orderHead->next->orderFloor == anElevator->nextFloor)) {
+            if ((anElevator->lastFloor == orderHead->next->orderFloor) && (anElevator->viabas == 1)) {
                 que_removeCompletedOrder(&orderHead);
             }
         }

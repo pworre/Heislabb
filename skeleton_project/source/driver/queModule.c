@@ -183,7 +183,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
 
 void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead){
     // Checks if there is nothing to remove
-    if ((*orderHead == NULL) && ((*orderHead)->next == NULL)) {
+    if ((*orderHead == NULL) || ((*orderHead)->next == NULL)) {
         return;
     }
 

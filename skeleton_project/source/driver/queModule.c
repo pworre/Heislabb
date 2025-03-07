@@ -251,6 +251,11 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
 }*/
 
 void que_removeCompleteCabdOrder(Elevator *anElevator, CabOrders **orderHead) {
+    // Ensure list is valid and has at least two elements
+    if ((*orderHead == NULL) || ((*orderHead)->next == NULL)) {
+        return;
+    }
+
     CabOrders *current = *orderHead;
     CabOrders *prev = NULL;
 

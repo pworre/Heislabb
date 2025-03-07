@@ -125,7 +125,7 @@ void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *c
     }
 }
 
-void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int value) {
+void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int *value) {
     while(value == 1) {
         anElevator->state = STATIONARY;
         elevio_stopLamp(1);

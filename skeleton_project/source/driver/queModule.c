@@ -54,6 +54,8 @@ void que_printOrders(Orders *order) {
     } else {
         printf("ETASJEBESTILLING    || Ingen aktive\n");
     }
+    if (order->orderDirection == BUTTON_HALL_UP) {prinftf("ETASJEBESTILLING   || Kjører på bestilling OPP!\n");}
+    else if (order->orderDirection == BUTTON_HALL_DOWN) {prinftf("ETASJEBESTILLING   || Kjører på bestilling NED!\n");}
 }
 
 void que_printCabOrders(CabOrders *cabOrder) {

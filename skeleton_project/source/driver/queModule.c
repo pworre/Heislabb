@@ -225,7 +225,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders 
    CabOrders *current = prev->next;
 
    while(current != NULL) {
-        if (current->cabOrderFloor == que_nextCabOrder(anElevator, orderHead, order)) {
+        if (current->cabOrderFloor == que_nextCabOrder(anElevator, *orderHead, order)) {
             if (current->next != NULL) {
                 prev->next = current->next;
                 free(current);

@@ -82,18 +82,16 @@ void que_checkQue(struct Elevator* anElevator, struct Orders* que, struct CabOrd
 }
 */
 
-void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder) {
+void que_checkQue(Elevator* anElevator) {
     // Sjekker at vi ikke har nullpekere
-    if ((anElevator == NULL) || (que == NULL) || (cabOrder == NULL)) {
+    if (anElevator == NULL) {
         printf("ERROR: Null-ptr detected in que_checkQue()!\n");
     }
 
-
-    printf("Sjekker køen...");
-    // Setting parameter if outside cab order is between elevator and cabOrder and goes in same direction
-    if ((que->next != NULL) && (cabOrder->next != NULL)) {
-        if (((que_nextCabOrder(anElevator, cabOrder, que) < que->next->orderFloor) && ((anElevator->state == MOVING_DOWN) && que->orderDirection == BUTTON_HALL_DOWN)) || 
-            ((que_nextCabOrder(anElevator, cabOrder, que) > que->next->orderFloor) && ((anElevator->state == MOVING_UP) && que->orderDirection == BUTTON_HALL_UP)))  {
+    // CHECK FOR VIABAS
+    if ((anElevator->nextOutsideOrder_floor != -1) && (anElevator->nextCabOrder != -1)) {
+        if (((anElevator->nextCabOrder < anElevator->nextOutsideOrder_floor) && ((anElevator->state == MOVING_DOWN) && anElevator->nextOutsideOrder_dir == BUTTON_HALL_DOWN)) ||
+            ((anElevator->nextCabOrder > anElevator->nextOutsideOrder_floor) && ((anElevator->state == MOVING_UP) && anElevator->nextOutsideOrder_dir == BUTTON_HALL_UP))) {
             anElevator->viabas = 1;
         }
     } else {
@@ -246,12 +244,19 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders 
 
 
 int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outsideOrder) {
+    /*
     if ((orderHead == NULL) || ((orderHead)->next == NULL)) {
         if (outsideOrder != NULL) {
-            return outsideOrder->orderFloor;            
+            return outsideOrder->next->orderFloor;            
         } else {
             return -1;
         }
+    }*/
+
+    // Check if there is any cabOrders. If not, it will return -1 
+    // indicating that functions will use outside-orders or stay stationary
+    if ((orderHead == NULL) || ((orderHead)->next == NULL)) {
+        return -1;
     }
 
     //CabOrders *prev = *orderHead;

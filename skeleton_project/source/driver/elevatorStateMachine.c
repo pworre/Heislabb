@@ -2,7 +2,16 @@
 
 void SM_updateElevatorState(Elevator *anElevator, Orders *order, CabOrders *cabOrder){
     anElevator->lastFloor = SM_lastFloor(anElevator);
-    anElevator->nextFloor = SM_nextDestination(anElevator, order, cabOrder);
+
+    if (order->next != NULL) {
+        anElevator->nextOutsideOrder_floor = order->next->orderFloor;
+        anElevator->nextOutsideOrder_dir = order->next->orderDirection;
+    } else {
+        anElevator->nextOutsideOrder_floor = -1;    // Setting -1 for indicator for no active OutsideOrders
+    }
+
+    anElevator->nextCabOrder = que_nextCabOrder(anElevator, order, cabOrder);
+    anElevator->nextFloor = SM_nextDestination(anElevator);
 }
 
 int SM_lastFloor(Elevator *anElevator){
@@ -15,15 +24,12 @@ int SM_lastFloor(Elevator *anElevator){
     }
 }
 
-int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder){
-    if (order->next != NULL) {
-        if ((anElevator->viabas == 1) || (cabOrder->next == NULL)) {
-            return order->next->orderFloor;
-        } 
+int SM_nextDestination(Elevator* anElevator){
+    if ((anElevator->viabas == 1) || (anElevator->nextCabOrder == -1)) {
+        return anElevator->nextOutsideOrder_floor;
+    } else if ((anElevator->viabas == 0) || (anElevator->nextOutsideOrder_floor == -1)) {
+        return anElevator->nextCabOrder;
+    } else {
+        return anElevator->lastFloor;
     }
-    if (cabOrder->next != NULL){
-        if ((anElevator->viabas == 0) || (order->next == NULL))
-            return que_nextCabOrder(anElevator, cabOrder, order);
-    }
-    return anElevator->lastFloor;
 }

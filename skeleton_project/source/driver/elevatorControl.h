@@ -29,10 +29,13 @@ typedef enum ElevatorStateTag{
 
 typedef struct ElevatorTag{
     ElevatorState state;
-    int lastFloor;
-    int run;
+    int lastFloor;          // current measured floor from elevio_floorSensor()
+    int run;                // 1 for running the elevator-operating-procedure
     int viabas;             // variable which is 1 if the elevator will stop on either way for bringing more PAX
-    int nextFloor;
+    int nextFloor;          // next floor for the elevator
+    int nextCabOrder;       // next cabOrder based on the nearest in same diretion
+    int nextOutsideOrder_floor;   // next floorOrder from outside cab (node nr 2 in linkedlist)
+    ButtonType nextOutsideOrder_dir;    // buttonDirection for the next active outsideCabOrder
 } Elevator;
 
 

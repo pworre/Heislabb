@@ -41,4 +41,4 @@ int SM_lastFloor(Elevator *anElevator);
 *
 * @return @p nextFloor. Int type for next floor using to set stateParameter.
 */
-int SM_nextDestination(Elevator* anElevator, Orders* order, CabOrders* cabOrder);
+int SM_nextDestination(Elevator* anElevator);

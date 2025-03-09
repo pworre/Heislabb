@@ -18,7 +18,7 @@ void ctrl_startup(Elevator* anElevator) {
     }
 
 
-    printf("FloorSensor: %d\n", elevio_floorSensor());
+    printf("------------------------------------    W E L C O M E     T O     T H I S     E L E V A T O R    ------------------------------------\n\n");
 
     // elevio_floorSensor() gives output -1 when not receiving any information
     while (elevio_floorSensor() == -1) {
@@ -26,7 +26,7 @@ void ctrl_startup(Elevator* anElevator) {
     }
     anElevator->lastFloor = elevio_floorSensor();
     elevio_motorDirection(DIRN_STOP);
-    printf("Gitt startposisjon er: %d\n", anElevator->lastFloor);
+    printf("Startposition: %d\n", anElevator->lastFloor);
 }
 
 void ctrl_run(Elevator* anElevator) {
@@ -64,7 +64,6 @@ void ctrl_run(Elevator* anElevator) {
     while (anElevator->run) {
         if ((anElevator != NULL) && (orderHead != NULL) && (cabOrderHead != NULL)) {
             SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
-            anElevator->nextFloor = SM_nextDestination(anElevator, orderHead, cabOrderHead);
         }
 
         que_printOrders(orderHead);
@@ -72,9 +71,6 @@ void ctrl_run(Elevator* anElevator) {
 
         // BUTTONS: Scans continuosly for button inputs
         ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
-
-        // Troubleshooting
-        //que_addCabOrder(&orderHead, anElevator->lastFloor);
 
         // STOP-FUNCTION
         *stopValue = elevio_stopButton();
@@ -94,7 +90,7 @@ void ctrl_run(Elevator* anElevator) {
         door_open(anElevator, orderHead, cabOrderHead, lastStop, stopValue);
 
 
-        que_checkQue(anElevator, orderHead, cabOrderHead);
+        que_checkQue(anElevator);
 
         printf("NEXT FLOOR: %d\n", anElevator->nextFloor);
         printf("NEXT CABFLOOR: %d\n", que_nextCabOrder(anElevator, cabOrderHead, orderHead));

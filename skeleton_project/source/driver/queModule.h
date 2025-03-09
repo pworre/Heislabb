@@ -55,7 +55,7 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
 *
 * @return nothing. Sets the @p MotorDirection and updates the elevator state. 
 */
-void que_checkQue(Elevator* anElevator, Orders* que, CabOrders* cabOrder);
+void que_checkQue(Elevator* anElevator);
 
 
 

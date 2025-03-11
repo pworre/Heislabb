@@ -289,7 +289,7 @@ int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outside
             if (current->cabOrderFloor > floorToReturn_DOWN) {
                 floorToReturn_DOWN = current->cabOrderFloor;
             } 
-        } else if ((anElevator->nextOutsideOrder_floor == -1)){
+        } else if (anElevator->nextOutsideOrder_floor == -1){
             if (current->cabOrderFloor > floorToReturn_DOWN) {
                 floorToReturn_DOWN = current->cabOrderFloor;
             } else {

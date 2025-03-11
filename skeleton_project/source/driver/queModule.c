@@ -47,7 +47,7 @@ void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirecti
 void que_printOrders(Orders *order) {
     if (order->next != NULL) {
         Orders *temp = order;
-        char retning;
+        char *retning;
         while (temp->next != NULL) {
             if (temp->next->orderDirection == BUTTON_HALL_UP) {
                 retning = "OPP";

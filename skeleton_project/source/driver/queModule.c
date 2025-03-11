@@ -240,7 +240,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders 
         }
         current = prev->next;     
    }
-
+    current = current->next;
 }
 
 

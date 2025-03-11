@@ -65,17 +65,10 @@ void ctrl_run(Elevator* anElevator) {
     anElevator->run = 1;
 
     while (anElevator->run) {
-
-        printf("Before update: LastFloor: %d, NextOutsideOrder: %d, NextCabOrder: %d\n",
-            anElevator->lastFloor, anElevator->nextOutsideOrder_floor, anElevator->nextCabOrder);
-
+        
         if ((anElevator != NULL) && (orderHead != NULL) && (cabOrderHead != NULL)) {
             SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
-            printf("SM har blitt oppdatert!\n");
         }
-
-        printf("After update: LastFloor: %d, NextOutsideOrder: %d, NextCabOrder: %d, NextFloor: %d\n",
-            anElevator->lastFloor, anElevator->nextOutsideOrder_floor, anElevator->nextCabOrder, anElevator->nextFloor);
 
         que_printOrders(orderHead);
         que_printCabOrders(cabOrderHead);

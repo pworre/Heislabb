@@ -98,7 +98,7 @@ void que_checkQue(Elevator* anElevator) {
         anElevator->viabas = 0;
     }
 
-    printf("--- NEXT FLOOR = %d", anElevator->nextFloor);
+    printf("--- NEXT FLOOR = %d\n", anElevator->nextFloor);
 
     // Deciding the next destination
     if ((anElevator->nextFloor < anElevator->lastFloor) && (anElevator->state != MOVING_UP)) {

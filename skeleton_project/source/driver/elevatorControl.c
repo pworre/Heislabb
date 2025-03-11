@@ -118,7 +118,7 @@ void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *c
                 } else {
                     que_addCabOrder(&cabOrderHead, f);
                 }
-                if((f != anElevator->lastFloor) && (elevio_floorSensor() != -1)){
+                if((f != anElevator->lastFloor) && (elevio_floorSensor() != anElevator->lastFloor)){
                     elevio_buttonLamp(f, b, btnPressed);                    
                 }
             }

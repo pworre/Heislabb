@@ -18,6 +18,7 @@ int main(){
     if (elev == NULL) {
         printf("FEIL: Kunne ikke allokere minne riktig! \n");
     }
+    printf("Size of Elevator struct: %zu byte\n", sizeof(Elevator));
 
     ctrl_startup(elev);
     printf("Overgang i main til ctrl_run()\n");

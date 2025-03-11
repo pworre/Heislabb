@@ -243,7 +243,6 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders 
    }
 }
 
-
 int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outsideOrder) {
     /*
     if ((orderHead == NULL) || ((orderHead)->next == NULL)) {

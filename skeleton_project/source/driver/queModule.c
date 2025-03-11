@@ -243,16 +243,15 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders 
    }
 }
 
-/*
 int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outsideOrder) {
-    
+    /*
     if ((orderHead == NULL) || ((orderHead)->next == NULL)) {
         if (outsideOrder != NULL) {
             return outsideOrder->next->orderFloor;            
         } else {
             return -1;
         }
-    }
+    }*/
 
     // Check if there is any cabOrders. If not, it will return -1 
     // indicating that functions will use outside-orders or stay stationary
@@ -288,46 +287,4 @@ int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outside
         //return outsideOrder->orderFloor;
         return -1;
     }
-}
-*/
-
-int que_nextCabOrder(Elevator *anElevator, CabOrders *orderHead, Orders *outsideOrder) {
-    if (orderHead == NULL) {
-        return -1;
-    }
-
-    CabOrders *current = orderHead;
-    int bestFloor = -1;
-    int bestDistance = 4; // Max distance in a 4-floor system is 3
-
-    while (current != NULL) {
-        int distance = abs(current->cabOrderFloor - anElevator->lastFloor);
-
-        // Prioritize closest valid cab order in the current direction
-        if ((outsideOrder->orderDirection == BUTTON_HALL_UP && current->cabOrderFloor >= anElevator->lastFloor) ||
-            (outsideOrder->orderDirection == BUTTON_HALL_DOWN && current->cabOrderFloor <= anElevator->lastFloor)) {
-            
-            if (distance < bestDistance) {
-                bestDistance = distance;
-                bestFloor = current->cabOrderFloor;
-            }
-        }
-
-        current = current->next;
-    }
-
-    // If no orders in the current direction, just pick the closest floor
-    if (bestFloor == -1) {
-        current = orderHead;
-        while (current != NULL) {
-            int distance = abs(current->cabOrderFloor - anElevator->lastFloor);
-            if (distance < bestDistance) {
-                bestDistance = distance;
-                bestFloor = current->cabOrderFloor;
-            }
-            current = current->next;
-        }
-    }
-
-    return bestFloor;
 }

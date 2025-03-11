@@ -225,6 +225,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders 
    CabOrders *current = prev->next;
 
    while(current != NULL) {
+    printf("Er jeg stuck?\n");
         if (current->cabOrderFloor == nextCabOrder) {
             if (current->next != NULL) {
                 prev->next = current->next;

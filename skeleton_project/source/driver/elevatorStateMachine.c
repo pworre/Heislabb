@@ -10,7 +10,7 @@ void SM_updateElevatorState(Elevator *anElevator, Orders *order, CabOrders *cabO
         anElevator->nextOutsideOrder_floor = -1;    // Setting -1 for indicator for no active OutsideOrders
     }
 
-    anElevator->nextCabOrder = que_nextCabOrder(anElevator, order, cabOrder);
+    anElevator->nextCabOrder = que_nextCabOrder(anElevator, cabOrder, order);
     anElevator->nextFloor = SM_nextDestination(anElevator);
 }
 

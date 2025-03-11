@@ -2,12 +2,10 @@
 
 void SM_updateElevatorState(Elevator *anElevator, Orders *order, CabOrders *cabOrder){
     anElevator->lastFloor = SM_lastFloor(anElevator);
-
-    if (order != NULL) {
-        if (order->next != NULL) {
-            anElevator->nextOutsideOrder_floor = order->next->orderFloor;
-            anElevator->nextOutsideOrder_dir = order->next->orderDirection;
-        }
+    
+    if (order->next != NULL) {
+        anElevator->nextOutsideOrder_floor = order->next->orderFloor;
+        anElevator->nextOutsideOrder_dir = order->next->orderDirection;
     } else {
         anElevator->nextOutsideOrder_floor = -1;    // Setting -1 for indicator for no active OutsideOrders
     }

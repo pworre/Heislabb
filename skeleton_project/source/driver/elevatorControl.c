@@ -27,9 +27,9 @@ void ctrl_startup(Elevator* anElevator) {
     anElevator->lastFloor = elevio_floorSensor();
     elevio_motorDirection(DIRN_STOP);
     printf("Startposition: %d\n", anElevator->lastFloor);
-    anElevator->nextCabOrder = -1;
-    anElevator->nextOutsideOrder_floor = -1;
-    anElevator->nextOutsideOrder_dir = BUTTON_HALL_UP;
+    //anElevator->nextCabOrder = -1;
+    //anElevator->nextOutsideOrder_floor = -1;
+    //anElevator->nextOutsideOrder_dir = BUTTON_HALL_UP;
 }
 
 void ctrl_run(Elevator* anElevator) {

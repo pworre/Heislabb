@@ -24,6 +24,7 @@ int SM_lastFloor(Elevator *anElevator){
     }
 }
 
+/*
 int SM_nextDestination(Elevator* anElevator){
     if ((anElevator->viabas == 1) || (anElevator->nextCabOrder == -1)) {
         if (anElevator->nextOutsideOrder_floor != -1) {
@@ -35,4 +36,23 @@ int SM_nextDestination(Elevator* anElevator){
         }
     }
     return anElevator->lastFloor;
+}
+*/
+
+int SM_nextDestination(Elevator* anElevator){
+    if (anElevator->viabas == 1) {  // Prioritize outside orders
+        if (anElevator->nextOutsideOrder_floor != -1) {
+            return anElevator->nextOutsideOrder_floor;
+        }
+    }
+    
+    if (anElevator->nextCabOrder != -1) {  // Always serve cab orders if they exist
+        return anElevator->nextCabOrder;
+    }
+
+    if (anElevator->nextOutsideOrder_floor != -1) {  // If still available, serve outside orders
+        return anElevator->nextOutsideOrder_floor;
+    }
+
+    return anElevator->lastFloor;  // No orders, stay put
 }

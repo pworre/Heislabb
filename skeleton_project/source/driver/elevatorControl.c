@@ -18,7 +18,7 @@ void ctrl_startup(Elevator* anElevator) {
     }
 
 
-    printf("------------------------------------    W E L C O M E     T O     T H I S     E L E V A T O R    ------------------------------------\n\n");
+    printf("------------------    W E L C O M E     T O     T H I S     E L E V A T O R    ------------------\n\n");
 
     // elevio_floorSensor() gives output -1 when not receiving any information
     while (elevio_floorSensor() == -1) {
@@ -83,11 +83,11 @@ void ctrl_run(Elevator* anElevator) {
         }
 
         if (orderHead->next != NULL) {
-            if (anElevator->lastFloor == orderHead->next->orderFloor) {
+            if (anElevator->lastFloor == anElevator->nextOutsideOrder_floor) {
                 que_removeCompletedOrder(&orderHead);
             }
         }
-        if ((cabOrderHead->next != NULL) && (que_nextCabOrder(anElevator, cabOrderHead, orderHead) == anElevator->lastFloor)) {
+        if ((cabOrderHead->next != NULL) && (anElevator->nextCabOrder == anElevator->lastFloor)) {
             que_removeCompleteCabdOrder(anElevator, orderHead, &cabOrderHead);
         }
     

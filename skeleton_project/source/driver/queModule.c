@@ -191,7 +191,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
     // If the list is empty, set the new order as the head
     if (*head == NULL) {
         *head = newOrder;
-        printf("Added new order: Floor %d\n", requestedFloor);
+        printf("Added new CABorder: Floor %d\n", requestedFloor);
         return;
     }
 
@@ -201,7 +201,7 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
         temp = temp->next;
     }
     temp->next = newOrder;
-    printf("Added new order: Floor %d\n", requestedFloor);
+    printf("Added new CABorder: Floor %d\n", requestedFloor);
 }
 
 void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders **orderHead){

@@ -54,7 +54,7 @@ void que_printOrders(Orders *order) {
             } else {
                 retning = "NED";
             }
-            printf("ETASJEBESTILLING    || Floor: %d, Direction: %s\n", temp->next->orderFloor, retning);
+            printf("ETASJEBESTILLING    || Floor: %d, Direction: %c\n", temp->next->orderFloor, retning);
             temp = temp->next;
         }
     } else {

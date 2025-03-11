@@ -5,7 +5,7 @@
 
 void que_addOrder(Orders **head, int requestedFloor, ButtonType requestedDirection) {
     // Check if the order already exists in the list
-    Orders* temp = *head;
+    Orders* temp = (*head)->next;
     while (temp != NULL) {
         if (temp->orderFloor == requestedFloor && temp->orderDirection == requestedDirection) {
             printf("Duplicate order: Floor %d, Direction %d already exists.\n", requestedFloor, requestedDirection);

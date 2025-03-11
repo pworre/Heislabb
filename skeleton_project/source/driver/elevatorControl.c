@@ -122,6 +122,7 @@ void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *c
             }
         }
     }
+    printf("------ FORLATER scanButtonInputs -------");
 }
 
 void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int *value) {

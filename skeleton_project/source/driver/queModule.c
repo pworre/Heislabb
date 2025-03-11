@@ -238,10 +238,9 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders 
                 return;
             }
         }
-        current = prev->next;     
+        prev = current;   
+        current = current->next;
    }
-    current = current->next;
-    prev = prev->next;
 }
 
 

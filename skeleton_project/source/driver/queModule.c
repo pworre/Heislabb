@@ -210,7 +210,7 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders 
         return;
     }
 
-    int nextCabOrder = que_nextCabOrder(anElevator, *orderHead, order);
+    int nextCabOrder = anElevator->nextCabOrder;
 
     elevio_buttonLamp(nextCabOrder, BUTTON_CAB, 0);
 

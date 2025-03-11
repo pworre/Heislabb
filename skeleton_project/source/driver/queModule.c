@@ -170,9 +170,11 @@ void que_addCabOrder(CabOrders **head, int requestedFloor) {
     // Check if the order already exists in the list
     CabOrders* temp = *head;
     while (temp != NULL) {
-        if (temp->next->cabOrderFloor == requestedFloor) {
-            printf("Duplicate order: Floor %d already exists.\n", requestedFloor);
-            return; // Don't add the order if it's a duplicate
+        if (temp->next != NULL) {
+            if (temp->next->cabOrderFloor == requestedFloor) {
+                printf("Duplicate order: Floor %d already exists.\n", requestedFloor);
+                return; // Don't add the order if it's a duplicate
+            }
         }
         temp = temp->next;
     }

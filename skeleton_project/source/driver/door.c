@@ -42,6 +42,7 @@ void door_open(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
                     double seconds_passed_obstruction = 0;
                     while(seconds_passed_obstruction < 1.5) {
                         seconds_passed_obstruction = (double)(clock() - start_time_obstruction) / CLOCKS_PER_SEC;
+                        ctrl_scanButtonInputs(anElevator, orderHead, cabOrderHead);
                         }
                 }
 

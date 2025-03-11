@@ -60,8 +60,8 @@ void que_printOrders(Orders *order) {
     } else {
         printf("ETASJEBESTILLING    || Ingen aktive\n");
     }
-    if (order->orderDirection == BUTTON_HALL_UP) {printf("ETASJEBESTILLING   || Kjører på bestilling OPP!\n");}
-    else if (order->orderDirection == BUTTON_HALL_DOWN) {printf("ETASJEBESTILLING   || Kjører på bestilling NED!\n");}
+    if (order->next->orderDirection == BUTTON_HALL_UP) {printf("ETASJEBESTILLING   || Kjører på bestilling OPP!\n");}
+    else if (order->next->orderDirection == BUTTON_HALL_DOWN) {printf("ETASJEBESTILLING   || Kjører på bestilling NED!\n");}
 }
 
 void que_printCabOrders(CabOrders *cabOrder) {
@@ -131,6 +131,8 @@ void que_removeCompletedOrder(Orders **orderHead){
 
     // Copying the pointer to the linkedlist and removing the first element
     Orders *temp = (*orderHead)->next;   // saves current order in temp-pointer
+    (*orderHead)->orderDirection = temp->orderDirection;
+    (*orderHead)->orderFloor = temp->orderFloor;
     if (temp->next != NULL) {
         (*orderHead)->next = temp->next;    // points to next element in list   
     } else {

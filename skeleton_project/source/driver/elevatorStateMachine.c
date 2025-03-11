@@ -26,10 +26,13 @@ int SM_lastFloor(Elevator *anElevator){
 
 int SM_nextDestination(Elevator* anElevator){
     if ((anElevator->viabas == 1) || (anElevator->nextCabOrder == -1)) {
-        return anElevator->nextOutsideOrder_floor;
+        if (anElevator->nextOutsideOrder_floor != -1) {
+            return anElevator->nextOutsideOrder_floor;            
+        }
     } else if ((anElevator->viabas == 0) || (anElevator->nextOutsideOrder_floor == -1)) {
-        return anElevator->nextCabOrder;
-    } else {
-        return anElevator->lastFloor;
+        if (anElevator->nextCabOrder != -1){
+            return anElevator->nextCabOrder;            
+        }
     }
+    return anElevator->lastFloor;
 }

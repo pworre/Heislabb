@@ -136,7 +136,7 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
         que_clearCabOrders(&cabOrderHead);
 
         if (prev_state == MOVING_UP) {
-            anElevator->lastFloor = (anElevator->lastFloor)+1;
+            anElevator->lastFloor = (anElevator->lastFloor)+2;
         } else {
             anElevator->lastFloor = elevio_floorSensor();
         }

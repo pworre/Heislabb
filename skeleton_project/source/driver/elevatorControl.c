@@ -179,7 +179,7 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
 
             int stopValue = elevio_stopButton();
             if (elevio_stopButton()) {
-                ctrl_stop(anElevator, orderHead, cabOrderHead, &stopValue, lastStop);
+                ctrl_stop(anElevator, orderHead, cabOrderHead, &stopValue, &lastStop);
             }
         }
     }

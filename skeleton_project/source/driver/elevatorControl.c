@@ -136,13 +136,12 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
         que_clearCabOrders(&cabOrderHead);
 
         if (prev_state == MOVING_UP) {
-            SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
             anElevator->lastFloor = (anElevator->lastFloor)+1;
+            anElevator->nextFloor = (anElevator->lastFloor)+1;
         } else {
             anElevator->lastFloor = elevio_floorSensor();
+            anElevator->nextFloor = elevio_floorSensor();
         }
-        anElevator->nextFloor = elevio_floorSensor();
-        
 
         if(elevio_floorSensor() != -1) {
             elevio_doorOpenLamp(1);

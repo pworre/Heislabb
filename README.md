@@ -14,3 +14,9 @@ Instruction to compile the files to an executable program for running the elevat
     Before we can run the file, we need connection to the elevator.
 3. Connect to elevator with following command: elevatorserver
 3. Run the program with following command: ./elevator
+
+Example of installatin
+$ cd ./Heislabb/skeleton_project
+$ make
+$ elevatorserver
+$ ./elevator

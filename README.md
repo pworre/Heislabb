@@ -16,9 +16,9 @@ Instruction to compile the files to an executable program for running the elevat
 3. Run the program with following command: ./elevator
 
 Example of installation:
-'''
+"""
 $ cd ./Heislabb/skeleton_project
 $ make
 $ elevatorserver
 $ ./elevator
-'''
+"""

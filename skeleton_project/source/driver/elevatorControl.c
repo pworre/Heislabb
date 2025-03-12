@@ -136,7 +136,7 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
         que_clearCabOrders(&cabOrderHead);
 
         if (anElevator->lastFloor != elevio_floorSensor()) {
-            lastStop = anElevator->lastFloor;
+            *lastStop = anElevator->lastFloor;
         }
 
         if (prev_state == MOVING_UP) {
@@ -179,7 +179,7 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
 
             int stopValue = elevio_stopButton();
             if (elevio_stopButton()) {
-                ctrl_stop(anElevator, orderHead, cabOrderHead, &stopValue, &lastStop);
+                ctrl_stop(anElevator, orderHead, cabOrderHead, &stopValue, lastStop);
             }
         }
     }

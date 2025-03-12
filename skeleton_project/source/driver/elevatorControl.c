@@ -128,13 +128,18 @@ void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *c
 
 void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int *value) {
     while(*value == 1) {
+        ElevatorState prev_state = anElevator->state;
         anElevator->state = STATIONARY;
         elevio_stopLamp(1);
         elevio_motorDirection(DIRN_STOP);
         que_clearOrders(&orderHead);
         que_clearCabOrders(&cabOrderHead);
 
-        anElevator->lastFloor = elevio_floorSensor();
+        if (prev_state == MOVING_UP) {
+            anElevator->lastFloor = (anElevator->lastFloor)-1;
+        } else {
+            anElevator->lastFloor = (anElevator->lastFloor)+1;
+        }
         anElevator->nextFloor = elevio_floorSensor();
         
 

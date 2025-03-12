@@ -19,6 +19,8 @@ int SM_lastFloor(Elevator *anElevator){
     if ((anElevator->lastFloor != currentFloor) && (currentFloor != -1)){
         elevio_floorIndicator(currentFloor);
         return currentFloor;
+    } else if (anElevator->lastFloor != currentFloor) {
+        return currentFloor;
     } else {
         return anElevator->lastFloor;
     }

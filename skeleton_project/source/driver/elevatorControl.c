@@ -127,8 +127,8 @@ void ctrl_scanButtonInputs(Elevator *anElevator, Orders *orderHead, CabOrders *c
 }
 
 void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead, int *value) {
+    ElevatorState prev_state = anElevator->state;
     while(*value == 1) {
-        ElevatorState prev_state = anElevator->state;
         anElevator->state = STATIONARY;
         elevio_stopLamp(1);
         elevio_motorDirection(DIRN_STOP);

@@ -134,7 +134,8 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
         que_clearOrders(&orderHead);
         que_clearCabOrders(&cabOrderHead);
 
-        anElevator->nextFloor = elevio_floorSensor();
+        //anElevator->nextFloor = elevio_floorSensor();
+        SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
 
         if(elevio_floorSensor() != -1) {
             elevio_doorOpenLamp(1);

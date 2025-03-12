@@ -79,7 +79,7 @@ void ctrl_run(Elevator* anElevator) {
         // STOP-FUNCTION
         *stopValue = elevio_stopButton();
         if (*stopValue == 1) {
-            ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue);
+            ctrl_stop(anElevator, orderHead, cabOrderHead, stopValue, lastStop);
         }
 
         if (orderHead->next != NULL) {
@@ -179,7 +179,7 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
 
             int stopValue = elevio_stopButton();
             if (elevio_stopButton()) {
-                ctrl_stop(anElevator, orderHead, cabOrderHead, &stopValue);
+                ctrl_stop(anElevator, orderHead, cabOrderHead, &stopValue, lastStop);
             }
         }
     }

@@ -93,7 +93,7 @@ void ctrl_run(Elevator* anElevator) {
     
         door_open(anElevator, orderHead, cabOrderHead, lastStop, stopValue);
 
-
+        printf("FLOORSENSOR: %d         //      LASTFLOOR: %d\n", elevio_floorSensor(), anElevator->lastFloor);
         que_checkQue(anElevator);
 
         printf("NEXT FLOOR: %d\n", anElevator->nextFloor);
@@ -134,8 +134,7 @@ void ctrl_stop(Elevator *anElevator, Orders *orderHead, CabOrders *cabOrderHead,
         que_clearOrders(&orderHead);
         que_clearCabOrders(&cabOrderHead);
 
-        //anElevator->nextFloor = elevio_floorSensor();
-        SM_updateElevatorState(anElevator, orderHead, cabOrderHead);
+        anElevator->nextFloor = elevio_floorSensor();
 
         if(elevio_floorSensor() != -1) {
             elevio_doorOpenLamp(1);

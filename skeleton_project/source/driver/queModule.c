@@ -228,7 +228,10 @@ void que_removeCompleteCabdOrder(Elevator *anElevator, Orders *order, CabOrders 
 
     int nextCabOrder = anElevator->nextCabOrder;
 
-    elevio_buttonLamp(nextCabOrder, BUTTON_CAB, 0);
+    if (nextCabOrder != -1) {
+        elevio_buttonLamp(nextCabOrder, BUTTON_CAB, 0);        
+    }
+
 
     /*
     // Copying the pointer to the linkedlist and removing the first element

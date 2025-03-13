@@ -1,9 +1,7 @@
 # Heislab
 
 ## Authors
-Paul Eirik Worre
-
-Hans Tomren
+Paul Eirik Worre & Hans Tomren
 
 ## Introduction
 This project contains source files for running a model elevator, such as taking orders and going to the correct destination.

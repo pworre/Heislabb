@@ -1,6 +1,11 @@
 # Heislab
+
+## Authors
+Paul Eirik Worre
+Hans Tomren
+
 ## Introduction
-This project is containing files for running normal procedure for elevator taking orders and go to the correct destination. 
+This project contains source files for running a model elevator, such as taking orders and going to the correct destination.
 
 ## Installation
 Requirements:
